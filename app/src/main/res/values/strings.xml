@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">BU HUB</string>
+    <string name="title_activity_view_pager_for_auth">ViewPagerForAuth</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string-array name="DPT_array">
+        <item>BBA</item>
+        <item>Law</item>
+        <item>English</item>
+        <item>Economics</item>
+        <item>Cse</item>
+    </string-array>
+
+</resources>

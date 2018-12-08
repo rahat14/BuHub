@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#303030"
+    android:weightSum="3"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ProgressBar
+            android:id="@+id/progressBar_login"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="invisible" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="130dp"
+            android:layout_weight="1"
+            android:src="@drawable/pass_icon" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+
+        <EditText
+            android:id="@+id/mail_signIn"
+            android:layout_width="282dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="24dp"
+            android:background="#55000000"
+            android:ems="10"
+
+            android:hint=" User Mail"
+
+            android:textColor="#9c7342"
+            android:textColorHint="#ffffff"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/userlogo"/>
+
+        <EditText
+            android:id="@+id/password_signIn"
+            android:layout_width="282dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="35dp"
+            android:background="#55000000"
+            android:hint=" Password"
+            android:textColor="#9c7342"
+            android:textColorHint="#ffffff"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:drawableLeft="@drawable/pass50"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/button_signIn"
+            android:layout_width="282dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/gradient_1"
+            android:gravity="center"
+            android:clickable="true"
+            android:text="Log In To The App"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:foreground="?android:attr/selectableItemBackground"
+
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="57dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="New To Our App?"
+            android:textColor="#ffff"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/regBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="Register Here "
+            android:clickable="true"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#303030"
+    android:layout_gravity="fill"
+    tools:context=".RegisterFragment"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        >
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/preogressbar_register"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#fff"
+            android:text="Create a\n            New Account "/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text=" 1/2\nSteps"
+            android:layout_marginStart="60dp"
+            android:textColor="#ffff"
+            android:textSize="18sp"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+
+            />
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+
+
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="20dp"
+            android:id="@+id/username_text_input_layout"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:hint="  User Name"
+            android:textColorHint="#ffffffff"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+
+            >
+
+            <EditText
+
+                android:id="@+id/RegName"
+                android:layout_width="292dp"
+                android:layout_height="50dp"
+                android:background="#55000000"
+                android:textSize="14sp"
+                android:textColor="#ffff"
+               android:hint="  User Name "
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:textStyle="bold"
+                />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_text_input_layout5"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:hint="  Phone Number"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="#ffffffff"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/RegPhn"
+                android:layout_width="292dp"
+                android:layout_height="50dp"
+                android:background="#55000000"
+                android:textSize="14sp"
+               android:layout_marginTop="7dp"
+                android:hint="  Phone Number"
+                android:textColor="#ffff"
+                android:inputType="phone"
+                 android:textStyle="bold"
+                 />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_text_input_layout2"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:hint="  Mail Adress"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:textColorHint="#ffffffff"
+
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/RegMail"
+                android:layout_width="292dp"
+                android:layout_height="50dp"
+                android:ems="10"
+                android:textColor="#ffff"
+                android:textSize="14sp"
+                android:hint="  Mail Adress"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="7dp"
+                android:background="#55000000"
+                android:textStyle="bold"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/username_text_input_layout3"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:hint=" Password"
+            android:textColorHint="#ffffffff"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:focusable="true"
+            android:focusableInTouchMode="true">
+
+            <EditText
+                android:id="@+id/RegPass"
+                android:layout_width="292dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="7dp"
+                android:background="#55000000"
+                android:ems="10"
+                android:hint=" Password"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+
+                android:textColor="#ffff"
+                android:textStyle="bold"
+                android:textSize="14sp"
+
+                />
+
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp" />
+        <Button
+            android:id="@+id/button_reg"
+            android:layout_width="292dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/gradient_1"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="Register"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:foreground="?android:attr/selectableItemBackground"
+
+            />
+
+    </LinearLayout>
+    </ScrollView>
+
+
