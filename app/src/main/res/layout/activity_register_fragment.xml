@@ -179,7 +179,8 @@
                 android:hint=" Password"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-
+                android:lines="1"
+                android:maxLines="1"
                 android:textColor="#ffff"
                 android:textStyle="bold"
                 android:textSize="14sp"

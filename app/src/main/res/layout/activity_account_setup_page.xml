@@ -92,6 +92,8 @@
                 android:textSize="17dp" />
 
             <Spinner
+                android:id="@+id/dropDown"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -121,12 +123,14 @@
                 android:hint="  Enter Your Batch Number">
 
                 <EditText
-                    android:id="@+id/RegMail"
+                    android:id="@+id/batchnumber"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="25dp"
                     android:background="#55000000"
                     android:ems="10"
+                    android:lines="1"
+                    android:maxLines="1"
 
                     android:hint="  Enter Your Batch Number"
                     android:textColor="#ffff"
@@ -173,21 +177,12 @@
                 android:focusableInTouchMode="true"
               android:hint="   Your Blood Group">
 
-                <EditText
+                <Spinner
                     android:id="@+id/BG"
-                    android:layout_width="220dp"
-                    android:layout_height="50dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="7dp"
-                    android:background="#55000000"
-
-
-                    android:hint="   Your Blood Group"
-                    android:inputType="text"
-                    android:textAllCaps="true"
-                    android:textColor="#ffff"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="4dp" />
 
 
             </android.support.design.widget.TextInputLayout>

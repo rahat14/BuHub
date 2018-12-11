@@ -4,6 +4,8 @@
     package="com.metacodersbd.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -40,6 +42,7 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait"/>
         <activity android:name=".accountSetupPage"
+
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
 
