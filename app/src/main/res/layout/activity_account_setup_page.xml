@@ -51,18 +51,18 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageBtn"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="20dp"
                 android:padding="25dp"
-                android:src="@drawable/profile"
+                android:src="@drawable/pp"
                 android:clickable="true"
-
+                app:civ_border_color="#8E24AA"
+                app:civ_border_width="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
 
-                android:contentDescription="IMage"
                 android:focusable="true" />
 
             <TextView
