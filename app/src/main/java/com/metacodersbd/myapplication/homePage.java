@@ -14,12 +14,19 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.crashlytics.android.Crashlytics;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import io.fabric.sdk.android.Fabric;
 
 
 public class homePage extends AppCompatActivity {
 ImageView cgpameter  ;
 Button prfoileBtn ;
+FirebaseUser user ;
+FirebaseAuth mauth ;
+String uid ;
+
 
 
 
@@ -28,7 +35,9 @@ Button prfoileBtn ;
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_home_page);
-
+        mauth = FirebaseAuth.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser() ;
+        uid = user.getUid() ;
 
         //linking the id
         cgpameter = (ImageView) findViewById(R.id.cgpa_meter);
@@ -45,6 +54,7 @@ Button prfoileBtn ;
             public void onClick(View v) {
 
                 Intent i = new Intent(getApplicationContext(), Profile.class);
+                i.putExtra("UID", uid);
                 startActivity(i);
 
 

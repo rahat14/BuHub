@@ -80,7 +80,7 @@
                         android:text="BBA"
                         android:textStyle="bold"
                         android:padding="10dp"
-                        android:id="@+id/dpart"
+                        android:id="@+id/dpart_profile"
 
 
                         />
