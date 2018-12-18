@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -33,11 +34,14 @@ import com.google.firebase.storage.UploadTask;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.homePage;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class accountSetupPage extends AppCompatActivity {
+    String photoLink ;
     CheckBox   checkBg;
     EditText BatchNum ;
-    ImageView image ;
+    CircleImageView image ;
     Spinner dropdownMenu  ,Bg  ;
     String dpt ;
     String Name , batch_number ;
@@ -85,7 +89,7 @@ public class accountSetupPage extends AppCompatActivity {
       dropdownMenu = (Spinner) findViewById(R.id.dropDown) ;
       uploadBtn = (Button)findViewById(R.id.buttonComplete) ;
       BatchNum = (EditText)findViewById(R.id.batchnumber) ;
-      image = (ImageView)findViewById(R.id.imageBtn);
+      image = (CircleImageView) findViewById(R.id.imageBtn);
       Cgpa_fill =(EditText)findViewById(R.id.Cgpa_edit) ;
 
 
@@ -216,7 +220,7 @@ public class accountSetupPage extends AppCompatActivity {
             mprogressDialog.show();
 
             //create a scond storage
-            StorageReference storageReference2nd = mStorageReference.child(mStoragePath+System.currentTimeMillis()
+            final StorageReference storageReference2nd = mStorageReference.child(mStoragePath+System.currentTimeMillis()
             +"."
             +getFileExtention(mFilePathUri)) ;
 
@@ -227,6 +231,8 @@ public class accountSetupPage extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+
 
                             //get all the value
                             String user_n = Name ;
@@ -240,7 +246,9 @@ public class accountSetupPage extends AppCompatActivity {
                             mprogressDialog.dismiss();
                             //show toast
                             sentToHome();
+
                             //ki
+
 
                             accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(),Cgpa  );
                             //geting image upload id

@@ -18,11 +18,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.loginAcconuntSetup.accountSetupUploadModel;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
+import com.squareup.picasso.Picasso;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Profile extends AppCompatActivity {
 
     TextView name , cgpa , depart_name  ,batch_name , mail_address  , Blood_Group , Phone ;
-    ImageView IMAGE_PLACE ;
+    CircleImageView IMAGE_PLACE ;
+    String url ;
 
             FirebaseUser user ;
  FirebaseAuth mAuth;
@@ -37,10 +41,11 @@ public class Profile extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         final String USERID = user.getUid();
+        final String mail = user.getEmail();
         //  Toast.makeText(getApplicationContext(), ""+User_id , Toast.LENGTH_SHORT).show();
 
         //declring the view
-        IMAGE_PLACE = (ImageView)findViewById(R.id.image_profile) ;
+        IMAGE_PLACE = (CircleImageView) findViewById(R.id.image_profile) ;
         name = (TextView)findViewById(R.id.profile_name) ;
         cgpa = (TextView)findViewById(R.id.cgpa_card) ;
         batch_name = (TextView)findViewById(R.id.batch_card) ;
@@ -50,41 +55,46 @@ public class Profile extends AppCompatActivity {
         Phone = (TextView) findViewById(R.id.ph_profile);
 
 
+
         //calling firebase
 
         FirebaseDatabase database = FirebaseDatabase.getInstance() ;
-        final DatabaseReference mRef = database.getReference();
+        final DatabaseReference mRef = database.getReference("Users").child(User_id);
 
 
         //getting data firebase Database
-         mRef.child("Users").addValueEventListener(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                 for(DataSnapshot ds : dataSnapshot.getChildren() ){
-
-                     getProfile model = new getProfile();
-                  model.setUser_name(ds.child(USERID).getValue(getProfile.class).getUser_name());
-
-                     Log.d(TAG, "showData: name: " + model.getUser_phn());
-                     name.setText(model.getUser_name());
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
-                 }
 
-
-             }
-
-             @Override
-             public void onCancelled(@NonNull DatabaseError databaseError) {
-
-             }
-         });
+                    getProfile model = dataSnapshot.getValue(getProfile.class);
+                    name.setText(model.getUser_name());
+                    Phone.setText(model.getUser_phn());
+                    cgpa.setText(model.getCgpa());
+                    Blood_Group.setText(model.getUser_bloodgroup());
+                    depart_name.setText(model.getUser_dpt());
+                    mail_address.setText(mail);
+                    batch_name.setText(model.getUser_batch());
+                    url = model.getUser_image() ;
+                Picasso.get().load(url).into(IMAGE_PLACE);
 
 
 
 
 
+
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
     }

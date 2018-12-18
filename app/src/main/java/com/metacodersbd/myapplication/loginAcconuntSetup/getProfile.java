@@ -2,19 +2,20 @@ package com.metacodersbd.myapplication.loginAcconuntSetup;
 
 public class getProfile {
 
-    private  String user_name , user_phn , user_image , user_dpt , user_bloodgroup , user_batch ;
+    private  String user_name , user_phn , user_image , user_dpt , user_bloodgroup , user_batch , cgpa;
 
 
     public getProfile() {
     }
 
-    public getProfile(String user_name, String user_phn, String user_image, String user_dpt, String user_bloodgroup, String user_batch) {
+    public getProfile(String user_name, String user_phn, String user_image, String user_dpt, String user_bloodgroup, String user_batch, String cgpa) {
         this.user_name = user_name;
         this.user_phn = user_phn;
         this.user_image = user_image;
         this.user_dpt = user_dpt;
         this.user_bloodgroup = user_bloodgroup;
         this.user_batch = user_batch;
+        this.cgpa = cgpa;
     }
 
     public String getUser_name() {
@@ -63,5 +64,13 @@ public class getProfile {
 
     public void setUser_batch(String user_batch) {
         this.user_batch = user_batch;
+    }
+
+    public String getCgpa() {
+        return cgpa;
+    }
+
+    public void setCgpa(String cgpa) {
+        this.cgpa = cgpa;
     }
 }
