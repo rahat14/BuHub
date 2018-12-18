@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#303030"
     android:layout_gravity="fill"
-    tools:context=".RegisterFragment"
+    tools:context=".loginAcconuntSetup.RegisterFragment"
     >
 
 
@@ -177,6 +177,7 @@
                 android:background="#55000000"
                 android:ems="10"
                 android:hint=" Password"
+                android:inputType="textPassword"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:lines="1"

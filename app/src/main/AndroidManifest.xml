@@ -4,8 +4,7 @@
     package="com.metacodersbd.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,36 +14,39 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".homePage"
-
-            android:screenOrientation="portrait"
-            />
-
-        <activity android:name=".signIn_Controller"
-
-            android:theme="@style/AppTheme.NoActionBar"
+        <activity
+            android:name=".homePage"
             android:screenOrientation="portrait">
 
-
+        </activity>
+        <activity
+            android:name=".loginAcconuntSetup.signIn_Controller"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="185ca1e0e970bdebb52f18bd55114c6e203c3a99" />
 
-        <activity android:name=".RegisterFragment"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".accountSetupPage"
+        <activity
+            android:name=".loginAcconuntSetup.RegisterFragment"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".loginAcconuntSetup.accountSetupPage"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
 
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Profile"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
     </application>

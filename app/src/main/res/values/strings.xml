@@ -22,4 +22,6 @@
         <item>AB-</item>
     </string-array>
 
+    <string name="widget_text_arc_battery">CGPA</string>
+
 </resources>

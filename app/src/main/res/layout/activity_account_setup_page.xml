@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#303030"
 
-    tools:context=".accountSetupPage">
+    tools:context=".loginAcconuntSetup.accountSetupPage">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -149,13 +149,31 @@
             </android.support.design.widget.TextInputLayout>
 
 
+
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_gravity="center|bottom">
+            <EditText
+                android:id="@+id/Cgpa_edit"
+                android:layout_width="220dp"
+                android:layout_height="50dp"
+                android:hint="  Enter Your Current CGPA"
+                android:textColorHint="#ffff"
+                android:layout_marginTop="10dp"
+                android:focusableInTouchMode="true"
+                android:textSize="14sp"
+               android:digits=".12340"
+                android:inputType="number"
+                android:layout_marginStart="40dp"
+                android:background="#55000000"
+
+
+                />
 
             <CheckBox
                 android:id="@+id/checkbox1"

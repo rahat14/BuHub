@@ -82,6 +82,7 @@
             android:textColorHint="#ffffff"
             android:textSize="14dp"
             android:textStyle="bold"
+            android:inputType="textPassword"
             android:drawableLeft="@drawable/pass50"
             android:layout_weight="1"/>
 

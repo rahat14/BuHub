@@ -1,4 +1,4 @@
-package com.metacodersbd.myapplication;
+package com.metacodersbd.myapplication.loginAcconuntSetup;
 
 
 import android.content.Intent;
@@ -18,6 +18,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.metacodersbd.myapplication.R;
+import com.metacodersbd.myapplication.homePage;
 
 
 public class signIn_Controller extends AppCompatActivity {

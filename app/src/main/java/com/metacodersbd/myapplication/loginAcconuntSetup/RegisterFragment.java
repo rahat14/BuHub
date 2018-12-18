@@ -1,4 +1,4 @@
-package com.metacodersbd.myapplication;
+package com.metacodersbd.myapplication.loginAcconuntSetup;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.metacodersbd.myapplication.R;
 
 public class RegisterFragment extends AppCompatActivity {
 EditText mail , name , pass  , phn ;
@@ -38,7 +38,7 @@ FirebaseAuth mAtuh ;
         pass = (EditText) findViewById(R.id.RegPass) ;
         Acbutton = (Button)findViewById(R.id.button_reg) ;
         reg_progress = (ProgressBar)findViewById(R.id.preogressbar_register);
-            reg_progress.setVisibility(View.INVISIBLE);
+        reg_progress.setVisibility(View.INVISIBLE);
 
         //listening to the buttons
         Acbutton.setOnClickListener(new View.OnClickListener() {

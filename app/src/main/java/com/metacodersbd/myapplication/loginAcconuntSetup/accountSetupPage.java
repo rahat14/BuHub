@@ -1,9 +1,7 @@
-package com.metacodersbd.myapplication;
+package com.metacodersbd.myapplication.loginAcconuntSetup;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,7 +9,6 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -33,6 +30,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.metacodersbd.myapplication.R;
+import com.metacodersbd.myapplication.homePage;
 
 
 public class accountSetupPage extends AppCompatActivity {
@@ -44,9 +43,10 @@ public class accountSetupPage extends AppCompatActivity {
     String Name , batch_number ;
     String Phn  ,batch1 ="UnDefined" ;
     String BloodGroup = "NOT AVAILABLE " ;
+    String Cgpa="0.00" ;
     ArrayAdapter<CharSequence>adapter ;
     ArrayAdapter<CharSequence>bloodAdapter ;
-
+    EditText Cgpa_fill ;
     Button uploadBtn ;
     Uri mFilePathUri ;
     StorageReference mStorageReference ;
@@ -54,7 +54,7 @@ public class accountSetupPage extends AppCompatActivity {
     ProgressDialog mprogressDialog ;
     String user_id ;
     FirebaseAuth mauth ;
-String a ;
+    String a ;
     String databasearent_name = "Users" ;
     String mStoragePath = "All_PP/";
     String mDatabasePath = databasearent_name ;
@@ -67,7 +67,7 @@ String a ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setup_page);
         mauth = FirebaseAuth.getInstance() ;
-        user_id =mauth.getCurrentUser().getUid().toString();
+       user_id =mauth.getCurrentUser().getUid().toString();
         //saving the data came from other activitiy
 
         Bundle extras = getIntent().getExtras();
@@ -86,6 +86,7 @@ String a ;
       uploadBtn = (Button)findViewById(R.id.buttonComplete) ;
       BatchNum = (EditText)findViewById(R.id.batchnumber) ;
       image = (ImageView)findViewById(R.id.imageBtn);
+      Cgpa_fill =(EditText)findViewById(R.id.Cgpa_edit) ;
 
 
       // intinal spinner
@@ -167,6 +168,11 @@ String a ;
                         public void onClick(View v) {
 
 
+
+
+
+
+
                             if(checkBg.isChecked()){
 
                                BloodGroup = bllod;
@@ -179,6 +185,7 @@ String a ;
 
 
                             // calling the method to upload image to firebase
+
 
                             uploadToFirebae();
 //,..................................................................................................
@@ -227,13 +234,15 @@ String a ;
                             String dpart = dpt ;
                             String blood = BloodGroup ;
                             String batchNam = BatchNum.getText().toString() ;
+                            Cgpa= Cgpa_fill.getText().toString();
+
 
                             mprogressDialog.dismiss();
                             //show toast
                             sentToHome();
                             //ki
 
-                            accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,taskSnapshot.getMetadata().getReference().getDownloadUrl().toString()  );
+                            accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(),Cgpa  );
                             //geting image upload id
                             String imageUploadid = mDatabaseReference.push().getKey() ;
 
