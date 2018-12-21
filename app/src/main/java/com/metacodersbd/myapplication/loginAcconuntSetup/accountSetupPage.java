@@ -249,8 +249,11 @@ public class accountSetupPage extends AppCompatActivity {
 
                             //ki
 
+                            Task<Uri>uriTask = taskSnapshot.getStorage().getDownloadUrl() ;
+                            while (!uriTask.isSuccessful());
+                            Uri downloaduri = uriTask.getResult();
 
-                            accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,taskSnapshot.getMetadata().getReference().getDownloadUrl().toString(),Cgpa  );
+                            accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,downloaduri.toString(),Cgpa  );
                             //geting image upload id
                             String imageUploadid = mDatabaseReference.push().getKey() ;
 

@@ -1,30 +1,246 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".homePage"
-    android:orientation="vertical"
+    tools:context=".Profile"
     android:background="#303030">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cgpa_meter"
+        android:orientation="vertical">
+        <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:orientation="horizontal"
+            android:background="@drawable/profilebackgorund"
 
-        />
+            >
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/image_homepage"
+                android:layout_width="120dp"
+                android:layout_height="100dp"
+                android:src="@drawable/plaementpro"
+                android:layout_marginTop="15dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:layout_marginStart="12dp"
+                />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mr.Dummy Khan"
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:id="@+id/Homepage_name"
+                    android:textSize="18sp"
+                    android:layout_marginTop="45dp"
+                    android:layout_marginStart="9dp"
+                    android:textAllCaps="true"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+              <ImageView
+                  android:layout_width="20dp"
+                  android:layout_height="20dp"
+                  android:src="@drawable/cap"
+                  android:layout_marginStart="15dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BBA"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:id="@+id/Homepage_Dpt"
+                        android:textSize="15sp"
+                        android:layout_marginStart="8dp"
+                        />
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="105dp"
+            android:layout_marginTop="135dp"
+            android:layout_centerHorizontal="true"
+            app:cardCornerRadius="10dp"
+
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="match_parent"
+                android:baselineAligned="false">
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="95dp"
+                        android:id="@+id/cgpa_meter"
+                        android:src="@drawable/loading"
+
+                        />
+
+
+
+
+                </LinearLayout>
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_height="match_parent">
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="95dp"
+                        android:id="@+id/batch_meter_homePage"
+                        android:src="@drawable/loading"
+
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.CardView
+
+        android:layout_width="300dp"
+        android:layout_height="105dp"
+        android:layout_gravity="center_horizontal"
+        app:cardCornerRadius="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="6dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cumilla"
+                android:textSize="23sp"
+
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:layout_gravity="center_horizontal"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="match_parent"
+
+            >
+
+            <TextView
+                android:id="@+id/weather_icon"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:textColor="#09c6df"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="40sp"
+                android:text="fasfafa"
+                android:gravity="center"
+
+                />
+
+            <TextView
+                android:id="@+id/current_temperature_field"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#09c6df"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:text="1232"/>
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="#09c6df"
+                android:layout_weight="1"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text=" Clear Sky"
+                />
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
 
     <Button
-        android:layout_marginTop="13dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/profile_btn"
-        android:text="Profile "
+        android:text="Profile"
+
 
         />
 
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/blood_btn"
+            android:text="blood"
+            />
 
 
 
 </LinearLayout>
+</ScrollView>

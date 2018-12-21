@@ -18,6 +18,8 @@
             android:name=".homePage"
             android:screenOrientation="portrait">
 
+
+
         </activity>
         <activity
             android:name=".loginAcconuntSetup.signIn_Controller"
@@ -28,6 +30,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
         <meta-data

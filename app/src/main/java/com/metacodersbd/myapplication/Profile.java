@@ -1,14 +1,11 @@
 package com.metacodersbd.myapplication;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +15,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.loginAcconuntSetup.accountSetupUploadModel;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
+import com.roger.catloadinglibrary.CatLoadingView;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -27,10 +25,11 @@ public class Profile extends AppCompatActivity {
     TextView name , cgpa , depart_name  ,batch_name , mail_address  , Blood_Group , Phone ;
     CircleImageView IMAGE_PLACE ;
     String url ;
+    CatLoadingView mView;
 
             FirebaseUser user ;
  FirebaseAuth mAuth;
-    private static final String TAG = "ViewDatabase";
+   // private static final String TAG = "ViewDatabase";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +39,8 @@ public class Profile extends AppCompatActivity {
         final String User_id = i.getStringExtra("UID");
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
-        final String USERID = user.getUid();
         final String mail = user.getEmail();
+        mView = new CatLoadingView() ;
         //  Toast.makeText(getApplicationContext(), ""+User_id , Toast.LENGTH_SHORT).show();
 
         //declring the view
@@ -54,6 +53,9 @@ public class Profile extends AppCompatActivity {
         Blood_Group = (TextView) findViewById(R.id.blood_profile);
         Phone = (TextView) findViewById(R.id.ph_profile);
 
+            mView.show(getSupportFragmentManager()," ");
+            mView.setCanceledOnTouchOutside(false);
+
 
 
         //calling firebase
@@ -64,13 +66,13 @@ public class Profile extends AppCompatActivity {
 
         //getting data firebase Database
 
-        mRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                       mRef.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
 
 
-                    getProfile model = dataSnapshot.getValue(getProfile.class);
+                        getProfile model = dataSnapshot.getValue(getProfile.class);
                     name.setText(model.getUser_name());
                     Phone.setText(model.getUser_phn());
                     cgpa.setText(model.getCgpa());
@@ -79,8 +81,9 @@ public class Profile extends AppCompatActivity {
                     mail_address.setText(mail);
                     batch_name.setText(model.getUser_batch());
                     url = model.getUser_image() ;
-                Picasso.get().load(url).into(IMAGE_PLACE);
-
+                Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
+                        .noFade()
+                        .into(IMAGE_PLACE);
 
 
 
@@ -94,7 +97,19 @@ public class Profile extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
+
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do something after 100ms
+                mView.dismiss();
+            }
+        }, 1800);
+
 
 
     }

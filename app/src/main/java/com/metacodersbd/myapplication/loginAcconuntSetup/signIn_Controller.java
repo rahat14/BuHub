@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.homePage;
 
@@ -112,15 +113,15 @@ public class signIn_Controller extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        //FirebaseUser currentUser = mauth.getCurrentUser();
+        FirebaseUser currentUser = mauth.getCurrentUser();
 
-   //     if (currentUser != null) {
+       if (currentUser != null) {
 
-           // Intent i = new Intent(getApplicationContext(), homePage.class);
-        //    startActivity(i);
+            Intent i = new Intent(getApplicationContext(), homePage.class);
+          startActivity(i);
 
 
-//        }
+       }
 
 
     }
