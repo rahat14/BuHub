@@ -239,6 +239,12 @@
             android:id="@+id/blood_btn"
             android:text="blood"
             />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ciurseCalculator"
+            android:text="FeeCalcylator"/>
+
 
 
 
