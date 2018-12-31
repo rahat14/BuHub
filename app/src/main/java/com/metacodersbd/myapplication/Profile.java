@@ -31,6 +31,9 @@ public class Profile extends AppCompatActivity {
  FirebaseAuth mAuth;
    // private static final String TAG = "ViewDatabase";
 
+    //changing some code in by commenting . now i will upload ?? Aso huuuuuuuu phn doa
+    //fb te ph dei.....dei oka
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
