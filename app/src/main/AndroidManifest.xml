@@ -16,11 +16,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".homePage"
-            android:screenOrientation="portrait">
-
-
-
-        </activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".loginAcconuntSetup.signIn_Controller"
             android:screenOrientation="portrait"
@@ -30,8 +26,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-
         </activity>
 
         <meta-data
@@ -45,14 +39,12 @@
         <activity
             android:name=".loginAcconuntSetup.accountSetupPage"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".Profile"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Profile"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".course_calculator" />
     </application>
 
 </manifest>
