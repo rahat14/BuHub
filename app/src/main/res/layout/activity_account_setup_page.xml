@@ -133,7 +133,7 @@
                     android:maxLines="1"
 
                     android:hint="  Enter Your Batch Number"
-                    android:textColor="#ffff"
+                    android:textColorHint="#ffff"
                     android:inputType="numberDecimal"
                     android:textSize="14sp"
                     android:textStyle="bold" />
