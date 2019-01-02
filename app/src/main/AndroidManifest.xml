@@ -45,6 +45,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".course_calculator" />
+        <activity android:name=".bloodSection" />
+        <activity android:name=".bloodGroups"></activity>
     </application>
 
 </manifest>
