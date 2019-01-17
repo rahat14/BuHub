@@ -5,361 +5,100 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#b90142"
+    android:background="#ffffff"
     tools:context=".bloodGroups">
 
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="20dp">
-
+        android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
-            >
+            android:layout_marginTop="30dp"
+          >
 
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/aPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="A+"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/aNeg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="A-"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Search a Blood\n Donor"
+                android:textSize="22dp"
+                android:textStyle="bold"
+                android:textColor="#726f70"
+                android:textAlignment="center"
+                android:textAllCaps="false"/>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_marginTop="30dp"
             >
 
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/bPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="B+"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/bNeg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="B-"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:text="A+"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="80dp"
+                android:background="@drawable/circle"
+          />
+            <Button
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:text="Tap to choose a type"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:background="@drawable/circle"
+                android:textAllCaps="false"
+                />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center"
             android:gravity="center"
+            android:divider="@drawable/space_divider"
+            android:showDividers="middle"
+            android:layout_marginTop="30dp"
             >
 
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/abPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="AB+"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/abNeg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="AB-"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="Tap to choose a type"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:background="@drawable/circle"
+                android:textAllCaps="false"
+                />
+            <Button
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:text="Tap to choose a type"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:background="@drawable/circle"
+                android:textAllCaps="false"
+                />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center"
-            android:gravity="center"
-            >
-
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/oPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="O+"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#faddec"
-                app:cardElevation="14dp"
-                app:cardMaxElevation="16dp"
-                app:cardCornerRadius="50dp"
-                app:contentPadding="25dp">
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/oNeg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:text="O-"
-                        android:textColor="#000"
-                        android:textSize="23sp"
-                        android:textStyle="bold" />
-
-
-
-                </LinearLayout>
-
-
-
-
-            </android.support.v7.widget.CardView>
-
-        </LinearLayout>
-
 
     </LinearLayout>
+
+
 
 </ScrollView>
