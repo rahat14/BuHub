@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_weight="4"
+    tools:context=".ChatSystemUniversal.chatPage">
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/recyclerView_For_chart"
+        android:layout_weight="3"
+        android:orientation="vertical">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="10"
+            android:id="@+id/mesINput"
+            android:hint="Enter the Msg"/>
+        <Button
+            android:id="@+id/sendBTN"
+            android:layout_width="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/button_green_normal"
+            android:layout_height="wrap_content"
+            android:textColor="#fff"
+            android:text="Send Msg "/>
+
+
+
+    </LinearLayout>
+</LinearLayout>

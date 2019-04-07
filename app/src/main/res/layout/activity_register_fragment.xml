@@ -74,7 +74,7 @@
 
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_marginTop="20dp"
             android:id="@+id/username_text_input_layout"
             android:layout_width="match_parent"
@@ -101,10 +101,10 @@
                 android:textStyle="bold"
                 />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_text_input_layout5"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -127,9 +127,9 @@
                  android:textStyle="bold"
                  />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_text_input_layout2"
             android:layout_width="match_parent"
             android:gravity="center"
@@ -153,17 +153,17 @@
                 android:background="#55000000"
                 android:textStyle="bold"/>
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/username_text_input_layout3"
             android:layout_width="match_parent"
             android:gravity="center"
             android:hint=" Password"
-            android:textColorHint="#ffffffff"
+            android:textColorHint="#ffff"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:focusable="true"
@@ -188,7 +188,7 @@
 
                 />
 
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:layout_width="match_parent"
             android:layout_weight="1"

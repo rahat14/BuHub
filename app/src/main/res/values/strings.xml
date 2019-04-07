@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BU HUB</string>
+    <string name="app_name">CSE Virtual Community</string>
     <string name="title_activity_view_pager_for_auth">ViewPagerForAuth</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
@@ -23,7 +23,9 @@
         <item>AB-</item>
     </string-array>
 
+
     <string name="widget_text_arc_battery">CGPA</string>
     <string name="widget_text_arc_batch">Batch</string>
+    <string name="widget_text_arc_Credit">Credits</string>
 
 </resources>

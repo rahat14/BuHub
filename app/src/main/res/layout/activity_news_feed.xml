@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:id="@+id/linear_Layout_for_newsfeeed"
+    tools:context=".NewsFeedSection.newsFeed">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView_for_newsFeed"
+
+        >
+
+
+
+
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/addiconfab"
+            app:fabSize="auto"
+            app:maxImageSize="78dp"
+            android:layout_marginBottom="120dp"
+            android:layout_marginEnd="35dp"
+            app:rippleColor="@color/colorAccent" />
+
+    </FrameLayout>
+
+
+
+
+
+</LinearLayout>

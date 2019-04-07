@@ -3,8 +3,8 @@ package com.metacodersbd.myapplication.loginAcconuntSetup;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -25,10 +25,10 @@ import com.metacodersbd.myapplication.homePage;
 
 public class signIn_Controller extends AppCompatActivity {
 
-    EditText usermail, userpass;
+    EditText usermail, userpass; // data input
     String mail, pass;
     Button signin;
-    TextView Reg_text;
+    TextView Reg_text; // data shpw
     private FirebaseAuth mauth;
     ProgressBar login_progrss  ;
 
@@ -58,7 +58,7 @@ public class signIn_Controller extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i  = new Intent(getApplicationContext()  , RegisterFragment.class );
+                Intent i  = new Intent(getApplicationContext()  , RegisterFragment.class ); // inteenet page jump
                 startActivity(i);
 
 
@@ -125,7 +125,7 @@ public class signIn_Controller extends AppCompatActivity {
 
 
     }
-     public void LogInAccount(String uMail , String upass){
+     public void LogInAccount(String uMail , String upass){ // checing with the firebase server
 
         mauth.signInWithEmailAndPassword(uMail , upass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

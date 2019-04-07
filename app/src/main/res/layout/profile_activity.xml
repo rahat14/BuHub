@@ -35,7 +35,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mr.Dummy Khan"
+                android:text=""
                 android:textStyle="bold"
                 android:textColor="#fff"
                 android:id="@+id/profile_name"
@@ -44,7 +44,7 @@
 
 
         </LinearLayout>
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="290dp"
             android:layout_height="152dp"
             android:layout_marginTop="245dp"
@@ -149,7 +149,7 @@
             </LinearLayout>
 
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
 
@@ -168,7 +168,8 @@
 
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
             <ImageView
                 android:layout_width="35dp"
@@ -180,6 +181,7 @@
             android:text="rahatshovo56565@gmail.com"
             android:textColor="#ffff"
             android:paddingLeft="8dp"
+            android:textSize="17dp"
             android:id="@+id/mail_profile"
             android:layout_gravity="center_vertical"/>
 
@@ -202,6 +204,7 @@
             android:textColor="#ffff"
             android:id="@+id/ph_profile"
             android:paddingLeft="8dp"
+            android:textSize="17dp"
             android:layout_gravity="center_vertical"/>
 
 
@@ -223,6 +226,7 @@
             android:text="B+"
             android:textColor="#ffff"
             android:paddingLeft="7dp"
+            android:textSize="17dp"
             android:id="@+id/blood_profile"
             android:layout_gravity="center_vertical"/>
 

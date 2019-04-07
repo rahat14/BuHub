@@ -59,6 +59,7 @@
             android:layout_marginEnd="24dp"
             android:background="#55000000"
             android:ems="10"
+            android:drawablePadding="2dp"
 
             android:hint=" User Mail"
 
@@ -66,7 +67,8 @@
             android:textColorHint="#ffffff"
             android:textSize="14dp"
             android:textStyle="bold"
-            android:drawableLeft="@drawable/userlogo"/>
+            android:drawableLeft="@drawable/smalluserlogo"
+            />
 
         <EditText
             android:id="@+id/password_signIn"
@@ -75,6 +77,8 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="24dp"
+            android:drawablePadding="2dp"
+            android:layout_gravity="center"
             android:layout_marginBottom="35dp"
             android:background="#55000000"
             android:hint=" Password"
@@ -83,7 +87,7 @@
             android:textSize="14dp"
             android:textStyle="bold"
             android:inputType="textPassword"
-            android:drawableLeft="@drawable/pass50"
+            android:drawableLeft="@drawable/smallnewlock"
             android:layout_weight="1"/>
 
         <Button
@@ -100,7 +104,7 @@
             android:textStyle="bold"
             android:foreground="?android:attr/selectableItemBackground"
 
-            />
+           />
 
     </LinearLayout>
 

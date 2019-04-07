@@ -2,10 +2,13 @@ package com.metacodersbd.myapplication;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -13,7 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.metacodersbd.myapplication.loginAcconuntSetup.accountSetupUploadModel;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
 import com.roger.catloadinglibrary.CatLoadingView;
 import com.squareup.picasso.Picasso;
@@ -37,6 +39,7 @@ public class Profile extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.profile_activity);
         Intent i = getIntent();
         final String User_id = i.getStringExtra("UID");
@@ -63,16 +66,15 @@ public class Profile extends AppCompatActivity {
 
         //calling firebase
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance() ;
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference mRef = database.getReference("Users").child(User_id);
-
+        mRef.keepSynced(true);
 
         //getting data firebase Database
 
                        mRef.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
 
 
                         getProfile model = dataSnapshot.getValue(getProfile.class);
@@ -84,17 +86,24 @@ public class Profile extends AppCompatActivity {
                     mail_address.setText(mail);
                     batch_name.setText(model.getUser_batch());
                     url = model.getUser_image() ;
-                Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
+
+             /*   Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
                         .noFade()
                         .into(IMAGE_PLACE);
 
+*/
+
+                        Glide.with(Profile.this)
+                                .load(url)
+                                .skipMemoryCache(true)
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .into(IMAGE_PLACE);
 
 
 
 
 
-
-            }
+                    }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
