@@ -51,16 +51,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <ImageView
                 android:id="@+id/imageBtn"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginStart="20dp"
                 android:padding="25dp"
+
                 android:src="@drawable/pp"
                 android:clickable="true"
-                app:civ_border_color="#8E24AA"
-                app:civ_border_width="2dp"
                 android:foreground="?android:attr/selectableItemBackground"
 
                 android:focusable="true" />
@@ -71,7 +70,7 @@
                 android:layout_gravity="center"
                 android:text=" Upload a Profile Picture\n(Click On The Icon To Upload)"
                 android:textColor="#ffff"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
 
@@ -97,6 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:textColor="#fff"
                 android:layout_marginTop="4dp">
 
 
@@ -109,34 +109,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+
             android:orientation="horizontal">
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/username_text_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:textColorHint="#ffff"
                 android:focusable="true"
-
+                android:textColor="#ffff"
                 android:focusableInTouchMode="true"
                 android:hint="  Enter Your Batch Number">
-
-                <EditText
-                    android:id="@+id/batchnumber"
-                    android:layout_width="220dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="25dp"
-                    android:background="#55000000"
-                    android:ems="10"
-                    android:lines="1"
-                    android:maxLines="1"
-
-                    android:hint="  Enter Your Batch Number"
-                    android:textColorHint="#ffff"
-                    android:inputType="numberDecimal"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -146,7 +131,22 @@
                     android:layout_marginStart="4dp"
                     />
 
-            </android.support.design.widget.TextInputLayout>
+                <EditText
+                    android:id="@+id/batchnumber"
+                    android:layout_width="220dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="25dp"
+                    android:background="#55000000"
+                    android:gravity="center"
+                    android:hint="  Enter Your Batch Number"
+                    android:textColorHint="#ffff"
+
+                    android:inputType="numberDecimal"
+                    android:textColor="#ffff"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -156,21 +156,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_gravity="center|bottom">
+            android:layout_gravity="center|bottom"
+            android:orientation="vertical">
+
             <EditText
                 android:id="@+id/Cgpa_edit"
                 android:layout_width="220dp"
                 android:layout_height="50dp"
-                android:hint="  Enter Your Current CGPA"
-                android:textColorHint="#ffff"
+                android:layout_marginStart="80dp"
                 android:layout_marginTop="10dp"
-                android:focusableInTouchMode="true"
-                android:textSize="14sp"
-               android:digits=".12340"
-                android:inputType="number"
-                android:layout_marginStart="40dp"
                 android:background="#55000000"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:focusableInTouchMode="true"
+                android:hint="  Enter Your Current CGPA"
+                android:inputType="text"
+                android:textColor="#ffff"
+                android:textColorHint="#ffff"
+                android:textSize="14sp"
 
 
                 />
@@ -179,31 +182,33 @@
                 android:id="@+id/checkbox1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
                 android:layout_marginTop="10dp"
                 android:text="I Want To Become A Blood Donor To Save LIfe "
                 android:textColor="#fff"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <android.support.design.widget.TextInputLayout
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/BGSelector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:textColorHint="#ffff"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
-              android:hint="   Your Blood Group">
+                android:gravity="center"
+                android:hint="   Your Blood Group"
+                android:textColorHint="#ffff">
 
                 <Spinner
                     android:id="@+id/BG"
-                    android:layout_width="100dp"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginTop="4dp" />
+                    android:textColor="#FFf"
+                    android:layout_marginTop="5dp" />
 
 
-            </android.support.design.widget.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#b90142"
-    tools:context=".bloodSection">
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +26,7 @@
 
 
 
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
 
         android:layout_width="300dp"
         android:layout_height="105dp"
@@ -63,7 +63,7 @@
 
 
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
     </LinearLayout>
 
@@ -74,7 +74,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:gravity="center">
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
 
             android:layout_width="300dp"
             android:layout_height="105dp"
@@ -111,7 +111,7 @@
 
 
 
-        </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     </LinearLayout>

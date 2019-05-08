@@ -4,10 +4,11 @@ import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -31,17 +32,20 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.homePage;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 
 public class accountSetupPage extends AppCompatActivity {
     String photoLink ;
     CheckBox   checkBg;
     EditText BatchNum ;
-    CircleImageView image ;
+ImageView image ;
     Spinner dropdownMenu  ,Bg  ;
     String dpt ;
     String Name , batch_number ;
@@ -63,6 +67,7 @@ public class accountSetupPage extends AppCompatActivity {
     String mStoragePath = "All_PP/";
     String mDatabasePath = databasearent_name ;
     String bllod;
+    Bitmap thum_bitamp=null ;
 
     // image request code for
     int IMAGE_REQUEST_CODE = 5  ;
@@ -71,7 +76,7 @@ public class accountSetupPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setup_page);
         mauth = FirebaseAuth.getInstance() ;
-       user_id =mauth.getCurrentUser().getUid().toString();
+       user_id =mauth.getCurrentUser().getUid() ;
         //saving the data came from other activitiy
 
         Bundle extras = getIntent().getExtras();
@@ -89,7 +94,7 @@ public class accountSetupPage extends AppCompatActivity {
       dropdownMenu = (Spinner) findViewById(R.id.dropDown) ;
       uploadBtn = (Button)findViewById(R.id.buttonComplete) ;
       BatchNum = (EditText)findViewById(R.id.batchnumber) ;
-      image = (CircleImageView) findViewById(R.id.imageBtn);
+      image = (ImageView) findViewById(R.id.imageBtn);
       Cgpa_fill =(EditText)findViewById(R.id.Cgpa_edit) ;
 
 
@@ -217,6 +222,7 @@ public class accountSetupPage extends AppCompatActivity {
         if(mFilePathUri != null){
 
             mprogressDialog.setTitle("Image is Uploading...........");
+            mprogressDialog.setCanceledOnTouchOutside(false);
             mprogressDialog.show();
 
             //create a scond storage
@@ -227,8 +233,17 @@ public class accountSetupPage extends AppCompatActivity {
 
             // ADDING THE ONSUCCESS LISTENER
 
-            storageReference2nd.putFile(mFilePathUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//compressing image before upload
+            Bitmap b = ((BitmapDrawable) image.getDrawable()).getBitmap();
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            b.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
+            byte[] data = byteArrayOutputStream.toByteArray();
+
+            UploadTask uploadTask = storageReference2nd.putBytes(data);
+
+    //  storageReference2nd.putFile(mFilePathUri)
+
+                  uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
@@ -247,15 +262,15 @@ public class accountSetupPage extends AppCompatActivity {
                             //show toast
                             sentToHome();
 
-                            //ki
+                            //getting task response
 
-                            Task<Uri>uriTask = taskSnapshot.getStorage().getDownloadUrl() ;
+                            Task<Uri>uriTask = taskSnapshot.getStorage().getDownloadUrl() ; //  upload ing all the data and link to  firebase
                             while (!uriTask.isSuccessful());
                             Uri downloaduri = uriTask.getResult();
 
                             accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,downloaduri.toString(),Cgpa  );
                             //geting image upload id
-                            String imageUploadid = mDatabaseReference.push().getKey() ;
+                         //   String imageUploadid = mDatabaseReference.push().getKey() ;
 
                             //adding imge upload
                            mDatabaseReference.child(user_id).setValue(imageUploadInfo);
@@ -304,9 +319,16 @@ public class accountSetupPage extends AppCompatActivity {
                 && resultCode == RESULT_OK
                 && data != null
                 && data.getData() != null) {
+
             mFilePathUri = data.getData();
+
+            File  thumbPicPath = new File(mFilePathUri.getPath());
+
             try {
                 // getting image  into bitmap
+
+
+
 
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), mFilePathUri);
 
@@ -330,7 +352,6 @@ public  void sentToHome(){
 
 
 }
-
 
 
 

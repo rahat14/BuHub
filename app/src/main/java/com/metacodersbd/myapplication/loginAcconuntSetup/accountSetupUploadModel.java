@@ -10,6 +10,8 @@ public class accountSetupUploadModel {
     String user_image ;
     String cgpa ;
 
+    //upload model for accotunt
+
 
     public accountSetupUploadModel() {
 

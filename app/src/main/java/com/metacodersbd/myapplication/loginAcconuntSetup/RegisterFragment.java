@@ -1,8 +1,8 @@
 package com.metacodersbd.myapplication.loginAcconuntSetup;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -44,6 +44,7 @@ FirebaseAuth mAtuh ;
         Acbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 //getting the data from the views
 
                 Rmail = mail.getText().toString() ;
@@ -91,7 +92,7 @@ FirebaseAuth mAtuh ;
     }
 
 
-    public  void  createAccount(String  user  , String usermail , String userpass , String phn  ){
+    public  void  createAccount(String  user  , String usermail , String userpass , String phn  ){ // connecting with server
                     final    String aname =user ;
                       final  String aphn= phn ;
 
@@ -106,7 +107,7 @@ FirebaseAuth mAtuh ;
                                              i.putExtra("phn",aphn);
 
                                               startActivity(i);
-                                              finish();
+                                              finish(); // back korte parbe na
 
 
                                           }

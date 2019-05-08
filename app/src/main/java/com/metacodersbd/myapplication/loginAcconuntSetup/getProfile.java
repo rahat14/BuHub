@@ -1,8 +1,10 @@
 package com.metacodersbd.myapplication.loginAcconuntSetup;
 
+//model class
+
 public class getProfile {
 
-    private  String user_name , user_phn , user_image , user_dpt , user_bloodgroup , user_batch , cgpa;
+private  String user_name , user_phn , user_image , user_dpt , user_bloodgroup , user_batch , cgpa ;
 
 
     public getProfile() {

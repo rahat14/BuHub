@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PdfDownloaderSection.pdfViewerByDpartment"
+    android:background="#303030"
+    android:orientation="vertical">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+
+        android:background="#00AEF5"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Choose Your Department"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="25sp"/>
+
+
+
+    </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_green"
+            android:id="@+id/bbapdfButton"
+            android:drawableStart="@drawable/bba"
+
+            android:text="BBA"
+            android:textColor="#fff"
+            android:textSize="20sp" />
+        <Button
+            android:id="@+id/csePdfButton"
+            android:text="CSE"
+            android:textColor="#fff"
+            android:layout_width="0dp"
+            android:drawableStart="@drawable/cse"
+            android:textSize="20sp"
+
+            android:layout_marginStart="4dp"
+
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_green"
+
+           />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="4dp"
+        >
+
+
+        <Button
+            android:text="LAW"
+            android:textColor="#fff"
+            android:background="@drawable/selector_button_green"
+            android:layout_width="0dp"
+            android:id="@+id/lawPdfButton"
+            android:textSize="20sp"
+            android:drawableStart="@drawable/law"
+            android:layout_height="70dp"
+            android:layout_weight="1"/>
+        <Button
+            android:text="English"
+            android:textColor="#fff"
+            android:gravity="center"
+            android:id="@+id/englishPdfButton"
+            android:layout_width="0dp"
+            android:textSize="20sp"
+            android:layout_marginStart="4dp"
+            android:drawableStart="@drawable/eglish"
+
+            android:layout_height="70dp"
+            android:layout_weight="1"
+            android:background="@drawable/selector_button_green"
+
+            />
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:text="Request PDF"
+        android:textColor="#fff"
+        android:layout_width="250dp"
+        android:textSize="20sp"
+        android:layout_marginStart="4dp"
+        android:id="@+id/REQButton"
+        android:drawableStart="@drawable/add"
+        android:layout_gravity="center"
+        android:layout_height="60dp"
+        android:visibility="gone"
+        android:background="@drawable/selector_button_green"
+        android:layout_marginTop="10dp"
+
+        />
+
+    <Button
+        android:text="ADD PDF"
+        android:textColor="#fff"
+        android:layout_width="250dp"
+        android:textSize="20sp"
+        android:layout_marginStart="4dp"
+        android:id="@+id/ADDpdfButton"
+        android:drawableStart="@drawable/add"
+        android:layout_gravity="center"
+        android:layout_height="60dp"
+        android:background="@drawable/selector_button_green"
+        android:layout_marginTop="10dp"
+
+        />
+</LinearLayout>
+
+
+
+
+
+</LinearLayout>
+
+
+
