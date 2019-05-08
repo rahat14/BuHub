@@ -411,7 +411,11 @@ public  static   String pimageLink  ,naaam  ;
             }
             catch (NullPointerException e ){
 
+
                 Toast.makeText(getApplicationContext(), "Error, Server Is Too Busy ", Toast.LENGTH_SHORT).show();
+
+                Toast.makeText(getApplicationContext(), "Error, Weather  Server Too Busy ", Toast.LENGTH_SHORT).show();
+
             }
 
 
@@ -527,6 +531,73 @@ public  static   String pimageLink  ,naaam  ;
         }
 
 
+
+    }
+    public  String sendData(){
+
+
+        return pimageLink ;
+    }
+    public  String sendName(){
+
+        return  naaam ;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            finish();
+            System.exit(0);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+    public  void getTotalcountOFUsers(){
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+// i used the single or the value.. depending if you want to keep track
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
+
+                if(dataSnapshot.getKey().equals("Users")){
+
+
+                    TotalCount.setText( "Total Users " + dataSnapshot.getChildrenCount());
+
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
     }
     public  String sendData(){
 
@@ -608,11 +679,4 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
-
-
-
-
-
-
-    
-
+}

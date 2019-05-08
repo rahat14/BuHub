@@ -130,4 +130,3 @@ public class newsFeedHistory extends AppCompatActivity {
         finish();
     }
 }
-
