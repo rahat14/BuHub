@@ -1,6 +1,5 @@
 package com.metacodersbd.myapplication;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -17,7 +16,6 @@ import android.text.Html;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +24,6 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -533,72 +530,10 @@ public  static   String pimageLink  ,naaam  ;
 
 
     }
-    public  String sendData(){
-
-
-        return pimageLink ;
-    }
-    public  String sendName(){
-
-        return  naaam ;
-    }
-
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            finish();
-            System.exit(0);
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
-
-
-    public  void getTotalcountOFUsers(){
-
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
-
-// i used the single or the value.. depending if you want to keep track
-        myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
-
-                if(dataSnapshot.getKey().equals("Users")){
-
-
-                    TotalCount.setText( "Total Users " + dataSnapshot.getChildrenCount());
-
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
 
 
 
-
-    }
     public  String sendData(){
 
 
@@ -679,4 +614,4 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
-}
+

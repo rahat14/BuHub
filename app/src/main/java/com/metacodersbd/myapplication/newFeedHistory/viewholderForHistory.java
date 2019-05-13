@@ -1,12 +1,76 @@
-<component name="libraryTable">
-  <library name="Gradle: com.google.android.gms:play-services-measurement:16.4.0@aar">
-    <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.4.0.aar/1d650d882bd4406c11659eb222a7e0c7/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/play-services-measurement-16.4.0.aar/1d650d882bd4406c11659eb222a7e0c7/jars/classes.jar!/" />
-    </CLASSES>
-    <JAVADOC>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.android.gms/play-services-measurement/16.4.0/6ffd880f8d48b22cade5f0a40bc63ec6bbd71818/play-services-measurement-16.4.0-javadoc.jar!/" />
-    </JAVADOC>
-    <SOURCES />
-</library>
-</component>
+package com.metacodersbd.myapplication.newFeedHistory;
+
+import android.content.Context;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.metacodersbd.myapplication.R;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class viewholderForHistory extends RecyclerView.ViewHolder{
+
+
+  CircleImageView imageView_pp  ;
+  public  Button dltebutton ;
+
+  View mview ;
+  public viewholderForHistory(@NonNull View itemView) {
+    super(itemView);
+
+    mview = itemView ;
+
+
+
+  }
+
+  //setting details for row loaded into recycle view ROw
+
+  public  void  serDetails(Context ctx  , String title, String image, String uid, String plink, String name , String date , String pushId ){
+
+    //assaging views
+    TextView nameTv = mview.findViewById(R.id.name_newwsfeed_history);
+    TextView titleTv = mview.findViewById(R.id.titletv_history);
+    imageView_pp = mview.findViewById(R.id.image_profile_on_newsFeed_history);
+    ImageView imagep = mview.findViewById(R.id.image_on_newsFeed_history);
+    TextView dateView = mview.findViewById(R.id.rdateView_history);
+    dltebutton = mview.findViewById(R.id.dlteButton_history);
+
+
+
+
+
+    // Loading views
+    nameTv.setText(name);
+    titleTv.setText(title);
+    dateView.setText(date);
+    //   Picasso.get().load(image).error(R.drawable.loadingdialoge).into(imagep);
+
+
+
+    Glide.with(ctx).load(plink).into(imageView_pp);
+
+      int  len = image.length();
+
+      Glide.with(ctx).load(image).placeholder(R.drawable.loadingdialoge).into(imagep);
+
+
+
+
+
+    //  Picasso.get().load(plink).error(R.drawable.loadingdialoge).into(imageView_pp);
+
+
+  }
+
+
+
+
+}

@@ -1,12 +1,12 @@
 package com.metacodersbd.myapplication.NewsFeedSection;
 
 public class modelForNewsFeed {
-    String ntitle , nimage ,nuid , pp_link , pname, date , pushid   ;
+    String ntitle , nimage ,nuid , pp_link , pname, date , pushid  ,likeCount  ;
 
     public modelForNewsFeed() {
     }
 
-    public modelForNewsFeed(String ntitle, String nimage, String nuid, String pp_link, String pname, String date, String pushid) {
+    public modelForNewsFeed(String ntitle, String nimage, String nuid, String pp_link, String pname, String date, String pushid, String likeCount) {
         this.ntitle = ntitle;
         this.nimage = nimage;
         this.nuid = nuid;
@@ -14,8 +14,8 @@ public class modelForNewsFeed {
         this.pname = pname;
         this.date = date;
         this.pushid = pushid;
+        this.likeCount = likeCount;
     }
-
 
     public String getNtitle() {
         return ntitle;
@@ -71,5 +71,13 @@ public class modelForNewsFeed {
 
     public void setPushid(String pushid) {
         this.pushid = pushid;
+    }
+
+    public String getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(String likeCount) {
+        this.likeCount = likeCount;
     }
 }

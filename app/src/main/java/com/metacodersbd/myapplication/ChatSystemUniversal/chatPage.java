@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -23,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.metacodersbd.myapplication.NewsFeedSection.modelForNewsFeed;
+import com.metacodersbd.myapplication.NewsFeedSection.viewHolderNewsFeed;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.newFeedHistory.viewholderForHistory;
 
@@ -36,6 +41,8 @@ public class chatPage extends AppCompatActivity {
     String  uid , msg , name ,MSG   ;
     EditText msgINPUT ;
     Button sendBTN ;
+    FirebaseRecyclerAdapter<modelForChat , viewHolderForChat>firebaseRecyclerAdapter ;
+    FirebaseRecyclerOptions<modelForChat> options ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +78,9 @@ public class chatPage extends AppCompatActivity {
         mlayoutManager = new LinearLayoutManager(this);
         mrecyclerView.setLayoutManager(mlayoutManager);
 
+        showData();
 
+/*
         FirebaseRecyclerAdapter<modelForChat , viewHolderForChat> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<modelForChat, viewHolderForChat>(
                         modelForChat.class,
@@ -89,7 +98,7 @@ public class chatPage extends AppCompatActivity {
 
         //set adapter to recyclerview
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
-
+*/
 
         sendBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,8 +109,47 @@ public class chatPage extends AppCompatActivity {
             }
         });
 
+
     }
 
+    private  void showData(){
+
+        options = new FirebaseRecyclerOptions.Builder<modelForChat>().setQuery(mRef , modelForChat.class)
+                .build() ;
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForChat, viewHolderForChat>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull final viewHolderForChat holder, final int position, @NonNull modelForChat model) {
+
+
+                holder.setDetails(getApplicationContext() ,model.getName() , model.getMsg() , model.getUid() , model.getPushid() );
+
+            }
+
+            @NonNull
+            @Override
+            public viewHolderForChat onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+                //INflate the row
+                Context context;
+                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_msg, viewGroup, false);
+
+                viewHolderForChat viewHolder = new viewHolderForChat(itemVIew);
+
+
+
+
+
+                return viewHolder;
+            }
+        };
+
+        mrecyclerView.setLayoutManager(mlayoutManager);
+        firebaseRecyclerAdapter.startListening();
+        //setting adapter
+
+        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
 
 
 

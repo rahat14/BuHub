@@ -1,13 +1,18 @@
 package com.metacodersbd.myapplication.PdfDownloaderSection;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+
+import androidx.annotation.NonNull;
 import androidx.core.view.MenuItemCompat;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +22,7 @@ import androidx.appcompat.widget.SearchView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
@@ -29,6 +35,9 @@ public class cse_pdf_list extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef ;
     public ProgressBar cse_bar ;
+    FirebaseRecyclerAdapter<Model , viewHolder_cse>firebaseRecyclerAdapter ;
+    FirebaseRecyclerOptions<Model> options ;
+    GridLayoutManager mLayoutManager ;
 
 
 
@@ -50,7 +59,7 @@ public class cse_pdf_list extends AppCompatActivity {
             mlayoutManager = new LinearLayoutManager(this);
 
 
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this , 2 );
+         mLayoutManager = new GridLayoutManager(this , 2 );
 
         mrecyclerView.setLayoutManager(mLayoutManager);
         //send Query to FirebaseDatabase
@@ -58,83 +67,163 @@ public class cse_pdf_list extends AppCompatActivity {
         mRef = mFirebaseDatabase.getReference("Pdf_db").child("CSE");
         mRef.keepSynced(true);
 
+        showData();
     }
 
     // now Implement the firebase search
-    public  void firebaseSearch(String searchtext){
 
-                String query = searchtext.toUpperCase() ;
+    private void firebaseSearch(String searchtext) {
+
+
+
+        String query = searchtext.toUpperCase() ;
         Query firebaseSearchQuery = mRef.orderByChild("title").startAt(query).endAt(query + "\uf8ff");
 
-
-        FirebaseRecyclerAdapter<Model , viewHolder_cse>firebaseRecyclerAdapter =
-
-                new FirebaseRecyclerAdapter<Model, viewHolder_cse>(
-
-                        Model.class ,
-                        R.layout.row_for_cse_pdf,
-                        viewHolder_cse.class,
-                        firebaseSearchQuery
+        options = new FirebaseRecyclerOptions.Builder<Model>().setQuery(firebaseSearchQuery , Model.class)
+                .build() ;
 
 
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Model, viewHolder_cse>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull final viewHolder_cse holder, final int position, @NonNull Model model) {
 
-                ) {
 
-
+                holder.SetDeatils(getApplicationContext() , model.getTitle() , model.getWriter() , model.getLink());
+                Handler handler  = new Handler() ;
+                handler.postDelayed(new Runnable() {
                     @Override
-                    protected void populateViewHolder(viewHolder_cse viewHolder, Model model, int position) {
+                    public void run() {
 
-                        viewHolder.SetDeatils(getApplicationContext() , model.getTitle() , model.getWriter() , model.getLink());
+                        cse_bar.setVisibility(View.GONE);
+
+                    }
+                },3000);
+
+            }
+
+            @NonNull
+            @Override
+            public viewHolder_cse onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+                //INflate the row
+                Context context;
+                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_cse_pdf, viewGroup, false);
+
+                viewHolder_cse viewHolder = new viewHolder_cse(itemVIew);
+
+                viewHolder_cse.setOnClickListener(new viewHolder_cse.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
 
 
+                        // data from views
+                        String mlink = getItem(position).getLink() ;
+
+
+
+                        // sending those data to new Activity
+
+                        Intent intent = new Intent(view.getContext() , pdfViewer.class);
+
+                        intent.putExtra("LINK", mlink); // put title
+                        startActivity(intent);
                     }
 
                     @Override
-                    public viewHolder_cse onCreateViewHolder(ViewGroup parent, int viewType) {
-
-                        viewHolder_cse viewHolder_cse = super.onCreateViewHolder(parent,viewType) ;
-
-
-                        viewHolder_cse.setOnClickListener(new viewHolder_cse.ClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-
-                                // data from views
-                                String mlink = getItem(position).getLink() ;
+                    public void onItemLongClick(View view, int position) {
 
 
 
-                                // sending those data to new Activity
-
-                                Intent intent = new Intent(view.getContext() , pdfViewer.class);
-
-                                intent.putExtra("LINK", mlink); // put title
-                                startActivity(intent);
-                            }
-
-                            @Override
-                            public void onItemLongClick(View view, int position) {
-
-
-
-                            }
-                        });
-
-
-                        return viewHolder_cse ;
                     }
-                };
+                });
 
-//set adapter to recyclerview
+
+
+                return viewHolder;
+            }
+        };
+
+        mrecyclerView.setLayoutManager(mLayoutManager);
+        firebaseRecyclerAdapter.startListening();
+        //setting adapter
+
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
 
     }
 
 
+    private  void showData(){
+
+        options = new FirebaseRecyclerOptions.Builder<Model>().setQuery(mRef , Model.class)
+                .build() ;
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Model, viewHolder_cse>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull final viewHolder_cse holder, final int position, @NonNull Model model) {
+
+
+                holder.SetDeatils(getApplicationContext() , model.getTitle() , model.getWriter() , model.getLink());
+                Handler handler  = new Handler() ;
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        cse_bar.setVisibility(View.GONE);
+
+                    }
+                },3000);
+
+            }
+
+            @NonNull
+            @Override
+            public viewHolder_cse onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+                //INflate the row
+                Context context;
+                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_cse_pdf, viewGroup, false);
+
+                viewHolder_cse viewHolder = new viewHolder_cse(itemVIew);
+
+                viewHolder_cse.setOnClickListener(new viewHolder_cse.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+
+                        // data from views
+                        String mlink = getItem(position).getLink() ;
 
 
 
+                        // sending those data to new Activity
+
+                        Intent intent = new Intent(view.getContext() , pdfViewer.class);
+
+                        intent.putExtra("LINK", mlink); // put title
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+
+
+
+                    }
+                });
+
+
+
+                return viewHolder;
+            }
+        };
+
+        mrecyclerView.setLayoutManager(mLayoutManager);
+
+        firebaseRecyclerAdapter.startListening();
+        //setting adapter
+
+        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
 
 
 
@@ -145,6 +234,7 @@ public class cse_pdf_list extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        /*
         FirebaseRecyclerAdapter <Model , viewHolder_cse> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<Model, viewHolder_cse>(
 
@@ -215,7 +305,7 @@ public class cse_pdf_list extends AppCompatActivity {
 
 //set adapter to recyclerview
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
-
+*/
             }
 
     @Override

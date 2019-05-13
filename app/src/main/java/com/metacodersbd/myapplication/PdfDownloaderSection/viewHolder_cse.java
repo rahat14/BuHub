@@ -61,14 +61,14 @@ public class viewHolder_cse extends RecyclerView.ViewHolder {
     }
 
 
-private  viewHolder_cse.ClickListener mClickListener;
+private static viewHolder_cse.ClickListener mClickListener;
 
     //interface to send callbacks
     public interface ClickListener{
         void onItemClick(View view, int position);
         void onItemLongClick(View view, int position);
     }
-    public void setOnClickListener(viewHolder_cse.ClickListener clickListener){
+    public static void setOnClickListener(viewHolder_cse.ClickListener clickListener){
         mClickListener = clickListener;
     }
 

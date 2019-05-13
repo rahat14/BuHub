@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="8dp"
+    android:background="@color/browser_actions_bg_grey"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_profile_on_newsFeed"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:padding="8dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/plaementpro"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/name_newwsfeed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sabbir"
+                        android:fontFamily="@font/merryweather"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:paddingTop="20dp"
+                        android:layout_marginStart="4dp"
+
+                        android:textSize="21sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="  BBA"
+                        android:id="@+id/deptInRow"
+                        android:textAllCaps="true"
+                        android:textColor="#888C8D"
+                        android:fontFamily="@font/mon_regular"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:padding="2dp"
+                        android:drawableStart="@drawable/cap_grey"/>
+                    <TextView
+                        android:id="@+id/rdateView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="100dp"
+                        android:textSize="16sp"
+                        android:textColor="#888C8D"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/mon_regular"
+                        android:layout_marginTop="-24dp"
+                        android:text="26/5/2017"/>
+
+
+            </LinearLayout>
+
+
+
+</LinearLayout>
+
+<Space
+    android:layout_width="match_parent"
+    android:layout_height="15dp"
+    />
+
+            <ImageView
+                android:id="@+id/image_on_newsFeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true" />
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+
+                    android:src="@drawable/lovereat3"
+                    android:tag="ok"
+                    android:background="@drawable/round_button"
+                    android:id="@+id/loveReacBtn"
+                    />
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/feed_chat"
+                    android:background="@drawable/round_button"
+                    />
+                <ImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:src="@drawable/feed_share"
+                    android:background="@drawable/round_button"
+                    />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="It is a long established fact that a reader will be
+        distracted by the readable content of a page when
+    looking at its layout. The point of using Lorem"
+                android:layout_margin="12dp"
+                android:id="@+id/titletv"
+                android:fontFamily="@font/mon_regular"
+                android:textColor="#707070"
+                android:textStyle="normal"
+                android:textSize="16sp"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+
+
+</LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

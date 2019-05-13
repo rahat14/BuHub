@@ -1,15 +1,20 @@
 package com.metacodersbd.myapplication.newFeedHistory;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +33,9 @@ public class newsFeedHistory extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef ,  mdref ;
     FirebaseAuth mauth ;
+    FirebaseRecyclerAdapter<modelForNewsFeed , viewholderForHistory>firebaseRecyclerAdapter ;
+    FirebaseRecyclerOptions<modelForNewsFeed> options ;
+
 
     Query firebaseSearchQuery ;
     String  uid ;
@@ -63,18 +71,61 @@ public class newsFeedHistory extends AppCompatActivity {
 
 
 
+       loadDataToFirbase();
 
     }
 
+    private void loadDataToFirbase() {
+
+        options = new FirebaseRecyclerOptions.Builder<modelForNewsFeed>().setQuery(mRef, modelForNewsFeed.class)
+                .build();
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForNewsFeed, viewholderForHistory>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull viewholderForHistory holder, final int position, @NonNull final modelForNewsFeed model) {
+
+                holder.serDetails(getApplicationContext(), model.getNtitle(), model.getNimage(),
+                        model.getNuid(), model.getPp_link(), model.getPname(), model.getDate(), model.getPushid());
 
 
+                holder.dltebutton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mdref.child(model.getPushid()).removeValue();
+                    }
+                });
 
 
+            }
+
+            @NonNull
+            @Override
+            public viewholderForHistory onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                //INflate the row
+                Context context;
+                View itemVIew = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_for_history, parent, false);
+
+                viewholderForHistory viewHolder = new viewholderForHistory(itemVIew);
+
+                //itemClicklistener
+
+
+                return viewHolder;
+            }
+
+        };
+        mrecyclerView.setLayoutManager(mlayoutManager);
+        firebaseRecyclerAdapter.startListening();
+        //setting adapter
+
+        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        /*
         FirebaseRecyclerAdapter<modelForNewsFeed , viewholderForHistory> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<modelForNewsFeed, viewholderForHistory>(
                         modelForNewsFeed.class,
@@ -123,7 +174,9 @@ public class newsFeedHistory extends AppCompatActivity {
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
 
     }
+    */
 
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

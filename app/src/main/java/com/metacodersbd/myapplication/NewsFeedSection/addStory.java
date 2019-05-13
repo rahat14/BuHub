@@ -132,7 +132,7 @@ String DATE ,Time  ;
 
                     String ts =UserRef.push().getKey() ;
 // uploading data t ofirebase
-                    modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, "",User_id ,url , nam ,Time , ts);
+                    modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, "",User_id ,url , nam ,Time , ts , "0");
 
                     UserRef.child(ts).setValue(uploadModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -158,7 +158,7 @@ String DATE ,Time  ;
                        compressedImageFile = new Compressor(addStory.this)
                                .setMaxHeight(920)
                                .setMaxWidth(920)
-                               .setQuality(10)
+                               .setQuality(40)
                                .compressToBitmap(newImageFile);
 
                    } catch (IOException e) {
@@ -166,7 +166,7 @@ String DATE ,Time  ;
                    }
 
                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                   compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 10, baos);
+                   compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
                    byte[] imageData = baos.toByteArray();
                    UploadTask filePath = storageRef.child(randomName+User_id + ".jpg").putBytes(imageData);
                    filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -186,7 +186,7 @@ String DATE ,Time  ;
 
                            String ts =UserRef.push().getKey() ;
 // uploading data t ofirebase
-                           modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, downloaduri.toString(),User_id ,url , nam ,Time , ts);
+                           modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, downloaduri.toString(),User_id ,url , nam ,Time , ts,"0");
 
                            UserRef.child(ts).setValue(uploadModel);
 

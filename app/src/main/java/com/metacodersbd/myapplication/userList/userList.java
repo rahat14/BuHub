@@ -1,15 +1,21 @@
 package com.metacodersbd.myapplication.userList;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,6 +34,8 @@ public class userList extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef ;
     FloatingActionButton fav_Add_Button ;
+    FirebaseRecyclerAdapter<getProfile , viewholderForUserList>firebaseRecyclerAdapter ;
+    FirebaseRecyclerOptions<getProfile>options ;
 
 
     @Override
@@ -50,13 +58,53 @@ public class userList extends AppCompatActivity {
         //set layout as LinearLayout
         mlayoutManager = new LinearLayoutManager(this);
         mrecyclerView.setLayoutManager(mlayoutManager);
+        
+        showData() ; 
 
+    }
+
+    private  void showData(){
+
+        options = new FirebaseRecyclerOptions.Builder<getProfile>().setQuery(mRef , getProfile.class)
+                .build() ;
+
+        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<getProfile, viewholderForUserList>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull viewholderForUserList holder, final int position, @NonNull getProfile model) {
+
+            }
+
+            @NonNull
+            @Override
+            public viewholderForUserList onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+
+                //INflate the row
+                Context context;
+                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_foruserlist, viewGroup, false);
+
+                viewholderForUserList viewHolder = new viewholderForUserList(itemVIew);
+
+
+
+
+
+
+                return viewHolder;
+            }
+        };
+
+        mrecyclerView.setLayoutManager(mlayoutManager);
+        firebaseRecyclerAdapter.startListening();
+        //setting adapter
+
+        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
+        /*
         FirebaseRecyclerAdapter<getProfile , viewholderForUserList> firebaseRecyclerAdapter =
                 new FirebaseRecyclerAdapter<getProfile, viewholderForUserList>(
                         getProfile.class,
@@ -83,6 +131,8 @@ public class userList extends AppCompatActivity {
 
         //set adapter to recyclerview
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+        
+        */
 
     }
 }
