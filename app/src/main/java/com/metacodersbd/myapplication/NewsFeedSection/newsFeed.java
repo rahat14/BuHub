@@ -3,6 +3,10 @@ package com.metacodersbd.myapplication.NewsFeedSection;
 import android.content.Context;
 import android.content.Intent;
 
+import com.facebook.CallbackManager;
+import com.facebook.share.Share;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareDialog;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -13,6 +17,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -47,8 +52,9 @@ public class newsFeed extends AppCompatActivity {
     DatabaseReference mRef , likeRef;
     FloatingActionButton fav_Add_Button;
     FirebaseAuth mauth ;
+    ShareDialog   shareDialogue;
       String uid  ;
-
+    CallbackManager callbackManager ;
 
     private  int selectedPosition = -1 ;
     public    int likeCOunt  = 0 ;
@@ -65,7 +71,9 @@ public class newsFeed extends AppCompatActivity {
         uid = mauth.getUid() ;
 
 
-
+//init fb
+         callbackManager = CallbackManager.Factory.create();
+        shareDialogue = new ShareDialog(this ) ;
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -116,13 +124,17 @@ public class newsFeed extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull final viewHolderNewsFeed holder, final int position, @NonNull modelForNewsFeed model) {
 
+                holder.setIsRecyclable(false); // dunno why if it crash then remove it
+
                 holder.serDetails(getApplicationContext(), model.getNtitle(), model.getNimage(),
                         model.getNuid(), model.getPp_link(), model.getPname(), model.getDate() , model.getPushid());
 
-               // viewHolderNewsFeed.setIsRecyclable(false);
+
 
                 final String db = getItem(position).getPushid();
                 final String like =getItem(position).getLikeCount() ;
+                final  String imagelink = getItem(position).getNimage();
+                final  String tile = getItem(position).getNtitle();
 
 
                 likeCOunt = Integer.valueOf(like);
@@ -153,6 +165,33 @@ public class newsFeed extends AppCompatActivity {
 
 
 
+                //share Button function
+                holder.shareBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Uri fullTitle = Uri.parse(imagelink);
+
+                        ShareLinkContent linkContent  = new ShareLinkContent.Builder()
+                                .setQuote(tile)
+                                .setContentUrl(fullTitle)
+                                .build();
+                        if(ShareDialog.canShow(ShareLinkContent.class)){
+
+                        shareDialogue.show(linkContent);
+
+                        }
+                        else {
+
+                        }
+
+
+
+                    }
+                });
+
+
+// love button function
                 holder.loveBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

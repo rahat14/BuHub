@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.fasterxml.jackson.databind.util.BeanUtil;
@@ -23,13 +24,19 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.NewsFeedSection.modelForNewsFeed;
 import com.metacodersbd.myapplication.NewsFeedSection.viewHolderNewsFeed;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.newFeedHistory.viewholderForHistory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class chatPage extends AppCompatActivity {
     LinearLayoutManager mlayoutManager ;
@@ -38,11 +45,13 @@ public class chatPage extends AppCompatActivity {
     DatabaseReference mRef ,  mdref ;
     FirebaseAuth mauth ;
 
-    String  uid , msg , name ,MSG   ;
+    List<modelForChat>chatList ;
+    AdapterChat adapterChat ;
+
+    String  uid , msg , name ,MSG  , pplink  ;
     EditText msgINPUT ;
-    Button sendBTN ;
-    FirebaseRecyclerAdapter<modelForChat , viewHolderForChat>firebaseRecyclerAdapter ;
-    FirebaseRecyclerOptions<modelForChat> options ;
+    ImageButton sendBTN ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +64,8 @@ public class chatPage extends AppCompatActivity {
 
         Intent o = getIntent();
         name = o.getStringExtra("NAME");
+        pplink = o.getStringExtra("Image");
+
 
 
         sendBTN= findViewById(R.id.sendBTN) ;
@@ -76,29 +87,12 @@ public class chatPage extends AppCompatActivity {
 
         //set layout as LinearLayout
         mlayoutManager = new LinearLayoutManager(this);
+        mlayoutManager.setStackFromEnd(true);
+        mrecyclerView.setHasFixedSize(true);
         mrecyclerView.setLayoutManager(mlayoutManager);
 
-        showData();
+        readMeg() ;
 
-/*
-        FirebaseRecyclerAdapter<modelForChat , viewHolderForChat> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<modelForChat, viewHolderForChat>(
-                        modelForChat.class,
-                        R.layout.row_for_msg ,
-                        viewHolderForChat.class,
-                        mRef
-
-                ) {
-                    @Override
-                    protected void populateViewHolder(viewHolderForChat vv, final modelForChat model, int i) {
-                        vv.setDetails(getApplicationContext() ,model.getName() , model.getMsg() , model.getUid() , model.getPushid() );
-                    }
-                };
-
-
-        //set adapter to recyclerview
-        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
-*/
 
         sendBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,54 +106,55 @@ public class chatPage extends AppCompatActivity {
 
     }
 
-    private  void showData(){
+    private void readMeg() {
 
-        options = new FirebaseRecyclerOptions.Builder<modelForChat>().setQuery(mRef , modelForChat.class)
-                .build() ;
 
-        firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<modelForChat, viewHolderForChat>(options) {
+        chatList = new ArrayList<>();
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("ChatSystem");
+        mref.addValueEventListener(new ValueEventListener() {
             @Override
-            protected void onBindViewHolder(@NonNull final viewHolderForChat holder, final int position, @NonNull modelForChat model) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                chatList.clear();
+                for (DataSnapshot ds : dataSnapshot.getChildren() ){
+
+                    modelForChat chat = ds.getValue(modelForChat.class) ;
 
 
-                holder.setDetails(getApplicationContext() ,model.getName() , model.getMsg() , model.getUid() , model.getPushid() );
+                        chatList.add(chat) ;
+
+
+
+                }
+                // adaptar
+                adapterChat = new AdapterChat(chatPage.this  , chatList) ;
+                adapterChat.notifyDataSetChanged();
+
+                //set adapter
+                mrecyclerView.setAdapter(adapterChat) ;
+
 
             }
 
-            @NonNull
             @Override
-            public viewHolderForChat onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                //INflate the row
-                Context context;
-                View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_msg, viewGroup, false);
-
-                viewHolderForChat viewHolder = new viewHolderForChat(itemVIew);
-
-
-
-
-
-                return viewHolder;
             }
-        };
+        });
 
-        mrecyclerView.setLayoutManager(mlayoutManager);
-        firebaseRecyclerAdapter.startListening();
-        //setting adapter
 
-        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
     }
-
 
 
     public  void sendMesg(){
 
        MSG =  msgINPUT.getText().toString();
+
+
         if(!TextUtils.isEmpty(MSG)){
             String ts =mRef.push().getKey() ;
 
-            modelForChat uploadData = new modelForChat(uid , ts , name ,MSG );
+            modelForChat uploadData = new modelForChat(uid , ts , name ,MSG , "s122",pplink  );
 
             mRef.child(ts).setValue(uploadData).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override

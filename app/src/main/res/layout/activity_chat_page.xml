@@ -6,10 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_weight="4"
+    android:background="#F1EDED"
+
     tools:context=".ChatSystemUniversal.chatPage">
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+
         android:id="@+id/recyclerView_For_chart"
         android:layout_weight="3"
         android:orientation="vertical">
@@ -22,23 +25,26 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:background="#ffff"
+        android:gravity="center"
+        android:orientation="horizontal"
+       >
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="10"
+            android:layout_weight=".8"
+            android:padding="10dp"
             android:id="@+id/mesINput"
-            android:hint="Enter the Msg"/>
-        <Button
+            android:hint="Start Typing...."/>
+        <ImageButton
             android:id="@+id/sendBTN"
-            android:layout_width="250dp"
+            android:layout_width="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/button_green_normal"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:textColor="#fff"
+            android:background="@drawable/sendicon"
             android:text="Send Msg "/>
 
 

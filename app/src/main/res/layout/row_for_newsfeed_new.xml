@@ -120,10 +120,12 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="5dp"
+                    android:visibility="gone"
                     android:src="@drawable/feed_chat"
                     android:background="@drawable/round_button"
                     />
                 <ImageButton
+                    android:id="@+id/shareButton"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="5dp"

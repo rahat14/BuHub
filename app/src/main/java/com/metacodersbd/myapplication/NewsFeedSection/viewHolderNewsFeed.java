@@ -36,6 +36,8 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
     CircleImageView imageView_pp ;
     public  ImageButton loveBtn ;
     public    ImageView imagep ;
+    public  ImageButton shareBtn ;
+
 
 
 
@@ -49,6 +51,8 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
 
 
         loveBtn = mview.findViewById(R.id.loveReacBtn);
+        shareBtn = mview.findViewById(R.id.shareButton);
+
 
 
 

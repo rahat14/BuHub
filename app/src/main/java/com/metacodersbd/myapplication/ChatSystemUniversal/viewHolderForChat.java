@@ -1,5 +1,9 @@
-package com.metacodersbd.myapplication.ChatSystemUniversal;
 
+
+
+//package com.metacodersbd.myapplication.ChatSystemUniversal;
+
+/*
 import android.content.Context;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +17,7 @@ import com.metacodersbd.myapplication.R;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class viewHolderForChat extends RecyclerView.ViewHolder {
 
@@ -51,3 +56,4 @@ public class viewHolderForChat extends RecyclerView.ViewHolder {
     }
 
 }
+*/

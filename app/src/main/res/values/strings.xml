@@ -3,6 +3,8 @@
     <string name="title_activity_view_pager_for_auth">ViewPagerForAuth</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="facebook_app_id">304934097107738</string>
+    <string name="facebook_login_protocol_scheme">fb304934097107738</string>
     <string-array name="DPT_array">
         <item>Choose One</item>
         <item>BBA</item>

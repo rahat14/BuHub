@@ -17,6 +17,9 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
+        <meta-data android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
         <activity android:name=".ChatSystemUniversal.chatPage"></activity>
         <activity android:name=".newFeedHistory.newsFeedHistory" />
         <activity android:name=".userList.userList" />
@@ -25,7 +28,10 @@
         <activity android:name=".BloodActivity.BloodPage" />
         <activity android:name=".CgpaCalculator.ReminderActivity" />
         <activity android:name=".NewsFeedSection.addStory" />
-        <activity android:name=".NewsFeedSection.newsFeed" />
+        <activity android:name=".NewsFeedSection.newsFeed" >
+            
+
+        </activity>
         <activity android:name=".PdfDownloaderSection.law_padf_list" />
         <activity android:name=".PdfDownloaderSection.english_pdf_list" />
         <activity android:name=".PdfDownloaderSection.bba_pdf_list" />
@@ -80,6 +86,11 @@
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+        
+        <provider
+            android:authorities="com.facebook.app.FacebookContentProvider304934097107738"
+            android:name="com.facebook.FacebookContentProvider"
+            android:exported="true"/>
     </application>
 
 </manifest>

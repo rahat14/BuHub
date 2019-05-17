@@ -2,6 +2,9 @@ package com.metacodersbd.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -32,8 +36,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.metacodersbd.myapplication.BloodActivity.BloodPage;
-import com.metacodersbd.myapplication.BloodActivity.bloodSection;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatPage;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
 import com.metacodersbd.myapplication.PdfDownloaderSection.pdfViewerByDpartment;
@@ -49,6 +51,8 @@ import com.onesignal.OneSignal;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.util.Locale;
 
@@ -88,7 +92,7 @@ public  static   String pimageLink  ,naaam  ;
         user = FirebaseAuth.getInstance().getCurrentUser() ;
         uid = user.getUid() ;
 
-
+       // printKeyHash();
 //nottification
 
         OneSignal.startInit(this)
@@ -140,6 +144,7 @@ public  static   String pimageLink  ,naaam  ;
             public void onClick(View v) {
                 Intent o = new Intent(getApplicationContext() , chatPage.class);
                 o.putExtra("NAME", naaam) ;
+                o.putExtra("Image" ,pimageLink);
                 startActivity(o);
             }
         });
@@ -223,6 +228,29 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
+
+
+    }
+
+    private void printKeyHash() {
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.metacodersbd.myapplication",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature :info.signatures){
+
+
+                String algorithm;
+                MessageDigest md  = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("Keyhash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            }
+
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
 
 
     }

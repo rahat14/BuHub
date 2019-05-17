@@ -26,8 +26,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.metacodersbd.myapplication.ChatSystemUniversal.modelForChat;
-import com.metacodersbd.myapplication.ChatSystemUniversal.viewHolderForChat;
+
+
 import com.metacodersbd.myapplication.R;
 
 public class bba_pdf_list extends AppCompatActivity {

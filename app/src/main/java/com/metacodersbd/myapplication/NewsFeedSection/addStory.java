@@ -51,6 +51,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.UUID;
@@ -131,9 +132,9 @@ String DATE ,Time  ;
 
 
                     String ts =UserRef.push().getKey() ;
-// uploading data t ofirebase
+                    // uploading data t ofirebase
                     modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, "",User_id ,url , nam ,Time , ts , "0");
-
+                    //adding coomment directory .
                     UserRef.child(ts).setValue(uploadModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
@@ -185,10 +186,15 @@ String DATE ,Time  ;
 
 
                            String ts =UserRef.push().getKey() ;
+
+
 // uploading data t ofirebase
                            modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, downloaduri.toString(),User_id ,url , nam ,Time , ts,"0");
 
                            UserRef.child(ts).setValue(uploadModel);
+                          //adding coomment directory .
+
+
 
 
                        }
