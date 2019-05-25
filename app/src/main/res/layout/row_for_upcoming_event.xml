@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#E4E4E4"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:background="#fff"
+            android:layout_height="120dp">
+
+
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="120dp"
+                android:id="@+id/colorChangeId"
+                android:background="#E24443"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:textSize="45sp"
+                    android:textColor="#ffff"
+                    android:gravity="center"
+
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="04"
+                    android:layout_marginTop="11dp"
+                    />
+
+                <TextView
+                    android:gravity="center"
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="-22dp"
+                    android:text="Nov"
+                    android:textSize="40sp"
+                    android:textColor="#ffff"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginStart="4dp"
+                android:background="#fff"
+                android:layout_height="120dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="This a good Event"
+                    android:fontFamily="@font/mon_regular"
+                    android:textSize="18sp"
+                    android:layout_marginTop="8sp"
+                    android:textStyle="bold"
+
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="this a good Event"
+                    android:fontFamily="@font/mon_regular"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="40dp"
+
+                    android:layout_marginStart="4dp"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="-3dp"
+                        android:background="@drawable/tickets"/>
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/mon_regular"
+                        android:layout_marginStart="5dp"
+                        android:text="122"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/mon_regular"
+                        android:text=" Bdt"/>
+                    <ImageView
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_marginStart="40dp"
+
+                        android:background="@drawable/location_marker"/>
+                    <TextView
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/mon_regular"
+                        android:text="Bu Hall"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+</LinearLayout>
