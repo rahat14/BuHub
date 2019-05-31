@@ -1,5 +1,6 @@
 package com.metacodersbd.myapplication;
 
+import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -20,11 +21,19 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.textclassifier.TextLinks;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
@@ -37,6 +46,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatPage;
+import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
 import com.metacodersbd.myapplication.PdfDownloaderSection.pdfViewerByDpartment;
 import com.metacodersbd.myapplication.RoutineActivity.RoutineActivity;
@@ -48,6 +58,7 @@ import com.metacodersbd.myapplication.weatherManagement.Function;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -131,7 +142,9 @@ public  static   String pimageLink  ,naaam  ;
         weatherFont = Typeface.createFromAsset(getAssets(), "weathericonsregularwebfont.ttf");
         weatherIcon.setTypeface(weatherFont);
 
-        taskLoadUp(city);
+
+       // getWethaerData();
+       loadWeather(city);
         loadingToDataFromFirebase();
 
         getTotalcountOFUsers();
@@ -142,7 +155,7 @@ public  static   String pimageLink  ,naaam  ;
         ChatRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent o = new Intent(getApplicationContext() , chatPage.class);
+                Intent o = new Intent(getApplicationContext() , chatRoom.class);
                 o.putExtra("NAME", naaam) ;
                 o.putExtra("Image" ,pimageLink);
                 startActivity(o);
@@ -383,7 +396,10 @@ public  static   String pimageLink  ,naaam  ;
         return  bitmap;
     }
 
-    public void taskLoadUp(String query) {
+
+
+
+    public void loadWeather(String query) {
         if (Function.isNetworkAvailable(getApplicationContext())) {
             DownloadWeather task = new DownloadWeather();
             task.execute(query);
@@ -393,7 +409,7 @@ public  static   String pimageLink  ,naaam  ;
     }
 
 
-    class DownloadWeather extends AsyncTask<String , Void , String > {
+    class  DownloadWeather extends AsyncTask<String , Void , String > {
 
         @Override
         protected void onPreExecute() {
@@ -403,7 +419,7 @@ public  static   String pimageLink  ,naaam  ;
 
         @Override
         protected String doInBackground(String... strings) {
-            String xml = Function.excuteGet("http://api.openweathermap.org/data/2.5/weather?q=Comilla,bd" +
+            String xml = Function.excuteGet("https://api.openweathermap.org/data/2.5/weather?q=Comilla,bd" +
                     "&units=metric&appid=" + OPEN_WEATHER_MAP_API);
 
             return xml;
@@ -437,15 +453,22 @@ public  static   String pimageLink  ,naaam  ;
             catch (NullPointerException e ){
 
 
-                Toast.makeText(getApplicationContext(), "Error, Server Is Too Busy ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error, Server Is  not Too Busy ", Toast.LENGTH_SHORT).show();
 
-                Toast.makeText(getApplicationContext(), "Error, Weather  Server Too Busy ", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getApplicationContext(), "Error, Weather  Server Too Busy ", Toast.LENGTH_SHORT).show();
 
             }
 
 
         }
     }
+
+
+
+
+
+
+
 
 
 

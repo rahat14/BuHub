@@ -71,6 +71,14 @@ public class newsFeedHistory extends AppCompatActivity {
 
 
 
+        //calling RecyclerView
+        mrecyclerView = findViewById(R.id.recyclerView_for_newsFeed_history);
+        mrecyclerView.setHasFixedSize(true);
+        //set layout as LinearLayout
+        mlayoutManager = new LinearLayoutManager(this);
+        mrecyclerView.setLayoutManager(mlayoutManager);
+
+
        loadDataToFirbase();
 
     }

@@ -71,7 +71,7 @@ public class newsFeed extends AppCompatActivity {
         uid = mauth.getUid() ;
 
 
-//init fb
+        //init fb share
          callbackManager = CallbackManager.Factory.create();
         shareDialogue = new ShareDialog(this ) ;
 
@@ -124,7 +124,7 @@ public class newsFeed extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull final viewHolderNewsFeed holder, final int position, @NonNull modelForNewsFeed model) {
 
-                holder.setIsRecyclable(false); // dunno why if it crash then remove it
+              //  holder.setIsRecyclable(false); // dunno why if it crash then remove it
 
                 holder.serDetails(getApplicationContext(), model.getNtitle(), model.getNimage(),
                         model.getNuid(), model.getPp_link(), model.getPname(), model.getDate() , model.getPushid());

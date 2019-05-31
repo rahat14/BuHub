@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ChatSystemUniversal.chatRoom"></activity>
+        <activity android:name=".contactWithTeacher.chatWithTeacher"></activity>
+        <activity android:name=".ChatSystemUniversal.chatRoom" />
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -31,7 +32,7 @@
         <activity android:name=".BloodActivity.BloodPage" />
         <activity android:name=".CgpaCalculator.ReminderActivity" />
         <activity android:name=".NewsFeedSection.addStory" />
-        <activity android:name=".NewsFeedSection.newsFeed"></activity>
+        <activity android:name=".NewsFeedSection.newsFeed" />
         <activity android:name=".PdfDownloaderSection.law_padf_list" />
         <activity android:name=".PdfDownloaderSection.english_pdf_list" />
         <activity android:name=".PdfDownloaderSection.bba_pdf_list" />
