@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.metacodersbd.myapplication.BloodActivity.BloodPage;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatPage;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
@@ -74,15 +75,15 @@ import io.fabric.sdk.android.Fabric;
 
 public class homePage extends AppCompatActivity {
 ImageView cgpameter  ;
-CardView prfoileBtn  , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom  ;
+CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom  ;
 FirebaseUser user ;
 FirebaseAuth mauth ;
 String uid ;
     DatabaseReference db  ;
 
     int ct = 0  ;
-Button BLOOD ;
-ImageView Batch_Meter ;
+
+TextView Batch_Meter ;
 String city = "Comilla,bd";
 String OPEN_WEATHER_MAP_API = "d8f0dc68c7e7caed6908dc6f9edcef61";
 TextView  currentWeather , weatherIcon ,  detailsField , name , dpartmentField , TotalCount;
@@ -120,7 +121,7 @@ public  static   String pimageLink  ,naaam  ;
         circleImageView = (CircleImageView) findViewById(R.id.image_homepage) ;
         name = (TextView) findViewById(R.id.Homepage_name);
         dpartmentField= (TextView) findViewById(R.id.Homepage_Dpt);
-        Batch_Meter = (ImageView)findViewById(R.id.batch_meter_homePage);
+        Batch_Meter = (TextView) findViewById(R.id.batch_meter_homePage);
         cgpameter = (ImageView) findViewById(R.id.cgpa_meter);
         currentWeather=(TextView)findViewById(R.id.current_temperature_field) ;
         weatherIcon =(TextView)findViewById(R.id.weather_icon);
@@ -132,7 +133,7 @@ public  static   String pimageLink  ,naaam  ;
         nottification = (CardView) findViewById(R.id.notifi_cation);
         TotalCount = (TextView)findViewById(R.id.totalCount);
         userList_btn = findViewById(R.id.userList);
-         // BLOOD = findViewById(R.id.blodd_btn_home);
+        blood_btn = findViewById(R.id.blodSystemCardView);
         ROutine_btn = findViewById(R.id.Routine_activity);
         ChatRoom = findViewById(R.id.chatSystem);
 
@@ -143,7 +144,7 @@ public  static   String pimageLink  ,naaam  ;
         weatherIcon.setTypeface(weatherFont);
 
 
-       // getWethaerData();
+
        loadWeather(city);
         loadingToDataFromFirebase();
 
@@ -151,7 +152,26 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
+
         //setting up on click listener
+
+        blood_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+               Intent i  = new Intent(getApplicationContext() , BloodPage.class);
+               startActivity(i);
+
+
+
+
+
+
+            }
+        });
+
+
         ChatRoom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,7 +273,7 @@ public  static   String pimageLink  ,naaam  ;
             for (Signature signature :info.signatures){
 
 
-                String algorithm;
+
                 MessageDigest md  = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
                 Log.d("Keyhash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
@@ -336,6 +356,9 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
+
+// batch to meter
+
     private Bitmap getWidgetBitmapBatch(Context context, int percentage) {
 
         int width = 400;
@@ -388,7 +411,7 @@ public  static   String pimageLink  ,naaam  ;
         paint.setColor(Color.argb(255, 9, 198, 223));
         canvas.drawArc(arc, 135, fin, false, paint);
         //Draw text value.
-        canvas.drawText(percentage +"Th", bitmap.getWidth() / 2, (bitmap.getHeight() - mTextPaint.ascent()) / 2, mTextPaint);
+        canvas.drawText(percentage +"th", bitmap.getWidth() / 2, (bitmap.getHeight() - mTextPaint.ascent()) / 2, mTextPaint);
         //Draw widget title.
         mTextPaint.setTextSize((int) (context.getResources().getDimension(R.dimen.widget_text_large_title) / density));
         canvas.drawText(context.getString(R.string.widget_text_arc_batch), bitmap.getWidth() / 2, bitmap.getHeight()-(stroke+padding), mTextPaint);
@@ -436,7 +459,7 @@ public  static   String pimageLink  ,naaam  ;
 
                     JSONObject details = json.getJSONArray("weather").getJSONObject(0);
                     JSONObject main = json.getJSONObject("main");
-                    DateFormat df = DateFormat.getDateTimeInstance();
+                   // DateFormat df = DateFormat.getDateTimeInstance();
                     weatherIcon.setText(Html.fromHtml(Function.setWeatherIcon(details.getInt("id"),
                             json.getJSONObject("sys").getLong("sunrise") * 1000,
                             json.getJSONObject("sys").getLong("sunset") * 1000)));
@@ -453,7 +476,7 @@ public  static   String pimageLink  ,naaam  ;
             catch (NullPointerException e ){
 
 
-                Toast.makeText(getApplicationContext(), "Error, Server Is  not Too Busy ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Error, Server is   Too Busy ", Toast.LENGTH_SHORT).show();
 
              //   Toast.makeText(getApplicationContext(), "Error, Weather  Server Too Busy ", Toast.LENGTH_SHORT).show();
 
@@ -471,8 +494,7 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
-
-         public void  loadingToDataFromFirebase(){
+    public void  loadingToDataFromFirebase(){
 
              FirebaseDatabase database = FirebaseDatabase.getInstance() ;
              final DatabaseReference mRef = database.getReference("Users").child(uid);
@@ -499,6 +521,7 @@ public  static   String pimageLink  ,naaam  ;
                      dpartmentField.setText(dpart_Firebase);
                      url = model.getUser_image() ;
                      pimageLink = url ;
+                     Batch_Meter.setText(batchFirebase);
 /*
                     Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
                              .noFade()
@@ -519,13 +542,12 @@ public  static   String pimageLink  ,naaam  ;
                      int batchNumber ;
 
                      cgp = Double.parseDouble(cgpaFirebase);
-                     batchNumber =Integer.parseInt(batchFirebase) ;
+                  //   batchNumber =Integer.parseInt(batchFirebase) ;
 
                      Bitmap bitmap =getWidgetBitmap(getApplicationContext(),cgp) ;
                      cgpameter.setImageBitmap(bitmap);
 
-                     Bitmap bit = getWidgetBitmapBatch(getApplicationContext() , batchNumber) ;
-                     Batch_Meter.setImageBitmap(bit);
+
 
 
 
@@ -594,6 +616,12 @@ public  static   String pimageLink  ,naaam  ;
 
         return  naaam ;
     }
+    public  String sendDpt(){
+
+
+        return  dpart_Firebase ;
+
+    }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
@@ -615,7 +643,7 @@ public  static   String pimageLink  ,naaam  ;
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
+                //Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
 
                 if(dataSnapshot.getKey().equals("Users")){
 

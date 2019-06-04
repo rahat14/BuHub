@@ -12,17 +12,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.metacodersbd.myapplication.NewsFeedSection.modelForNewsFeed;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.contactWithTeacher.chatWithTeacher;
-import com.metacodersbd.myapplication.newFeedHistory.viewholderForHistory;
+
 
 public class teacherChat extends Fragment {
     View view;

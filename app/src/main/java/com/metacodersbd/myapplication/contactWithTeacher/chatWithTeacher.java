@@ -101,7 +101,7 @@ public class chatWithTeacher extends AppCompatActivity {
 
 
         chatList = new ArrayList<>();
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("batchList").child("CSE").child("spring18").child(dbname);
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("teacherList").child(dbname).child("spring18");
         mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -117,6 +117,7 @@ public class chatWithTeacher extends AppCompatActivity {
 
 
                 }
+
                 // adaptar
                 adapterChat = new AdapterChat(chatWithTeacher.this  , chatList) ;
                 adapterChat.notifyDataSetChanged();

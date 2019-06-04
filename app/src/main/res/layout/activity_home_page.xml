@@ -144,11 +144,16 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:layout_height="match_parent">
-                    <ImageView
+                    <TextView
                         android:layout_width="100dp"
                         android:layout_height="95dp"
                         android:id="@+id/batch_meter_homePage"
-                        android:src="@drawable/loadingimage"
+                        android:text="Spring 18"
+                        android:fontFamily="@font/mon_bold"
+                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textStyle="bold"
+                        android:textAlignment="center"
+                        android:textSize="28sp"
 
                         />
 
@@ -159,7 +164,9 @@
 
         </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+
+
+        </RelativeLayout>
 
 
     <androidx.cardview.widget.CardView
@@ -196,7 +203,7 @@
                 android:layout_height="50dp"
                 android:textColor="#09c6df"
                 android:layout_weight="1"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:text=""
                 android:gravity="center"
 
@@ -208,7 +215,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="#09c6df"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="25sp"
+                android:textSize="22sp"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:text=""/>
@@ -218,8 +225,11 @@
                 android:layout_height="wrap_content"
                 android:textColor="#09c6df"
                 android:layout_weight="1"
+                android:gravity="center"
+                android:fontFamily="@font/mon_regular"
                 android:textAllCaps="false"
-                android:textSize="15sp"
+                android:layout_marginTop="-20dp"
+                android:textSize="12sp"
                 android:text=""
                 />
 
@@ -610,6 +620,7 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/blodSystemCardView"
                 android:clickable="true"
                 android:layout_width="0dp"
                 android:foreground="?android:attr/selectableItemBackground"
@@ -635,11 +646,11 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/xxxxlogout" />
+                        android:src="@drawable/blood64" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Log Out"
+                        android:text="Find Blood"
                         android:layout_gravity="center"
                         android:textSize="17sp"
                         android:textStyle="bold"

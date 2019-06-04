@@ -17,7 +17,8 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".contactWithTeacher.chatWithTeacher"></activity>
+        <activity android:name=".BloodActivity.allDonorList"></activity>
+        <activity android:name=".contactWithTeacher.chatWithTeacher" />
         <activity android:name=".ChatSystemUniversal.chatRoom" />
 
         <meta-data
