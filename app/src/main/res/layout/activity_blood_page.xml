@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
 
-        <com.google.android.material.appbar.MaterialToolbar
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:background="@drawable/gradient_rect"
            android:theme="@style/AppTheme.PopupOverlay"
@@ -30,7 +30,7 @@
                 android:textColor="#fff"
                 android:text="Donate Blood"/>
 
-        </com.google.android.material.appbar.MaterialToolbar>
+        </androidx.appcompat.widget.Toolbar>
 
 
 
@@ -81,20 +81,20 @@
                 </LinearLayout>
 
                 <Button
-
+                    android:id="@+id/findDonorBtn"
                     android:layout_width="160dp"
                     android:layout_height="40dp"
-                    android:text="FIND DONOR"
-                    android:fontFamily="@font/mon_bold"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#FF215D"
                     android:layout_gravity="center"
-
-                    android:gravity="center"
                     android:layout_marginStart="50dp"
                     android:background="@drawable/white_back"
-                    android:foreground="?android:attr/selectableItemBackground"/>
+                    android:fontFamily="@font/mon_bold"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center"
+
+                    android:text="FIND DONOR"
+                    android:textColor="#FF215D"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 

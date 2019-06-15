@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffff"
+    android:layout_gravity="center"
+    >
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffff"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/backword_sign"
+                    android:layout_marginTop="10dp"
+                    android:textStyle="normal"
+                    android:fontFamily="@font/mon_regular"
+                    android:textSize="18sp"
+                    android:textColor="#D0CECE"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Find Donor"
+                    android:fontFamily="@font/mon_regular"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select Blood Group"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        android:gravity="center"
+        android:fontFamily="@font/mon_regular"
+        android:textColor="#000"
+        android:layout_marginTop="30dp"/>
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_marginBottom="8dp"
+            android:id="@+id/bldGroupIdApos"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="A+"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"
+            />
+        <Button
+            android:id="@+id/bldGroupIdAmin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="A-"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"/>
+        <Button
+            android:id="@+id/bldGroupIdBpos"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="B+"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"/>
+        <Button
+            android:id="@+id/bldGroupIdBmin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="B-"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"/>
+        <Button
+            android:id="@+id/bldGroupIdOpos"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="O+"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"
+            />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bldGroupIdOmin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="O-"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"/>
+
+        <Button
+            android:id="@+id/bldGroupIdABpos"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="AB+"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:textColor="#D0CECE"/>
+        <Button
+            android:id="@+id/bldGroupIdABmin"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/trns_back"
+            android:text="AB-"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="normal"
+            android:textSize="18sp"
+            android:layout_marginBottom="23dp"
+            android:textColor="#D0CECE"/>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:textColor="#ffff"
+        android:fontFamily="@font/mon_bold"
+        android:background="@drawable/gradient_back"
+        android:text="Submit"
+        />
+
+</LinearLayout>

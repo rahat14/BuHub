@@ -6,81 +6,86 @@
     >
 
     <androidx.cardview.widget.CardView
+        android:layout_marginTop="8dp"
+        android:elevation="5dp"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="130dp">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageIDRow"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/image"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="2dp"
+
                 android:layout_marginTop="5dp"
-                android:src="@drawable/pro_pic"
-
-                />
+                android:src="@drawable/pro_pic" />
 
             <TextView
+                android:id="@+id/nameRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mr.XYZ"
-                android:fontFamily="@font/mon_regular"
-                android:layout_toEndOf="@id/image"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginStart="30dp"
+                android:layout_toEndOf="@id/imageIDRow"
+                android:fontFamily="@font/mon_regular"
+                android:text="Mr.XYZ"
                 android:textColor="#000"
-                android:textSize="18sp"
-                android:id="@+id/nameId"
-                />
+                android:textSize="18sp" />
+
             <TextView
+                android:id="@+id/deptNameRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Barura"
-                android:layout_toEndOf="@id/image"
-                android:fontFamily="@font/mon_regular"
+                android:layout_marginStart="27dp"
                 android:layout_marginTop="40dp"
-                android:layout_marginStart="30dp"
-                android:textColor="#8D8B8B"
-                android:textSize="14sp"
-                android:id="@+id/locationId"
-                />
-            <Button
-                android:id="@+id/submit"
-                android:layout_width="150dp"
+                android:layout_toEndOf="@id/imageIDRow"
                 android:fontFamily="@font/mon_regular"
-                android:layout_height="40dp"
+                android:text="BBA"
+                android:textColor="#8D8B8B"
+                android:textSize="14sp" />
+            <Button
+                android:id="@+id/triggerDialogueRow"
+                android:layout_width="160dp"
+                android:fontFamily="@font/mon_regular"
+                android:layout_height="50dp"
                 android:gravity="center"
                 android:layout_marginStart="30dp"
                 android:background="@drawable/trns_back_rect"
-                android:layout_toEndOf="@id/image"
+                android:layout_toEndOf="@id/imageIDRow"
                 android:layout_marginTop="70dp"
                 android:hint="Ask For Help"
                 android:textColorHint="#ff245c"
                 android:textSize="15.5sp"
+                android:layout_marginBottom="15dp"
                 />
 
             <Button
+                android:id="@+id/bldGroupRow"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginStart="219dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="32dp"
-                android:layout_toEndOf="@id/image"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/trns_back"
                 android:fontFamily="@font/mon_regular"
+                android:gravity="center"
                 android:padding="5dp"
                 android:text="A+"
                 android:textColor="#ff245c"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="normal" />
 
 
             <LinearLayout
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:orientation="vertical"
-                android:layout_below="@+id/submit"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/gradient_rect"
                 android:layout_height="30dp">
@@ -94,6 +99,15 @@
                     android:text="Last Date Of Donation : 28 Jan 2019"
                     android:textColor="#FFFFFF"
                     android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/phnNumberRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:fontFamily="@font/mon_regular"
+                    android:gravity="center_vertical|center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="0.1sp" />
             </LinearLayout>
 
 
@@ -101,7 +115,7 @@
         </RelativeLayout>
 
 
-    </>
+    </androidx.cardview.widget.CardView>
 
 
 </RelativeLayout>
