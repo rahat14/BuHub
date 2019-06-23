@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -23,6 +24,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.NewsFeedSection.modelForNewsFeed;
 import com.metacodersbd.myapplication.NewsFeedSection.viewHolderNewsFeed;
@@ -38,6 +40,7 @@ public class allDonorList extends AppCompatActivity {
     FirebaseAuth mauth ;
     ShareDialog shareDialogue;
     String uid  ;
+    String searchText ;
 
     public FirebaseRecyclerAdapter<getProfile, viewHolderForAllDonorList> firebaseRecyclerAdapter ;
     public FirebaseRecyclerOptions<getProfile> options ;
@@ -53,6 +56,11 @@ public class allDonorList extends AppCompatActivity {
         mRef = mFirebaseDatabase.getReference("Users");
 
         mRef.keepSynced(true);
+
+        Intent   i = getIntent();
+
+         searchText = i.getStringExtra("BG");
+
 
         //calling RecyclerView
         mrecyclerView = findViewById(R.id.reclyclerViewForAllDonorList);
@@ -70,7 +78,10 @@ public class allDonorList extends AppCompatActivity {
     }
     private  void showData(){
 
-        options = new FirebaseRecyclerOptions.Builder<getProfile>().setQuery(mRef , getProfile.class)
+
+        Query  query = mRef.orderByChild("user_bloodgroup").startAt(searchText).endAt(searchText + "\uf8ff") ;
+
+        options = new FirebaseRecyclerOptions.Builder<getProfile>().setQuery(query , getProfile.class)
                 .build() ;
 
         firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<getProfile, viewHolderForAllDonorList>(options) {

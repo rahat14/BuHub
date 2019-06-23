@@ -94,7 +94,7 @@
                 android:id="@+id/image_on_newsFeed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:scaleType="fitXY"
+                android:scaleType="fitCenter"
                 android:adjustViewBounds="true" />
             <Space
                 android:layout_width="match_parent"
@@ -146,7 +146,7 @@
                 android:fontFamily="@font/mon_regular"
                 android:textColor="#707070"
                 android:textStyle="normal"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 android:layout_height="wrap_content" />
 
 

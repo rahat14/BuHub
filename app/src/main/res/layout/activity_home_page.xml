@@ -145,12 +145,14 @@
                     android:orientation="vertical"
                     android:layout_height="match_parent">
                     <TextView
-                        android:layout_width="100dp"
-                        android:layout_height="95dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:id="@+id/batch_meter_homePage"
-                        android:text="Spring 18"
+                        android:text="Fall 18"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:fontFamily="@font/mon_bold"
-                        android:textColor="@color/com_facebook_button_background_color"
+                        android:textColor="#09c6df"
                         android:textStyle="bold"
                         android:textAlignment="center"
                         android:textSize="28sp"
@@ -222,15 +224,17 @@
             <TextView
                 android:id="@+id/description"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="#09c6df"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:fontFamily="@font/mon_regular"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mon_bold"
                 android:textAllCaps="false"
                 android:layout_marginTop="-20dp"
-                android:textSize="12sp"
-                android:text=""
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:text="Mist"
                 />
 
 

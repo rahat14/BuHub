@@ -3,18 +3,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="#303030">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="180dp"
-        android:layout_height="235dp"
-        card_view:cardCornerRadius="15dp"
-        card_view:cardElevation="15dp"
+        android:layout_height="220dp"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="10dp"
         card_view:cardPreventCornerOverlap="false"
         card_view:cardUseCompatPadding="true"
-
         tools:targetApi="lollipop">
 
         <LinearLayout
@@ -29,7 +29,6 @@
                 android:layout_height="120dp"
                 android:src="@drawable/pdflogo"
 
-
                 />
 
             <TextView
@@ -37,12 +36,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/thumbnail"
-                android:paddingLeft="10dp"
-                android:paddingTop="10dp"
-                android:paddingRight="10dp"
+                android:textAlignment="center"
+                android:fontFamily="@font/mon_bold"
                 android:text="Computer Network"
                 android:textColor="#000"
-
                 android:textSize="15sp" />
 
             <TextView
@@ -55,6 +52,8 @@
                 android:paddingBottom="15dp"
                 android:text="E.balagurusamy"
                 android:textColor="#000"
+                android:textAlignment="center"
+                android:fontFamily="@font/mon_regular"
                 android:textSize="12sp" />
 
         </LinearLayout>

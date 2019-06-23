@@ -14,7 +14,7 @@ import com.metacodersbd.myapplication.R;
 
 public class BloodPage extends AppCompatActivity {
 
-    Button findDonorBtn ;
+    Button findDonorBtn , addReqBtn  ;
 
 
     Intent i  ;
@@ -29,9 +29,20 @@ public class BloodPage extends AppCompatActivity {
         //init the view
 
         findDonorBtn = findViewById(R.id.findDonorBtn);
+        addReqBtn = findViewById(R.id.addReq_btn);
+
 
         //setON Click listeners
 
+
+        addReqBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                i = new Intent(getApplicationContext() ,AddBloodReq.class );
+                startActivity(i);
+            }
+        });
 
         findDonorBtn.setOnClickListener(new View.OnClickListener() {
             @Override

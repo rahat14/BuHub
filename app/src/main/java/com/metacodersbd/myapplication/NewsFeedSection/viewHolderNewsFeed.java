@@ -92,7 +92,7 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
 
 
         Glide.with(ctx).load(plink).placeholder(R.drawable.plaementpro).into(imageView_pp);
-       Glide.with(ctx).load(image).placeholder(R.drawable.loadingdialoge).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.f).into(imagep);
+       Glide.with(ctx).load(image).error(R.drawable.loadingdialoge).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.f).into(imagep);
 
     //    Picasso.get().load(image).placeholder(R.drawable.loadingdialoge).error(R.drawable.loadingdialoge).into(imagep);
       //  Picasso.get().load(plink).error(R.drawable.loadingdialoge).into(imageView_pp);
