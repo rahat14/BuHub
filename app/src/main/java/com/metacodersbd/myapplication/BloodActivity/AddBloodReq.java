@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -37,7 +40,7 @@ public class AddBloodReq extends AppCompatActivity {
 
     TextView  datePicker  , timePicker ;
     DatePickerDialog  datePickerDialog ;
-    String amPmChecker  , date  , time , Loc  ;
+    String amPmChecker  , date  ="null", time ="null", Loc  ;
 
     Button Apos , Amin , Bpos , Bmin , Opos , Omin , ABpos , ABmin ;
     String bldGroup = "bloodGroup" ;
@@ -45,6 +48,8 @@ public class AddBloodReq extends AppCompatActivity {
     EditText  needer   ,  loc  ;
     String  ph =  "nan" ;
 DatabaseReference mRef ;
+ProgressBar mbar ;
+
     String uid ;
 
 
@@ -71,6 +76,8 @@ DatabaseReference mRef ;
         datePicker = findViewById(R.id.dateEdit);
         needer = findViewById(R.id.name_add);
         loc = findViewById(R.id.loc);
+        mbar = findViewById(R.id.progresssbar);
+        mbar.setVisibility(View.GONE);
 
 
 
@@ -341,28 +348,28 @@ DatabaseReference mRef ;
             @Override
             public void onClick(View v) {
 
-
-
-
+                mbar.setVisibility(View.VISIBLE);
 
                 String Name = needer.getText().toString();
                 String LOc = loc.getText().toString();
 
 
-
-
-
-                if(!TextUtils.isEmpty(Name) || !TextUtils.isEmpty(LOc)|| bldGroup.contains("bloodGroup") || ph.contains("nan")){
+                if(!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(LOc)&& !bldGroup.contains("bloodGroup")
+                ){
 
 
                     uploadDataToFireBase(Name , LOc   , ph , time , date );
 
+                      //   OpenDialogue();
+
+                         Toast.makeText(getApplicationContext() , Name + "" + LOc , Toast.LENGTH_SHORT )
+                                 .show();
 
                 }
                 else {
                     Toast.makeText(getApplicationContext() , "Fill the Data Properly" , Toast.LENGTH_SHORT)
                             .show();
-
+                            mbar.setVisibility(View.GONE);
                 }
 
 
@@ -447,7 +454,7 @@ DatabaseReference mRef ;
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
 
-
+                        mbar.setVisibility(View.GONE);
 
                         OpenDialogue();
 
@@ -462,12 +469,32 @@ DatabaseReference mRef ;
 
                                 Toast.makeText(getApplicationContext() , "Error :"+ e.getMessage() , Toast.LENGTH_SHORT)
                                         .show();
+                                mbar.setVisibility(View.GONE);
                             }
                         });
     }
 
     private void OpenDialogue() {
 
+        final Dialog  dialog  = new Dialog(AddBloodReq.this);
+        dialog.setContentView(R.layout.done_dialogue_in_blood) ;
+
+        Button okBtn = dialog.findViewById(R.id.okBtn) ;
+
+
+        dialog.setCancelable(false);
+
+        dialog.show();
+
+
+        okBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+                finish();
+            }
+        });
 
 
 

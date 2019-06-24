@@ -5,7 +5,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:background="#ffff"
             >
@@ -79,7 +79,7 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:textColor="#000"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"/>
 
     <EditText
@@ -91,9 +91,9 @@
         android:hint="Friend"
         android:textColor="#000000"
 
-        android:textSize="16dp"
-        android:paddingLeft="10dp"
-        android:gravity="left|center_vertical"
+        android:textSize="16sp"
+        android:paddingStart="10dp"
+        android:gravity="start|center_vertical"
         android:layout_gravity="center"
         android:layout_marginTop="15dp"/>
     <TextView
@@ -152,6 +152,21 @@
             android:padding="10dp" />
 
     </LinearLayout>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progresssbar"
+                style="@style/Widget.AppCompat.ProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressTint="#E40B27"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+
+        </FrameLayout>
 
 
     <TextView
@@ -177,6 +192,7 @@
         android:gravity="left|center_vertical"
         android:layout_marginTop="15dp"/>
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -200,8 +216,8 @@
             <Button
                 android:layout_marginBottom="8dp"
                 android:id="@+id/bldGroupIdApos"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="A+"
                 android:layout_marginStart="30dp"
@@ -212,8 +228,8 @@
                 />
             <Button
                 android:id="@+id/bldGroupIdAmin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="A-"
                 android:layout_marginStart="10dp"
@@ -234,8 +250,8 @@
                 android:textColor="#D0CECE"/>
             <Button
                 android:id="@+id/bldGroupIdBmin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="B-"
                 android:layout_marginStart="10dp"
@@ -245,8 +261,8 @@
                 android:textColor="#D0CECE"/>
             <Button
                 android:id="@+id/bldGroupIdOpos"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="O+"
                 android:layout_marginStart="10dp"
@@ -265,8 +281,8 @@
             android:orientation="horizontal">
             <Button
                 android:id="@+id/bldGroupIdOmin"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="O-"
                 android:layout_marginStart="30dp"
@@ -277,8 +293,8 @@
 
             <Button
                 android:id="@+id/bldGroupIdABpos"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="AB+"
                 android:layout_marginStart="10dp"
@@ -288,8 +304,8 @@
                 android:textColor="#D0CECE"/>
             <Button
                 android:id="@+id/bldGroupIdABmin"
-                android:layout_width="55dp"
-                android:layout_height="55dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="AB-"
                 android:layout_marginStart="10dp"
@@ -303,20 +319,18 @@
         </LinearLayout>
 
 
-
-
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:layout_marginTop="30dp"
-        android:textColor="#ffffff"
-        android:background="@drawable/gradient_back"
-        android:text="Submit"
-        />
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="240dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="100dp"
+            android:background="@drawable/gradient_back"
+            android:gravity="center"
+            android:text="Submit"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
 
     </LinearLayout>
     </ScrollView>
