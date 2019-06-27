@@ -16,7 +16,7 @@ public class chatRoom extends AppCompatActivity {
     TabLayout tabLayout  ;
     AppBarLayout appBarLayout ;
     ViewPager viewPager ;
-    String name , pplink ;
+    String name , pplink , batch , dpart  ;
 
 
     @Override
@@ -27,7 +27,10 @@ public class chatRoom extends AppCompatActivity {
        // getSupportActionBar().hide();
         Intent o = getIntent();
         name = o.getStringExtra("NAME");
-        pplink = o.getStringExtra("Image");
+        pplink = o.getStringExtra("IMAGE");
+        batch = o.getStringExtra("BATCH");
+        dpart = o.getStringExtra("DPARTMENT");
+
 
         tabLayout= (TabLayout)findViewById(R.id.tabLayout) ;
       //  appBarLayout = findViewById(R.id.appbarId) ;
@@ -57,6 +60,15 @@ public class chatRoom extends AppCompatActivity {
         return  pplink;
     }
 
+    public String getMyBatch(){
+
+        return  batch ;
+
+    }
+    public  String getMyDpart(){
+
+        return  dpart ;
+    }
 
 
 }

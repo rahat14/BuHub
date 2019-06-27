@@ -7,7 +7,9 @@
     android:layout_height="match_parent">
 
 
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="8dp"
+        android:elevation="8dp"
         android:layout_width="match_parent"
         android:layout_height="120dp">
 
@@ -30,7 +32,7 @@
                     android:textSize="45sp"
                     android:textColor="#ffff"
                     android:gravity="center"
-
+                    android:id="@+id/dateOnRow"
                     android:fontFamily="@font/mon_regular"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
@@ -47,6 +49,8 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="-22dp"
                     android:text="Nov"
+                    android:id="@+id/monOnROw"
+                    android:maxLength="3"
                     android:textSize="40sp"
                     android:textColor="#ffff"
                     />
@@ -61,6 +65,7 @@
                 android:layout_height="120dp">
 
                 <TextView
+                    android:id="@+id/ttileOnRow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="This a good Event"
@@ -71,6 +76,7 @@
 
                     />
                 <TextView
+                    android:id="@+id/descOnRow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="this a good Event"
@@ -95,7 +101,7 @@
                         android:layout_marginTop="-3dp"
                         android:background="@drawable/tickets"/>
                     <TextView
-
+                        android:id="@+id/feeOnRow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/mon_regular"
@@ -114,7 +120,7 @@
 
                         android:background="@drawable/location_marker"/>
                     <TextView
-
+                        android:id="@+id/venuOnRow"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="2dp"
@@ -132,7 +138,7 @@
 
 
 
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
 
 

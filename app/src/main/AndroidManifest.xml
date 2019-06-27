@@ -17,8 +17,13 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".BloodActivity.AddBloodReq"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".UpcomingEvent.addEvent"></activity>
+        <activity android:name=".UpcomingEvent.upcomingEventList" />
+        <activity android:name=".BloodActivity.myReq" />
+        <activity android:name=".BloodActivity.requestedBloodList" />
+        <activity
+            android:name=".BloodActivity.AddBloodReq"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".BloodActivity.chooseBloodGroup" />
         <activity android:name=".BloodActivity.allDonorList" />
         <activity android:name=".contactWithTeacher.chatWithTeacher" />

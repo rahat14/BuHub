@@ -47,6 +47,8 @@ public class AddBloodReq extends AppCompatActivity {
     Button submitBtn ;
     EditText  needer   ,  loc  ;
     String  ph =  "nan" ;
+    String pp = " ";
+
 DatabaseReference mRef ;
 ProgressBar mbar ;
 
@@ -448,7 +450,7 @@ ProgressBar mbar ;
 
        /// String postID , uid , needer  , loc , timee , datee , bg ;
 
-                modelForBloodReq model = new modelForBloodReq(id  , uid , name , lOc  , time , date   , bldGroup, ph   ) ;
+                modelForBloodReq model = new modelForBloodReq(id  , uid , name , lOc  , time , date   , bldGroup, ph  , pp  ) ;
 
                 mRef.child(id).setValue(model).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -516,6 +518,9 @@ ProgressBar mbar ;
            getProfile model = dataSnapshot.getValue(getProfile.class);
 
                ph = model.getUser_phn();
+               pp = model.getUser_image() ;
+
+
 
 
            }

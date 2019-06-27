@@ -51,6 +51,7 @@ import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
 import com.metacodersbd.myapplication.PdfDownloaderSection.pdfViewerByDpartment;
 import com.metacodersbd.myapplication.RoutineActivity.RoutineActivity;
+import com.metacodersbd.myapplication.UpcomingEvent.upcomingEventList;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
 import com.metacodersbd.myapplication.loginAcconuntSetup.signIn_Controller;
 import com.metacodersbd.myapplication.CgpaCalculator.ReminderActivity;
@@ -75,7 +76,7 @@ import io.fabric.sdk.android.Fabric;
 
 public class homePage extends AppCompatActivity {
 ImageView cgpameter  ;
-CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom  ;
+CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom , ebentLIST  ;
 FirebaseUser user ;
 FirebaseAuth mauth ;
 String uid ;
@@ -136,6 +137,8 @@ public  static   String pimageLink  ,naaam  ;
         blood_btn = findViewById(R.id.blodSystemCardView);
         ROutine_btn = findViewById(R.id.Routine_activity);
         ChatRoom = findViewById(R.id.chatSystem);
+        ebentLIST = findViewById(R.id.eventList);
+
 
 
 
@@ -154,6 +157,18 @@ public  static   String pimageLink  ,naaam  ;
 
 
         //setting up on click listener
+
+
+        ebentLIST.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i  = new Intent(getApplicationContext() , upcomingEventList.class);
+                startActivity(i);
+
+
+            }
+        });
 
         blood_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +192,9 @@ public  static   String pimageLink  ,naaam  ;
             public void onClick(View v) {
                 Intent o = new Intent(getApplicationContext() , chatRoom.class);
                 o.putExtra("NAME", naaam) ;
-                o.putExtra("Image" ,pimageLink);
+                o.putExtra("IMAGE" ,pimageLink);
+                o.putExtra("BATCH" , batchFirebase);
+                o.putExtra("DPARTMENT" ,dpart_Firebase );
                 startActivity(o);
             }
         });
@@ -574,6 +591,7 @@ public  static   String pimageLink  ,naaam  ;
 
 
          }
+
 
          public  void logoutFuntion(){
 

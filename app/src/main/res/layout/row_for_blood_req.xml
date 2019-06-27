@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <RelativeLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/rowImageReqBlood"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/pro_pic"
+
+                />
+
+            <TextView
+                android:id="@+id/rowNameReqBlood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:text="Mr.XYZ"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/rowLocationReqBlood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:layout_marginTop="40dp"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:drawableStart="@drawable/ic_add_location_gray"
+                android:drawablePadding="5dp"
+                android:text="Barura"
+
+                android:textColor="#8D8B8B"
+                android:textSize="14sp" />
+
+
+            <TextView
+                android:id="@+id/rowTimeReqBlood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time : 17/8/5"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:layout_marginTop="65dp"
+                android:layout_marginStart="30dp"
+                android:textColor="#000000"
+                android:textSize="15sp"
+                android:fontFamily="@font/mon_regular"
+                android:textStyle="bold"
+                android:drawablePadding="5dp"
+                />
+
+
+            <Button
+                android:id="@+id/rowPhoneNumBlood"
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="30dp"
+                android:background="@drawable/trns_back_rect"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:layout_marginTop="90dp"
+                android:hint="0170000000"
+                android:textColorHint="#ff245c"
+                android:textSize="16sp"
+
+                />
+            <Button
+                android:id="@+id/request"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:background="@drawable/gradient_rect"
+                android:text="Requested"
+                android:padding="5dp"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:layout_marginStart="150dp"
+
+                android:layout_marginTop="10dp"
+                android:textStyle="normal"
+                android:textSize="18sp"
+                android:textColor="#FFFFFF"
+                />
+
+            <Button
+                android:id="@+id/rowBloodGroupReqBlood"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignTop="@id/request"
+                android:layout_marginStart="218dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_toEndOf="@id/rowImageReqBlood"
+                android:background="@drawable/trns_back"
+                android:text="A+"
+                android:textColor="#ff245c"
+                android:textSize="18sp"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

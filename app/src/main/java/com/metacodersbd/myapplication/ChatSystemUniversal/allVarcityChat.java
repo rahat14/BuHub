@@ -2,6 +2,7 @@ package com.metacodersbd.myapplication.ChatSystemUniversal;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +25,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class allVarcityChat extends Fragment {
 
@@ -44,7 +49,7 @@ public class allVarcityChat extends Fragment {
     List<modelForChat> chatList;
     AdapterChat adapterChat;
 
-    String uid, msg, name ="", MSG, pplink = "null";
+    String uid, msg, name ="", MSG, pplink = "null" ,DATE;
    public EditText msgINPUT;
    public ImageButton sendBTN;
 
@@ -74,7 +79,7 @@ public class allVarcityChat extends Fragment {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("ChatSystem");
+        mRef = mFirebaseDatabase.getReference("ChatSystem").child("allChat");
         //    mdref = FirebaseDatabase.getInstance().getReference("NewsFeed");
         mRef.keepSynced(true);
 
@@ -108,7 +113,7 @@ public class allVarcityChat extends Fragment {
 
 
         chatList = new ArrayList<>();
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("ChatSystem");
+        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("ChatSystem").child("allChat");
         mref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -147,13 +152,15 @@ public class allVarcityChat extends Fragment {
 
         MSG = msgINPUT.getText().toString();
 
+        String delegate = "hh:mm aaa";
+        String    Time = String.valueOf(DateFormat.format(delegate, Calendar.getInstance().getTime()));
 
-
+        DATE = Time +" " +new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
         if (!TextUtils.isEmpty(MSG)) {
             String ts = mRef.push().getKey();
 
-            modelForChat uploadData = new modelForChat(uid, ts, name, MSG, "s122", pplink);
+            modelForChat uploadData = new modelForChat(uid, ts, name, MSG, DATE, pplink);
 
             mRef.child(ts).setValue(uploadData).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override

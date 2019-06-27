@@ -2,12 +2,12 @@ package com.metacodersbd.myapplication.BloodActivity;
 
 public class modelForBloodReq {
 
-    String postID , uid , needer  , loc , timee , datee , bg ,phone ;
+    String postID , uid , needer  , loc , timee , datee , bg ,phone, purl ;
 
     public modelForBloodReq() {
     }
 
-    public modelForBloodReq(String postID, String uid, String needer, String loc, String timee, String datee, String bg, String phone) {
+    public modelForBloodReq(String postID, String uid, String needer, String loc, String timee, String datee, String bg, String phone, String purl) {
         this.postID = postID;
         this.uid = uid;
         this.needer = needer;
@@ -16,6 +16,15 @@ public class modelForBloodReq {
         this.datee = datee;
         this.bg = bg;
         this.phone = phone;
+        this.purl = purl;
+    }
+
+    public String getPurl() {
+        return purl;
+    }
+
+    public void setPurl(String purl) {
+        this.purl = purl;
     }
 
     public String getPhone() {
