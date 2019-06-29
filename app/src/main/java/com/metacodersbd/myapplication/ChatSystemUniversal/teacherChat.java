@@ -38,7 +38,7 @@ public class teacherChat extends Fragment {
 
 
     Query firebaseSearchQuery ;
-    String  uid ;
+    String  uid ,batch   , dpt  ;
 
     @Nullable
     @Override
@@ -50,6 +50,13 @@ public class teacherChat extends Fragment {
         mauth = FirebaseAuth.getInstance() ;
         uid = mauth.getUid();
 
+
+        chatRoom activity = (chatRoom) getActivity();
+
+         batch = activity.getMyBatch() ;
+         dpt = activity .getMyDpart() ;
+
+        batch = dpt + " "+ batch ;
 
 
         //append teacher list here in recycelr view ...
@@ -87,8 +94,7 @@ public class teacherChat extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull viewHolderForTeacherList holder, final int position, @NonNull final modelForTeacherList model) {
 
-                holder.setDetails(getContext(), model.getName() , model.getDept() , model.getPplink());
-
+                holder.setDetails(getContext(), model.getName() , model.getDept() , model.getPplink() , model.getId() , model.getNotificationID());
 
 
 
@@ -112,11 +118,18 @@ public class teacherChat extends Fragment {
 
                         // data from views
                         String Name = getItem(position).getName() ;
+                        String id = getItem(position).getId() ;
+
+
 
 
 
                         Intent i = new Intent(getContext() , chatWithTeacher.class);
                         i.putExtra("name",Name ) ;
+                        i.putExtra("id", id) ;
+                        i.putExtra("batch", batch ) ;
+
+
                         startActivity(i);
 
 

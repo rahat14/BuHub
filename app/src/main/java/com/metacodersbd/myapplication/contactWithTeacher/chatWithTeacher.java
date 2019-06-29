@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -22,8 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.ChatSystemUniversal.AdapterChat;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatPage;
+import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
 import com.metacodersbd.myapplication.ChatSystemUniversal.modelForChat;
 import com.metacodersbd.myapplication.R;
+import com.metacodersbd.myapplication.homePage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +42,7 @@ public class chatWithTeacher extends AppCompatActivity {
     List<modelForChat> chatList ;
     AdapterChat adapterChat ;
 
-    String  uid , msg , dbname ,MSG  , pplink  ;
+    String  uid , msg , dbname ,MSG  , pplink  , batcH  ;
     EditText msgINPUT ;
     ImageButton sendBTN ;
     @Override
@@ -51,11 +54,8 @@ public class chatWithTeacher extends AppCompatActivity {
 
 
         Intent o = getIntent();
-        dbname = o.getStringExtra("name");
-
-
-
-
+        dbname = o.getStringExtra("id");
+        batcH = o.getStringExtra("batch");
 
 
 
@@ -66,10 +66,9 @@ public class chatWithTeacher extends AppCompatActivity {
 
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        mRef = mFirebaseDatabase.getReference("batchList").child("CSE").child("spring18").child(dbname);
+        mRef = mFirebaseDatabase.getReference("teacherList").child(dbname).child(batcH);
         //    mdref = FirebaseDatabase.getInstance().getReference("NewsFeed");
         mRef.keepSynced(true);
-
 
 
         //calling RecyclerView
@@ -101,8 +100,8 @@ public class chatWithTeacher extends AppCompatActivity {
 
 
         chatList = new ArrayList<>();
-        DatabaseReference mref = FirebaseDatabase.getInstance().getReference("teacherList").child(dbname).child("spring18");
-        mref.addValueEventListener(new ValueEventListener() {
+       // DatabaseReference mref = FirebaseDatabase.getInstance().getReference("teacherList").child(dbname).child("spring18");
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

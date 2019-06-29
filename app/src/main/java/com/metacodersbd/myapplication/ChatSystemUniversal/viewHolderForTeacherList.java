@@ -55,7 +55,7 @@ public class viewHolderForTeacherList extends RecyclerView.ViewHolder {
 
     //setting details for row loaded into recycle view ROw
 
-    public void setDetails(Context ctx, String name , String dept , String pplinK) {
+    public void setDetails(Context ctx, String name , String dept , String pplinK , String id , String notificationID ) {
 
         //assaging views
         TextView nameTv = mview.findViewById(R.id.rnameOfTeacher);
