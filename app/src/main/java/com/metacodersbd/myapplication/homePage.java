@@ -203,6 +203,7 @@ public  static   String pimageLink  ,naaam  ;
             @Override
             public void onClick(View v) {
                 Intent o = new Intent(getApplicationContext() , userList.class);
+                o.putExtra("DBNAME" ,dpart_Firebase );
                 startActivity(o);
             }
         });

@@ -2,6 +2,8 @@ package com.metacodersbd.myapplication.RoutineActivity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -20,6 +22,7 @@ public class RoutineActivity extends AppCompatActivity {
     TextView mExamName  , className  ;
 
     PhotoView examPhoto , classPhoto ;
+    String dbname ;
 
     DatabaseReference databaseReference ;
 
@@ -36,7 +39,10 @@ public class RoutineActivity extends AppCompatActivity {
         className = findViewById(R.id.classid);
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("routine");
+        Intent i = getIntent() ;
+        dbname = i.getStringExtra("DBNAME") ;
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("routine").child(dbname);
 
 
 

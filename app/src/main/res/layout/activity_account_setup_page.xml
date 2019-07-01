@@ -121,12 +121,12 @@
                 android:focusable="true"
                 android:textColor="#ffff"
                 android:focusableInTouchMode="true"
-                android:hint="  Enter Your Batch Number">
+                >
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Ex. 11 or 12 "
+                    android:text="Ex.fall16 or spring 18 "
                     android:textColor="#ffff"
                     android:layout_marginStart="4dp"
                     />
@@ -138,10 +138,10 @@
                     android:layout_marginStart="25dp"
                     android:background="#55000000"
                     android:gravity="center"
-                    android:hint="  Enter Your Batch Number"
+                    android:hint=" Enter Your Admission Semster "
                     android:textColorHint="#ffff"
 
-                    android:inputType="numberDecimal"
+                    android:inputType="text"
                     android:textColor="#ffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
