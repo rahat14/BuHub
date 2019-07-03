@@ -1,6 +1,5 @@
 package com.metacodersbd.myapplication;
 
-import android.app.VoiceInteractor;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -21,19 +20,9 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.textclassifier.TextLinks;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.crashlytics.android.Crashlytics;
@@ -46,7 +35,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.BloodActivity.BloodPage;
-import com.metacodersbd.myapplication.ChatSystemUniversal.chatPage;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
 import com.metacodersbd.myapplication.PdfDownloaderSection.pdfViewerByDpartment;
@@ -59,16 +47,11 @@ import com.metacodersbd.myapplication.userList.userList;
 import com.metacodersbd.myapplication.weatherManagement.Function;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
-
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.DateFormat;
 import java.util.Locale;
-
 import androidx.cardview.widget.CardView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fabric.sdk.android.Fabric;
@@ -80,10 +63,6 @@ CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottific
 FirebaseUser user ;
 FirebaseAuth mauth ;
 String uid ;
-    DatabaseReference db  ;
-
-    int ct = 0  ;
-
 TextView Batch_Meter ;
 String city = "Comilla,bd";
 String OPEN_WEATHER_MAP_API = "d8f0dc68c7e7caed6908dc6f9edcef61";

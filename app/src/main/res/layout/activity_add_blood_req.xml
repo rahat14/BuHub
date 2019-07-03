@@ -11,6 +11,8 @@
             >
 
     <androidx.appcompat.widget.Toolbar
+        android:elevation="8dp"
+        android:background="#ffff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
@@ -19,23 +21,24 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ffff"
             android:gravity="bottom"
             android:orientation="vertical"
             android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
             <LinearLayout
+                android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/backBtnAdd"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="@drawable/backword_sign"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
                     android:textStyle="normal"
                     android:textSize="18sp"
                     android:textColor="#D0CECE"/>
@@ -46,8 +49,8 @@
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:textColor="#000"
-                    android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"/>
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"/>
 
             </LinearLayout>
 

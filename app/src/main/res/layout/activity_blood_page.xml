@@ -59,13 +59,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_gravity="center"
+                        android:id="@+id/donorNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:textSize="28sp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/mon_regular"
-                        android:text="1100" />
+                        android:text=""
+                        android:textColor="#fff"
+                        android:textSize="28sp" />
 
                     <TextView
 
@@ -75,7 +76,7 @@
                         android:textSize="18sp"
                         android:fontFamily="@font/mon_regular"
                         android:layout_gravity="center"
-                        android:text="Donor" />
+                        android:text="Donors" />
 
 
                 </LinearLayout>
@@ -123,13 +124,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:layout_gravity="center"
+                    android:id="@+id/reqNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#fff"
+                    android:layout_gravity="center"
                     android:fontFamily="@font/mon_regular"
-                    android:textSize="28sp"
-                    android:text="12,333" />
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textSize="28sp" />
 
                 <TextView
 
@@ -139,7 +141,7 @@
                     android:textSize="18sp"
                     android:fontFamily="@font/mon_regular"
                     android:layout_gravity="center"
-                    android:text="Request" />
+                    android:text="Requests" />
 
 
             </LinearLayout>
@@ -187,13 +189,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_gravity="center"
+                        android:id="@+id/sameReqList"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#fff"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/mon_regular"
-                        android:textSize="28sp"
-                        android:text="12,333" />
+                        android:text=""
+                        android:textColor="#fff"
+                        android:textSize="28sp" />
 
                     <TextView
 
@@ -203,7 +206,7 @@
                         android:textSize="18sp"
                         android:fontFamily="@font/mon_regular"
                         android:layout_gravity="center"
-                        android:text="Request" />
+                        android:text="Requests" />
 
 
                 </LinearLayout>
@@ -253,13 +256,14 @@
 
                     <TextView
 
+                        android:id="@+id/ownReqNum"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#fff"
-                        android:fontFamily="@font/mon_regular"
-                        android:textSize="28sp"
                         android:layout_gravity="center"
-                        android:text="03" />
+                        android:fontFamily="@font/mon_regular"
+                        android:text=""
+                        android:textColor="#fff"
+                        android:textSize="28sp" />
 
                     <TextView
 

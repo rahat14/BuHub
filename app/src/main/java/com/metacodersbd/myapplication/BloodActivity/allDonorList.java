@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.facebook.share.model.ShareLinkContent;
@@ -41,9 +42,12 @@ public class allDonorList extends AppCompatActivity {
     ShareDialog shareDialogue;
     String uid  ;
     String searchText ;
+    Button backbtn ;
+
 
     public FirebaseRecyclerAdapter<getProfile, viewHolderForAllDonorList> firebaseRecyclerAdapter ;
-    public FirebaseRecyclerOptions<getProfile> options ;
+    public FirebaseRecyclerOptions<getProfile> options ; // seraching in the profile ;
+
 
 
     @Override
@@ -51,10 +55,13 @@ public class allDonorList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_donor_list);
 
+        getSupportActionBar().hide();
+
+
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Users");
-
+        backbtn = findViewById(R.id.BACKBTN);
         mRef.keepSynced(true);
 
         Intent   i = getIntent();
@@ -71,6 +78,14 @@ public class allDonorList extends AppCompatActivity {
         mrecyclerView.setLayoutManager(mlayoutManager);
         mlayoutManager.setReverseLayout(true);
         mlayoutManager.setStackFromEnd(true);
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         showData();
 
@@ -96,11 +111,6 @@ public class allDonorList extends AppCompatActivity {
 
 
 
-                final String name = getItem(position).getUser_name();
-                final String dept =getItem(position).getUser_dpt() ;
-                final  String imagelink = getItem(position).getUser_image();
-                final  String phn = getItem(position).getUser_phn();
-                final  String bgroup = getItem(position).getUser_bloodgroup();
 
 // love button function
                 holder.triigerDiagoue.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +119,10 @@ public class allDonorList extends AppCompatActivity {
 
                         // trigger thet dialgoue here
 
-                        triggerDialogue(name , dept  , imagelink , phn , bgroup) ;
+                        String number = "+88"+ getItem(position).getUser_phn();
+
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", number, null));
+                        startActivity(intent);
 
 
                     }
@@ -146,9 +159,5 @@ public class allDonorList extends AppCompatActivity {
 
     }
 
-    private void triggerDialogue(String name, String dept, String imagelink, String phn, String bgroup) {
 
-
-
-    }
 }

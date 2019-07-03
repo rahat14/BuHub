@@ -14,7 +14,7 @@ public class chooseBloodGroup extends AppCompatActivity {
 
     Button Apos , Amin , Bpos , Bmin , Opos , Omin , ABpos , ABmin ;
     String bldGroup = "bloodGroup" ;
-    Button submitBtn ;
+    Button submitBtn , backBtn ;
 
 
 
@@ -22,18 +22,27 @@ public class chooseBloodGroup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_blood_group);
+        getSupportActionBar().hide();
+
 
         Apos = findViewById(R.id.bldGroupIdApos);
         Amin = findViewById(R.id.bldGroupIdAmin);
         Bpos = findViewById(R.id.bldGroupIdBpos);
-       Bmin = findViewById(R.id.bldGroupIdBmin);
+         Bmin = findViewById(R.id.bldGroupIdBmin);
         Omin = findViewById(R.id.bldGroupIdOmin);
         Opos = findViewById(R.id.bldGroupIdOpos);
         ABmin = findViewById(R.id.bldGroupIdABmin);
         ABpos = findViewById(R.id.bldGroupIdABpos);
         submitBtn = findViewById(R.id.submitBtn);
+        backBtn =findViewById(R.id.backBtn);
 
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override

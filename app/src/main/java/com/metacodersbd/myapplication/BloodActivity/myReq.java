@@ -38,6 +38,7 @@ public class myReq extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_req);
+        getSupportActionBar().setTitle("My Req");
 
         mauth = FirebaseAuth.getInstance() ;
         uid = mauth.getUid() ;

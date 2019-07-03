@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -97,10 +98,20 @@ public class requestedBloodList extends AppCompatActivity {
                 final  String imagelink = getItem(position).getUser_image();
                 final  String phn = getItem(position).getUser_phn();
                 final  String bgroup = getItem(position).getUser_bloodgroup();
+
+
 */
 // love button function
+                holder.number.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String number = "+88"+ getItem(position).getPhone();
 
+                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", number, null));
+                        startActivity(intent);
 
+                    }
+                });
 
             }
 
@@ -109,7 +120,7 @@ public class requestedBloodList extends AppCompatActivity {
             public viewHolderForReqBlood onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
                 //INflate the row
-                Context context;
+
                 View itemVIew = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_for_blood_req, viewGroup, false);
 
                 viewHolderForReqBlood viewHolder = new viewHolderForReqBlood(itemVIew);

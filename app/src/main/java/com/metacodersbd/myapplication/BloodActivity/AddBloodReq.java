@@ -42,7 +42,7 @@ public class AddBloodReq extends AppCompatActivity {
     DatePickerDialog  datePickerDialog ;
     String amPmChecker  , date  ="null", time ="null", Loc  ;
 
-    Button Apos , Amin , Bpos , Bmin , Opos , Omin , ABpos , ABmin ;
+    Button Apos , Amin , Bpos , Bmin , Opos , Omin , ABpos , ABmin  , backBtn;
     String bldGroup = "bloodGroup" ;
     Button submitBtn ;
     EditText  needer   ,  loc  ;
@@ -80,6 +80,14 @@ ProgressBar mbar ;
         loc = findViewById(R.id.loc);
         mbar = findViewById(R.id.progresssbar);
         mbar.setVisibility(View.GONE);
+        backBtn = findViewById(R.id.backBtnAdd);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
 
