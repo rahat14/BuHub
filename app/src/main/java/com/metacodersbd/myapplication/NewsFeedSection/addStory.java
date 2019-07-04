@@ -68,10 +68,10 @@ public class addStory extends AppCompatActivity {
     Boolean isPressed = false ;
 
     String User_id ;
-private DatabaseReference UserRef  ;
-private  StorageReference storageRef ;
-private FirebaseAuth mauth ;
-String DATE ,Time  ;
+    private DatabaseReference UserRef  ;
+    private  StorageReference storageRef ;
+    private FirebaseAuth mauth ;
+    String DATE ,Time  ;
     private boolean isChanged = false;
     public ProgressBar pb ;
 
@@ -105,26 +105,26 @@ String DATE ,Time  ;
 
 
         //setting up viewes ;
-         title = findViewById(R.id.input_title);
-         upld_btn = findViewById(R.id.add_stroy_uploadBtn);
-         image = findViewById(R.id.imageView_add_story);
+        title = findViewById(R.id.input_title);
+        upld_btn = findViewById(R.id.add_stroy_uploadBtn);
+        image = findViewById(R.id.imageView_add_story);
 
 
 
 
-         //setting up listenre
+        //setting up listenre
 
-       upld_btn.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+        upld_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
 
-               mTitle = title.getText().toString();
+                mTitle = title.getText().toString();
 
-               String delegate = "hh:mm aaa";
-              Time = String.valueOf(DateFormat.format(delegate, Calendar.getInstance().getTime()));
+                String delegate = "hh:mm aaa";
+                Time = String.valueOf(DateFormat.format(delegate, Calendar.getInstance().getTime()));
 
-               DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+                DATE = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
                 Time = Time + " "+DATE ;
 
 
@@ -139,152 +139,152 @@ String DATE ,Time  ;
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             sendNotification();
-                             finish();
+                            finish();
 
                         }
                     });
 
                 }
 
-               else if (!TextUtils.isEmpty(mTitle) && postImageUri != null) {
-                   sendNotification();
+                else if (!TextUtils.isEmpty(mTitle) && postImageUri != null) {
+                    sendNotification();
 
-                   final String randomName = UUID.randomUUID().toString();
+                    final String randomName = UUID.randomUUID().toString();
 
-                   // PHOTO UPLOAD
-                   File newImageFile = new File(postImageUri.getPath());
+                    // PHOTO UPLOAD
+                    File newImageFile = new File(postImageUri.getPath());
 
-                   try {
+                    try {
 
-                       compressedImageFile = new Compressor(addStory.this)
-                               .setMaxHeight(920)
-                               .setMaxWidth(920)
-                               .setQuality(40)
-                               .compressToBitmap(newImageFile);
+                        compressedImageFile = new Compressor(addStory.this)
+                                .setMaxHeight(920)
+                                .setMaxWidth(920)
+                                .setQuality(40)
+                                .compressToBitmap(newImageFile);
 
-                   } catch (IOException e) {
-                       e.printStackTrace();
-                   }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
-                   ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                   compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
-                   byte[] imageData = baos.toByteArray();
-                   UploadTask filePath = storageRef.child(randomName+User_id + ".jpg").putBytes(imageData);
-                   filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                       @Override
-                       public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                    compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+                    byte[] imageData = baos.toByteArray();
+                    UploadTask filePath = storageRef.child(randomName+User_id + ".jpg").putBytes(imageData);
+                    filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                           viewDialog.hideDialog();
+                            viewDialog.hideDialog();
 
-                           sendTonextAcitvity();
-                           viewDialog.hideDialog();
+                            sendTonextAcitvity();
+                            viewDialog.hideDialog();
 
-                           Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                           while (!uriTask.isSuccessful()) ;
-                           Uri downloaduri = uriTask.getResult();
+                            Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!uriTask.isSuccessful()) ;
+                            Uri downloaduri = uriTask.getResult();
 
 
 
-                           String ts =UserRef.push().getKey() ;
+                            String ts =UserRef.push().getKey() ;
 
 
 // uploading data t ofirebase
-                           modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, downloaduri.toString(),User_id ,url , nam ,Time , ts,"0");
+                            modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, downloaduri.toString(),User_id ,url , nam ,Time , ts,"0");
 
-                           UserRef.child(ts).setValue(uploadModel);
-                          //adding coomment directory .
-
-
-
-
-                       }
-                   }).addOnFailureListener(new OnFailureListener() {
-                       @Override
-                       public void onFailure(@NonNull Exception e) {
-
-
-                           Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
-
-                       }
-                   }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                       @Override
-                       public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                           viewDialog.showDialog();
-                       }
-                   });
+                            UserRef.child(ts).setValue(uploadModel);
+                            //adding coomment directory .
 
 
 
-               } else {
-                   Toast.makeText(getApplicationContext(), "Please Select image or add image Name ", Toast.LENGTH_SHORT).show();
-               }
-           }
-       });
-
-
-                image.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        isPressed = true ;
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-                            if (ContextCompat.checkSelfPermission(addStory.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-                                ActivityCompat.requestPermissions(addStory.this,
-                                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
-
-                            } else {
-
-                                BringImagePicker();
-
-                            }
-
-                        } else {
-
-                            BringImagePicker();
 
                         }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+
+                            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+
+
+                        }
+                    }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            viewDialog.showDialog();
+                        }
+                    });
+
+
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Please Select image or add image Name ", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                isPressed = true ;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                    if (ContextCompat.checkSelfPermission(addStory.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                        ActivityCompat.requestPermissions(addStory.this,
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+
+                    } else {
+
+                        BringImagePicker();
 
                     }
 
-                });
+                } else {
+
+                    BringImagePicker();
+
+                }
 
             }
 
+        });
 
-                private void BringImagePicker () {
-
-                    CropImage.activity()
-                            .setGuidelines(CropImageView.Guidelines.ON)
-                            .setInitialCropWindowPaddingRatio(0)
-                            .setCropShape(CropImageView.CropShape.RECTANGLE) //shaping the image
-                            .start(addStory.this);
-
-                }
+    }
 
 
-                @Override
-                protected void onActivityResult ( int requestCode, int resultCode, Intent data){
-                    super.onActivityResult(requestCode, resultCode, data);
+    private void BringImagePicker () {
 
-                    if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-                        CropImage.ActivityResult result = CropImage.getActivityResult(data);
-                        if (resultCode == RESULT_OK) {
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setInitialCropWindowPaddingRatio(0)
+                .setCropShape(CropImageView.CropShape.RECTANGLE) //shaping the image
+                .start(addStory.this);
 
-                            postImageUri = result.getUri();
-                            image.setImageURI(postImageUri);
+    }
 
-                        } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
 
-                            Exception error = result.getError();
-                            Toast.makeText(this, error.getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    }
+    @Override
+    protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
 
-                }
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+
+                postImageUri = result.getUri();
+                image.setImageURI(postImageUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+
+                Exception error = result.getError();
+                Toast.makeText(this, error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        }
+
+    }
     public void showCustomLoadingDialog(View view) {
         //..show gif and hide after 5 seconds
 
@@ -370,4 +370,4 @@ String DATE ,Time  ;
     }
 
 
-            }
+}

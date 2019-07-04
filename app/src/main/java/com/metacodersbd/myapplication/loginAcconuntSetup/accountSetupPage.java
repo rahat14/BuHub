@@ -1,14 +1,20 @@
 package com.metacodersbd.myapplication.loginAcconuntSetup;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.MediaStore;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -33,19 +39,28 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import com.metacodersbd.myapplication.NewsFeedSection.addStory;
 import com.metacodersbd.myapplication.R;
+import com.metacodersbd.myapplication.customDiagloueClass3;
 import com.metacodersbd.myapplication.homePage;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+import id.zelory.compressor.Compressor;
 
 
 public class accountSetupPage extends AppCompatActivity {
     String photoLink ;
     CheckBox   checkBg;
     EditText BatchNum ;
-ImageView image ;
+CircleImageView image ;
     Spinner dropdownMenu  ,Bg  ;
     String dpt ;
     String Name , batch_number ;
@@ -56,6 +71,10 @@ ImageView image ;
     ArrayAdapter<CharSequence>bloodAdapter ;
     EditText Cgpa_fill ;
     Button uploadBtn ;
+    customDiagloueClass3 viewDialog;
+
+
+    private Bitmap compressedImageFile;
     Uri mFilePathUri ;
     StorageReference mStorageReference ;
     DatabaseReference mDatabaseReference ;
@@ -75,10 +94,15 @@ ImageView image ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setup_page);
-        mauth = FirebaseAuth.getInstance() ;
-       user_id =mauth.getCurrentUser().getUid() ;
+         mauth = FirebaseAuth.getInstance() ;
+         user_id =mauth.getCurrentUser().getUid() ;
+
+
         //saving the data came from other activitiy
 
+
+
+        viewDialog = new customDiagloueClass3(this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
           Name = extras.getString("name");
@@ -94,7 +118,7 @@ ImageView image ;
       dropdownMenu = (Spinner) findViewById(R.id.dropDown) ;
       uploadBtn = (Button)findViewById(R.id.buttonComplete) ;
       BatchNum = (EditText)findViewById(R.id.batchnumber) ;
-      image = (ImageView) findViewById(R.id.imageBtn);
+      image =  findViewById(R.id.imageBtn);
       Cgpa_fill =(EditText)findViewById(R.id.Cgpa_edit) ;
 
 
@@ -161,12 +185,38 @@ ImageView image ;
 
                 //accessing the gallery
 
+
+                /*
                 Intent intent = new Intent();
                 intent.setType("image/*");
                 intent.setAction(Intent.ACTION_GET_CONTENT);
+
                 startActivityForResult(Intent.createChooser(intent,"Select Your Profile Picture") , IMAGE_REQUEST_CODE);
+*/
 
 
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+
+                    if (ContextCompat.checkSelfPermission(accountSetupPage.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+
+                        ActivityCompat.requestPermissions(accountSetupPage.this,
+                                new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+
+                        BringImagePicker();
+
+
+
+                    } else {
+
+                        BringImagePicker();
+
+                    }
+
+                } else {
+
+                    BringImagePicker();
+
+                }
             }
         });
 
@@ -177,7 +227,7 @@ ImageView image ;
                         public void onClick(View v) {
 
 
-
+//get all the value
 
 
 
@@ -221,52 +271,53 @@ ImageView image ;
         //check the image path  uri is empty or not ;
         if(mFilePathUri != null){
 
-            mprogressDialog.setTitle("Image is Uploading...........");
-            mprogressDialog.setCanceledOnTouchOutside(false);
-            mprogressDialog.show();
 
-            //create a scond storage
-            final StorageReference storageReference2nd = mStorageReference.child(mStoragePath+System.currentTimeMillis()
-            +"."
-            +getFileExtention(mFilePathUri)) ;
+            final String randomName = UUID.randomUUID().toString();
 
+            // PHOTO UPLOAD
+            File newImageFile = new File(mFilePathUri.getPath());
 
-            // ADDING THE ONSUCCESS LISTENER
+            try {
 
-//compressing image before upload
-            Bitmap b = ((BitmapDrawable) image.getDrawable()).getBitmap();
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            b.compress(Bitmap.CompressFormat.JPEG, 40, byteArrayOutputStream);
-            byte[] data = byteArrayOutputStream.toByteArray();
+                compressedImageFile = new Compressor(accountSetupPage.this)
+                        .setMaxHeight(920)
+                        .setMaxWidth(920)
+                        .setQuality(40)
+                        .compressToBitmap(newImageFile);
 
-            UploadTask uploadTask = storageReference2nd.putBytes(data);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-    //  storageReference2nd.putFile(mFilePathUri)
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+            byte[] imageData = baos.toByteArray();
+            UploadTask filePath = mStorageReference.child(randomName+user_id + ".jpg").putBytes(imageData);
+            filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                  uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-
-
-                            //get all the value
-                            String user_n = Name ;
-                            String user_ph = Phn ;
-                            String dpart = dpt ;
-                            String blood = BloodGroup ;
-                            String batchNam = BatchNum.getText().toString() ;
-                            Cgpa= Cgpa_fill.getText().toString();
+                    String user_n = Name ;
+                    String user_ph = Phn ;
+                    String dpart = dpt ;
+                    String blood = BloodGroup ;
+                    String batchNam = BatchNum.getText().toString() ;
+                    Cgpa= Cgpa_fill.getText().toString();
 
 
-                            mprogressDialog.dismiss();
-                            //show toast
-                            sentToHome();
 
-                            //getting task response
+                    viewDialog.hideDialog();
 
-                            Task<Uri>uriTask = taskSnapshot.getStorage().getDownloadUrl() ; //  upload ing all the data and link to  firebase
-                            while (!uriTask.isSuccessful());
-                            Uri downloaduri = uriTask.getResult();
+                    sentToHome();
+                    viewDialog.hideDialog();
+
+                    Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                    while (!uriTask.isSuccessful()) ;
+                    Uri downloaduri = uriTask.getResult();
+
+
+
+                    String ts =mDatabaseReference.push().getKey() ;
 
                             accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,downloaduri.toString(),Cgpa  );
                             //geting image upload id
@@ -281,13 +332,15 @@ ImageView image ;
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     // hide progrees bar
-                    mprogressDialog.dismiss();
+                  //  mprogressDialog.dismiss();
                     Toast.makeText(getApplicationContext(), e.getMessage(),Toast.LENGTH_LONG).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    mprogressDialog.setTitle(" Uploading ...........");
+                    viewDialog.showDialog();
+
+                 //   mprogressDialog.setTitle(" Uploading ...........");
                 }
             });
 
@@ -302,7 +355,8 @@ ImageView image ;
 
     }
 
-    //method to get the selecte image file exentension
+    //method to get the select image file extension
+
     private String getFileExtention(Uri uri) {
         ContentResolver contentResolver = getContentResolver() ;
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
@@ -311,10 +365,14 @@ ImageView image ;
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri)) ;
     }
 
+    //activity result  for image selection
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    protected void onActivityResult(/*int requestCode, int resultCode, @Nullable Intent data*/
+            int requestCode, int resultCode, Intent data) {
+      //  super.onActivityResult(requestCode, resultCode, data);
+
+        /*
         if (requestCode == IMAGE_REQUEST_CODE
                 && resultCode == RESULT_OK
                 && data != null
@@ -339,6 +397,23 @@ ImageView image ;
                 Toast.makeText(this, e.getMessage(),Toast.LENGTH_LONG).show();
             }
         }
+        */
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (resultCode == RESULT_OK) {
+
+                mFilePathUri = result.getUri();
+                image.setImageURI(mFilePathUri);
+
+            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+
+                Exception error = result.getError();
+                Toast.makeText(this, error.getMessage(),Toast.LENGTH_LONG).show();
+            }
+        }
 
     }
 
@@ -353,6 +428,20 @@ public  void sentToHome(){
 
 }
 
+    private void BringImagePicker () {
 
+        CropImage.activity()
+                .setGuidelines(CropImageView.Guidelines.ON)
+                .setAspectRatio(1,1)
+                .setCropShape(CropImageView.CropShape.OVAL) //shaping the image
+                .start(accountSetupPage.this);
+
+    }
+    public void showCustomLoadingDialog(View view) {
+        //..show gif and hide after 5 seconds
+
+        viewDialog.showDialog();
+
+    }
 
 }

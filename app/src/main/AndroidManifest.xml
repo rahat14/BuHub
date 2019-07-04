@@ -69,11 +69,15 @@
             android:name=".loginAcconuntSetup.signIn_Controller"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+
         </activity>
 
         <meta-data
@@ -87,7 +91,10 @@
         <activity
             android:name=".loginAcconuntSetup.accountSetupPage"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+        </activity>
         <activity
             android:name=".Profile"
             android:screenOrientation="portrait"
