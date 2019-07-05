@@ -133,7 +133,7 @@ public class addStory extends AppCompatActivity {
 
                     String ts =UserRef.push().getKey() ;
                     // uploading data t ofirebase
-                    modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, "",User_id ,url , nam ,Time , ts , "0");
+                    modelForNewsFeed uploadModel = new modelForNewsFeed(mTitle, "null",User_id ,url , nam ,Time , ts , "0");
                     //adding coomment directory .
                     UserRef.child(ts).setValue(uploadModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -159,7 +159,7 @@ public class addStory extends AppCompatActivity {
                         compressedImageFile = new Compressor(addStory.this)
                                 .setMaxHeight(920)
                                 .setMaxWidth(920)
-                                .setQuality(40)
+                                .setQuality(60)
                                 .compressToBitmap(newImageFile);
 
                     } catch (IOException e) {
@@ -167,7 +167,7 @@ public class addStory extends AppCompatActivity {
                     }
 
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                    compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 40, baos);
+                    compressedImageFile.compress(Bitmap.CompressFormat.JPEG, 60, baos);
                     byte[] imageData = baos.toByteArray();
                     UploadTask filePath = storageRef.child(randomName+User_id + ".jpg").putBytes(imageData);
                     filePath.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

@@ -57,7 +57,7 @@ public class newsFeed extends AppCompatActivity {
     CallbackManager callbackManager ;
 
     private  int selectedPosition = -1 ;
-    public    int likeCOunt  = 0 ;
+     int likeCOunt   = 0  ;
    public FirebaseRecyclerAdapter<modelForNewsFeed , viewHolderNewsFeed>firebaseRecyclerAdapter ;
    public FirebaseRecyclerOptions<modelForNewsFeed> options ;
 
@@ -81,8 +81,8 @@ public class newsFeed extends AppCompatActivity {
         likeRef = mFirebaseDatabase.getReference("NewsFeed");
 
 
-        mRef.keepSynced(true);
-        likeRef.keepSynced(true);
+       mRef.keepSynced(true);
+       likeRef.keepSynced(true);
 
 
         fav_Add_Button = (FloatingActionButton) findViewById(R.id.fab_add);
@@ -125,20 +125,17 @@ public class newsFeed extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull final viewHolderNewsFeed holder, final int position, @NonNull modelForNewsFeed model) {
 
-         //      holder.setIsRecyclable(false); // dunno why if it crash then remove it
+            //  holder.setIsRecyclable(false); // dunno why if it crash then remove it
+                final String db = getItem(holder.getAdapterPosition()).getPushid();
+                final String like =getItem(holder.getAdapterPosition()).getLikeCount() ;
+                final  String imagelink = getItem(holder.getAdapterPosition()).getNimage();
+                final  String tile = getItem(holder.getAdapterPosition()).getNtitle();
 
                 holder.serDetails(getApplicationContext(), model.getNtitle(), model.getNimage(),
-                        model.getNuid(), model.getPp_link(), model.getPname(), model.getDate() , model.getPushid());
+                        model.getNuid(), model.getPp_link(), model.getPname(), model.getDate() , model.getPushid() , model.getLikeCount());
 
 
 
-                final String db = getItem(position).getPushid();
-                final String like =getItem(position).getLikeCount() ;
-                final  String imagelink = getItem(position).getNimage();
-                final  String tile = getItem(position).getNtitle();
-
-
-                likeCOunt = Integer.valueOf(like);
 
 
                 likeRef.child(db).child("likers").addValueEventListener(new ValueEventListener() {
@@ -153,6 +150,9 @@ public class newsFeed extends AppCompatActivity {
 
                         }
                         else {
+                            holder.loveBtn.setImageDrawable(getResources().getDrawable(R.drawable.lovereat3));
+
+                            holder.loveBtn.setTag("ok");
 
                         }
 
@@ -200,7 +200,10 @@ public class newsFeed extends AppCompatActivity {
 
                         if (holder.loveBtn.getTag().equals("ok") ){
 
-                            likeCOunt = likeCOunt+1 ;
+
+                            // getting the like count from the view
+                            likeCOunt = Integer.parseInt(holder.likeVIew.getText().toString())+ 1 ;
+
 
                             holder.loveBtn.setImageDrawable(getResources().getDrawable(R.drawable.redlove));
                             holder.loveBtn.setTag("DONE");
@@ -216,6 +219,7 @@ public class newsFeed extends AppCompatActivity {
                         else{
 
                             Toast.makeText(getApplicationContext(), "You All Ready Liked This Item  " , Toast.LENGTH_SHORT).show();
+                            holder.loveBtn.setTag("DONE");
                            // holder.loveBtn.setImageDrawable(getResources().getDrawable(R.drawable.lovereat3));
                         }
 
@@ -251,6 +255,7 @@ public class newsFeed extends AppCompatActivity {
         //setting adapter
 
         mrecyclerView.setAdapter(firebaseRecyclerAdapter);
+     //   mrecyclerView.getRecycledViewPool().setMaxRecycledViews(0, 0);
 
     }
 

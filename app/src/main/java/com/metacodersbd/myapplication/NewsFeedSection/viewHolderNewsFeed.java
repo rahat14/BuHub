@@ -37,6 +37,7 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
     public  ImageButton loveBtn ;
     public    ImageView imagep ;
     public  ImageButton shareBtn ;
+    TextView likeVIew ;
 
 
 
@@ -56,12 +57,10 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
 
 
 
-        loveBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+
+
+
 
 
 
@@ -71,7 +70,7 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
 
     //setting details for row loaded into recycle view ROw
 
-    public  void  serDetails(Context ctx  ,String title, String image, String uid, String plink, String name ,String date , String pushid ){
+    public  void  serDetails(Context ctx  ,String title, String image, String uid, String plink, String name ,String date , String pushid , String likeCOunt ){
 
                         //assaging views
         TextView nameTv = mview.findViewById(R.id.name_newwsfeed);
@@ -79,20 +78,33 @@ public class viewHolderNewsFeed extends RecyclerView.ViewHolder {
         imageView_pp = mview.findViewById(R.id.image_profile_on_newsFeed);
         imagep = mview.findViewById(R.id.image_on_newsFeed);
         TextView dateView = mview.findViewById(R.id.rdateView);
+         likeVIew = mview.findViewById(R.id.likeCountView) ;
+
 
 
 
 
 
                         // Loading views
+
         nameTv.setText(name);
         titleTv.setText(title);
         dateView.setText(date);
+        likeVIew.setText(likeCOunt);
      //   Picasso.get().load(image).error(R.drawable.loadingdialoge).into(imagep);
 
+        if(image.equals("null")){
 
-        Glide.with(ctx).load(plink).placeholder(R.drawable.plaementpro).into(imageView_pp);
-       Glide.with(ctx).load(image).error(R.drawable.loadingdialoge).diskCacheStrategy(DiskCacheStrategy.ALL).error(R.drawable.f).into(imagep);
+            imagep.setVisibility(View.GONE);
+        }
+        else {
+            imagep.setVisibility(View.VISIBLE);
+            Glide.with(ctx).load(image).error(R.drawable.f).diskCacheStrategy(DiskCacheStrategy.ALL).into(imagep);
+
+        }
+
+        Glide.with(ctx).load(plink).error(R.drawable.plaementpro).into(imageView_pp);
+
 
     //    Picasso.get().load(image).placeholder(R.drawable.loadingdialoge).error(R.drawable.loadingdialoge).into(imagep);
       //  Picasso.get().load(plink).error(R.drawable.loadingdialoge).into(imageView_pp);

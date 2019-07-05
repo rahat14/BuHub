@@ -92,9 +92,8 @@
 
             <ImageView
                 android:id="@+id/image_on_newsFeed"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
                 android:adjustViewBounds="true" />
             <Space
                 android:layout_width="match_parent"
@@ -116,6 +115,15 @@
                     android:background="@drawable/round_button"
                     android:id="@+id/loveReacBtn"
                     />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="00"
+                    android:id="@+id/likeCountView"
+                    android:fontFamily="@font/mon_regular"
+                    android:layout_gravity="center"/>
+
                 <ImageButton
                     android:layout_width="40dp"
                     android:layout_height="40dp"

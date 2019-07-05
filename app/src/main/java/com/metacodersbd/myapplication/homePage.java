@@ -182,7 +182,7 @@ public  static   String pimageLink  ,naaam  ;
             @Override
             public void onClick(View v) {
                 Intent o = new Intent(getApplicationContext() , userList.class);
-                o.putExtra("DBNAME" ,dpart_Firebase );
+
                 startActivity(o);
             }
         });
@@ -191,6 +191,7 @@ public  static   String pimageLink  ,naaam  ;
             @Override
             public void onClick(View v) {
                 Intent ROutine = new Intent(getApplicationContext(), RoutineActivity.class);
+                ROutine.putExtra("DBNAME" ,dpart_Firebase );
                 startActivity(ROutine);
             }
         });
