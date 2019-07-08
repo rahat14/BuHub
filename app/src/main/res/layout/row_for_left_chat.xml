@@ -45,6 +45,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
+            android:autoLink="all"
+            android:linksClickable="true"
+            android:clickable="true"
             android:background="@drawable/rounded_rectangle_green_bubble"
             android:padding="9dp"
             android:layout_marginStart="25dp"
@@ -53,7 +56,8 @@
             android:text="hi man, how are you?"
             android:textStyle="bold"
             android:fontFamily="@font/mon_regular"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:focusable="true" />
 
         <TextView
             android:layout_width="wrap_content"
