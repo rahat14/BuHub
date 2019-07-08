@@ -33,6 +33,8 @@ public class english_pdf_list extends AppCompatActivity {
     RecyclerView mrecyclerView ;
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef ;
+    GridLayoutManager mLayoutManager ;
+
     public ProgressBar cse_bar ;
     FirebaseRecyclerAdapter<Model , viewHolder_cse>firebaseRecyclerAdapter ;
     FirebaseRecyclerOptions<Model> options ;
@@ -56,7 +58,7 @@ public class english_pdf_list extends AppCompatActivity {
         mlayoutManager = new LinearLayoutManager(this);
 
 
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this , 2 );
+         mLayoutManager = new GridLayoutManager(this , 2 );
 
         mrecyclerView.setLayoutManager(mLayoutManager);
         //send Query to FirebaseDatabase
@@ -142,7 +144,7 @@ public class english_pdf_list extends AppCompatActivity {
             }
         };
 
-        mrecyclerView.setLayoutManager(mlayoutManager);
+        mrecyclerView.setLayoutManager(mLayoutManager);
         firebaseRecyclerAdapter.startListening();
         //setting adapter
 
@@ -216,7 +218,7 @@ public class english_pdf_list extends AppCompatActivity {
             }
         };
 
-        mrecyclerView.setLayoutManager(mlayoutManager);
+        mrecyclerView.setLayoutManager(mLayoutManager);
         firebaseRecyclerAdapter.startListening();
         //setting adapter
 

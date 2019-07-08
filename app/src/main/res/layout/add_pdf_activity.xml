@@ -25,6 +25,16 @@
         android:id="@+id/PDF_Writer_NAME"
         android:hint="Enter The Wrtiter Name OF PDF"/>
 
+    <Spinner
+        android:layout_marginTop="10dp"
+        android:id="@+id/spinnerOfDept"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+
+    </Spinner>
+
     <com.github.ybq.android.spinkit.SpinKitView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/spin_kit"

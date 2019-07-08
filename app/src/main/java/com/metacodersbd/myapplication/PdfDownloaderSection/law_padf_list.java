@@ -35,6 +35,7 @@ public class law_padf_list extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase ;
     DatabaseReference mRef ;
     public ProgressBar cse_bar ;
+    GridLayoutManager mLayoutManager ;
     FirebaseRecyclerAdapter<Model , viewHolder_cse>firebaseRecyclerAdapter ;
     FirebaseRecyclerOptions<Model> options ;
 
@@ -57,7 +58,7 @@ public class law_padf_list extends AppCompatActivity {
         mlayoutManager = new LinearLayoutManager(this);
 
 
-        GridLayoutManager mLayoutManager = new GridLayoutManager(this , 2 );
+         mLayoutManager = new GridLayoutManager(this , 2 );
 
         mrecyclerView.setLayoutManager(mLayoutManager);
         //send Query to FirebaseDatabase
@@ -141,7 +142,7 @@ showData();
             }
         };
 
-        mrecyclerView.setLayoutManager(mlayoutManager);
+        mrecyclerView.setLayoutManager(mLayoutManager);
         firebaseRecyclerAdapter.startListening();
         //setting adapter
 
@@ -215,7 +216,7 @@ showData();
             }
         };
 
-        mrecyclerView.setLayoutManager(mlayoutManager);
+        mrecyclerView.setLayoutManager(mLayoutManager);
         firebaseRecyclerAdapter.startListening();
         //setting adapter
 
