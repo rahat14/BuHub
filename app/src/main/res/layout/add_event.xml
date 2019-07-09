@@ -8,8 +8,9 @@
     tools:context=".AddEvent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/mon_bold"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:text="Create Event"
@@ -34,6 +35,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/mon_regular"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:text="Event Name "
@@ -42,6 +44,7 @@
 
         <EditText
             android:id="@+id/evntName"
+            android:fontFamily="@font/mon_bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -52,6 +55,7 @@
             android:textColorHint="#C7C7C7"
             android:hint="eg.Cultural night" />
             <TextView
+                android:fontFamily="@font/mon_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -63,6 +67,7 @@
             <EditText
                 android:id="@+id/event_details"
                 android:layout_width="match_parent"
+                android:fontFamily="@font/mon_bold"
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:drawableEnd="@drawable/ic_description_blue"
@@ -74,9 +79,9 @@
             <Spinner
                 android:id="@+id/DeptName"
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center_vertical"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_marginTop="20dp"
                 android:entries="@array/DPT_array">
 
@@ -87,12 +92,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:fontFamily="@font/mon_bold"
                 android:layout_marginTop="20dp"
-                android:text="Event date"
+                android:text="Click To Add Event date"
                 android:textColor="#000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
             <TextView
                 android:id="@+id/start_date"
+                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -105,15 +112,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
-                android:text="Event date"
+                android:fontFamily="@font/mon_bold"
+                android:text="Click To Add Event Time"
                 android:textColor="#000"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
             <TextView
                 android:id="@+id/time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/mon_bold"
                 android:textColor="#000"
                 android:textSize="16sp" />
 
@@ -125,13 +134,15 @@
 
                 >
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     android:layout_width="300dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center|bottom"
                     android:background="@drawable/gradient_back0"
                     android:layout_marginBottom="20dp"
                     android:text="CREATE EVENT"
+                    android:id="@+id/submitBtn"
+                    android:fontFamily="@font/mon_bold"
                     android:textColor="#fff"
                     android:textSize="18sp"/>
 

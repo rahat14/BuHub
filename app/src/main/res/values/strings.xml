@@ -24,6 +24,15 @@
         <item>AB+</item>
         <item>AB-</item>
     </string-array>
+    <string-array name="DPTarray">
+        <item>Choose Department</item>
+        <item>All</item>
+        <item>Bba</item>
+        <item>Law</item>
+        <item>Eng</item>
+        <item>Eco</item>
+        <item>Cse</item>
+    </string-array>
 
 
     <string name="widget_text_arc_battery">CGPA</string>

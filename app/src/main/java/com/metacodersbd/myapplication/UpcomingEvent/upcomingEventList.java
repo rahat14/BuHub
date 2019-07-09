@@ -104,7 +104,7 @@ public class upcomingEventList extends AppCompatActivity {
 
                // String  pushId , String id ,String titte ,String desc ,String date ,String month,String fee ,String venu
                 holder.setViewToRow(getApplicationContext(), model.getPushId(), model.getId(),
-                        model.getTitte(), model.getDesc(), model.getDate() , model.getMonth() , model.getFee() , model.getVenu());
+                        model.getTitte(), model.getDesc(), model.getDate() , model.getMonth() , model.getFee() , model.getVenu() ,model.getTime() , model.getDpt());
 
 
 

@@ -26,7 +26,7 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
 
     }
 
-    public  void setViewToRow(Context ctx , String  pushId , String id , String titte , String desc , String date , String month, String fee , String venu ){
+    public  void setViewToRow(Context ctx, String pushId, String id, String titte, String desc, String date, String month, String fee, String venu, String time, String dpt){
 
         TextView title =mView.findViewById(R.id.ttileOnRow) ;
         TextView description = mView.findViewById(R.id.descOnRow);
@@ -34,7 +34,6 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
         TextView monTv =mView.findViewById(R.id.monOnROw) ;
         TextView feeTv = mView.findViewById(R.id.feeOnRow);
         TextView venuTv = mView.findViewById(R.id.venuOnRow);
-
 
 //setting data to view ;
 
