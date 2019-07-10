@@ -7,15 +7,27 @@
     android:orientation="vertical"
     tools:context=".AddEvent">
 
+
+    <ProgressBar
+        android:id="@+id/progresBarEvent"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:progressTint="#00E90101"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/mon_bold"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"
-        android:text="Create Event"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Create A Event"
         android:textColor="#000"
-        android:textSize="20sp" />
+        android:textSize="25sp" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
@@ -27,6 +39,7 @@
         app:cardCornerRadius="5dp">
 
         <LinearLayout
+            android:layout_marginTop="-20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
@@ -171,13 +184,14 @@
                 android:text="Click To Add Event date"
                 android:textColor="#000"
                 android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/start_date"
-                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/mon_regular"
                 android:textColor="#000"
                 android:textSize="16sp" />
             <TextView
@@ -201,6 +215,7 @@
                 android:textSize="16sp" />
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"

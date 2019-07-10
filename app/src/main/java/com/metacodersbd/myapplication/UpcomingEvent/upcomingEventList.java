@@ -212,6 +212,7 @@ public class upcomingEventList extends AppCompatActivity {
 
                                                 Intent i = new Intent(upcomingEventList.this , addEvent.class) ;
                                                 startActivity(i);
+                                                finish();
 
 
                                             }
