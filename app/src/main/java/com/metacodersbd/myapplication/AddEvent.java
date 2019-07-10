@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class AddEvent extends AppCompatActivity {
 
     TextView datePkr_dialog,mdate,timePkr_dialog,time;
-    EditText evntName, event_details;
+    EditText evntName, event_details,eVenue ,  eFee;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,8 @@ public class AddEvent extends AppCompatActivity {
        timePkr_dialog = findViewById(R.id.timePkr_dialog);
        evntName = (EditText)findViewById(R.id.evntName);
        event_details = (EditText)findViewById(R.id.event_details);
+       eFee = (EditText)findViewById(R.id.eVenue);
+       eVenue = (EditText)findViewById(R.id.eVenue);
 
 
 
