@@ -56,9 +56,9 @@ public class pdfViewerByDpartment extends AppCompatActivity {
         bba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Intent i = new Intent(getApplicationContext(), bba_pdf_list.class);
-               // startActivity(i);
-                Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getApplicationContext(), bba_pdf_list.class);
+              startActivity(i);
+             //   Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -66,9 +66,9 @@ public class pdfViewerByDpartment extends AppCompatActivity {
         law.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             //   Intent i = new Intent(getApplicationContext(), law_padf_list.class);
-             //   startActivity(i);
-                Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
+              Intent i = new Intent(getApplicationContext(), law_padf_list.class);
+              startActivity(i);
+             //   Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -76,9 +76,9 @@ public class pdfViewerByDpartment extends AppCompatActivity {
         eng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  Intent i = new Intent(getApplicationContext(), english_pdf_list.class);
-               // startActivity(i);
-                Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
+               Intent i = new Intent(getApplicationContext(), english_pdf_list.class);
+                startActivity(i);
+               // Toast.makeText(getApplicationContext(), "Coming Soon !!" , Toast.LENGTH_SHORT).show();
             }
         });
 

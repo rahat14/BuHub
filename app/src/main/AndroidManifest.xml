@@ -19,7 +19,8 @@
         android:name=".myapplication"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".UpcomingEvent.addEvent"></activity>
+        <activity android:name=".UpcomingEvent.addEvent"
+            android:theme="@style/Theme.MaterialComponents.Light"></activity>
         <activity android:name=".UpcomingEvent.upcomingEventList" />
         <activity android:name=".BloodActivity.myReq" />
         <activity android:name=".BloodActivity.requestedBloodList" />

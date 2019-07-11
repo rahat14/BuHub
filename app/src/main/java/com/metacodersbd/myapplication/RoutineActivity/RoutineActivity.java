@@ -44,6 +44,7 @@ public class RoutineActivity extends AppCompatActivity {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("routine").child(dbname);
 
+        databaseReference.keepSynced(true);
 
 
 

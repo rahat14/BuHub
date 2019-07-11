@@ -2,9 +2,14 @@ package com.metacodersbd.myapplication.UpcomingEvent;
 
 public class model {
 
-    String  pushId , id , titte , desc , date , month, fee , venu ;
+    String  pushId , id , titte , desc , date , month, fee , venu  ,time  , dpt ;
 
-    public model(String pushId, String id, String titte, String desc, String date, String month, String fee, String venu) {
+
+
+    public model() {
+    }
+
+    public model(String pushId, String id, String titte, String desc, String date, String month, String fee, String venu, String time, String dpt) {
         this.pushId = pushId;
         this.id = id;
         this.titte = titte;
@@ -13,9 +18,25 @@ public class model {
         this.month = month;
         this.fee = fee;
         this.venu = venu;
+        this.time = time;
+        this.dpt = dpt;
     }
 
-    public model() {
+    public String getDpt() {
+        return dpt;
+    }
+
+    public void setDpt(String dpt) {
+        this.dpt = dpt;
+    }
+
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getPushId() {

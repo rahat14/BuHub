@@ -1,7 +1,9 @@
 package com.metacodersbd.myapplication.UpcomingEvent;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,8 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
 
     View mView ;
 
+    LinearLayout colorID ;
+
 
     public viewHolderForEventList(@NonNull View itemView) {
 
@@ -21,31 +25,12 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
         mView = itemView ;
 
 
-        //item click
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-
-                mClickListener.onItemClick(v , getAdapterPosition());
-
-            }
-        });
-
-        //item long click
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mClickListener.onItemClick(v , getAdapterPosition());
-
-                return true;
-            }
-        });
 
 
     }
 
-    public  void setViewToRow(Context ctx , String  pushId , String id , String titte , String desc , String date , String month, String fee , String venu ){
+    public  void setViewToRow(Context ctx, String pushId, String id, String titte, String desc, String date, String month, String fee, String venu, String time, String dpt){
 
         TextView title =mView.findViewById(R.id.ttileOnRow) ;
         TextView description = mView.findViewById(R.id.descOnRow);
@@ -53,6 +38,9 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
         TextView monTv =mView.findViewById(R.id.monOnROw) ;
         TextView feeTv = mView.findViewById(R.id.feeOnRow);
         TextView venuTv = mView.findViewById(R.id.venuOnRow);
+        TextView timeView = mView.findViewById(R.id.TimeOnRow);
+        colorID = mView.findViewById(R.id.colorChangeId);
+
 
 
 //setting data to view ;
@@ -63,23 +51,28 @@ public class viewHolderForEventList extends RecyclerView.ViewHolder {
         monTv.setText(month);
         feeTv.setText(fee);
         venuTv.setText(venu);
+        timeView.setText("Start Time :" + time);
+
+        if ( dpt.contains("BBA")){
 
 
+            colorID.setBackgroundColor(Color.parseColor("#673ab7"));
+
+
+        }
+        else if (dpt.contains("ENG")){
+
+            colorID.setBackgroundColor(Color.parseColor("#ffc107"));
+        }
+
+        else if (dpt.contains("LAW")){
+
+            colorID.setBackgroundColor(Color.parseColor("#2196f3"));
+        }
 
     }
 
-    private static viewHolderForEventList.ClickListener mClickListener;
 
-    //interface to send callbacks
-    public interface ClickListener{
-
-
-        void onItemClick(View view, int position);
-        void onItemLongClick(View view, int position);
-    }
-    public static void setOnClickListener(viewHolderForEventList.ClickListener clickListener){
-        mClickListener = clickListener;
-    }
 
 
 

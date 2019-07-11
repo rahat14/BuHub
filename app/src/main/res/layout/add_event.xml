@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddEvent">
+
+
+    <ProgressBar
+        android:id="@+id/progresBarEvent"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:progressTint="#00E90101"
+        android:visibility="invisible"
+        tools:visibility="invisible" />
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/mon_bold"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Create A Event"
+        android:textColor="#000"
+        android:textSize="25sp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="350dp"
+        android:layout_height="550dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
+        android:layout_gravity="center"
+        android:background="#F3ECEC"
+        app:cardCornerRadius="5dp">
+
+        <LinearLayout
+            android:layout_marginTop="-20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/mon_regular"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Event Name "
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/evntName"
+            android:fontFamily="@font/mon_bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_marginLeft="20dp"
+            android:textColor="#000"
+            android:textSize="16sp"
+            android:drawableEnd="@drawable/ic_event_note_orange"
+            android:textColorHint="#C7C7C7"
+            android:hint="eg.Cultural night" />
+            <TextView
+                android:fontFamily="@font/mon_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:text="Event Details "
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/event_details"
+                android:layout_width="match_parent"
+                android:fontFamily="@font/mon_bold"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:drawableEnd="@drawable/ic_description_blue"
+                android:layout_marginLeft="20dp"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textColorHint="#C7C7C7"
+                android:hint="Event Description" />
+            <Spinner
+                android:id="@+id/DeptName"
+                android:layout_width="208dp"
+                android:layout_height="40dp"
+                android:layout_gravity="start"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="15dp"
+                android:entries="@array/DPT_array">
+
+            </Spinner>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/mon_regular"
+                    android:text="Entry Fee :"
+                    android:textColor="#000"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/eFee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/mon_bold"
+                    android:hint="Entry fee"
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:textColorHint="#C7C7C7"
+                    android:textSize="16sp" />
+
+
+
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/mon_regular"
+                    android:text="Venue:"
+                    android:textColor="#000"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/eVenue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="bottom"
+                    android:layout_marginLeft="10dp"
+                    android:fontFamily="@font/mon_bold"
+                    android:hint="3rd Floor, BU"
+                    android:inputType="text"
+                    android:drawableEnd="@drawable/ic_add_location"
+                    android:textColor="#000"
+                    android:textColorHint="#C7C7C7"
+                    android:textSize="16sp" />
+
+
+
+
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/strt_datePkr_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/mon_regular"
+                android:layout_marginTop="20dp"
+                android:text="Click To Add Event date"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/mon_regular"
+                android:textColor="#000"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/timePkr_dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/mon_regular"
+                android:text="Click To Add Event Time"
+                android:textColor="#000"
+                android:textSize="16sp" />
+            <TextView
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/mon_regular"
+                android:textColor="#000"
+                android:textSize="16sp" />
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+
+                >
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center|bottom"
+                    android:background="@drawable/gradient_back0"
+                    android:layout_marginBottom="20dp"
+                    android:text="CREATE EVENT"
+                    android:id="@+id/submitBtn"
+                    android:fontFamily="@font/mon_bold"
+                    android:textColor="#fff"
+                    android:textSize="18sp"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

@@ -13,8 +13,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.github.ybq.android.spinkit.SpinKitView;
@@ -37,29 +40,41 @@ import java.util.UUID;
 public class AddPdfActivity extends AppCompatActivity {
 
     FirebaseDatabase database;
-    DatabaseReference UserRef  ;
+    DatabaseReference  UserRef  ;
     FirebaseStorage storage ;
     CardView upload , fireUpload;
     EditText name ,  writer ;
+    Spinner spinner ;
+    ArrayAdapter<CharSequence> adapter ;
 
     SpinKitView spinKitView ;
 
 Uri pdfuri ;
 String ts = "default";
 ImageView  imagev ;
-String Name , writer_Name ;
+String Name , writer_Name ,db  ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_pdf_activity);
 
-            imagev = (ImageView) findViewById(R.id.dImageONPDF);
+        imagev = (ImageView) findViewById(R.id.dImageONPDF);
         upload = (CardView)findViewById(R.id.uploadBtn_pdf) ;
         fireUpload = (CardView)findViewById(R.id.fireUPLOAD) ;
         name = (EditText)findViewById(R.id.PDF_NAME) ;
         writer = (EditText)  findViewById(R.id.PDF_Writer_NAME);
+        spinner = findViewById(R.id.spinnerOfDept);
+
 
         spinKitView = findViewById(R.id.spin_kit);
+
+        // sestting the spinner to the view ;
+        // intinal spinner
+
+        ArrayAdapter <String> adapter = new ArrayAdapter<String>(getApplicationContext() , android.R.layout.simple_spinner_item
+                ,getResources().getStringArray(R.array.DPT_array));
+        adapter.setDropDownViewResource(android.R.layout.simple_selectable_list_item);
+        spinner.setAdapter(adapter);
 
 
 
@@ -72,7 +87,8 @@ String Name , writer_Name ;
 
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
-        UserRef = FirebaseDatabase.getInstance().getReference("Pdf_db").child("CSE");
+
+
 
         fireUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,9 +96,11 @@ String Name , writer_Name ;
 
                 Name = name.getText().toString();
                 writer_Name = writer.getText().toString();
+                db = spinner.getSelectedItem().toString().toUpperCase() ;
 
 
-                if(pdfuri != null && !TextUtils.isEmpty(Name) && !TextUtils.isEmpty(writer_Name)){
+
+                if(pdfuri != null && !TextUtils.isEmpty(Name) && !TextUtils.isEmpty(writer_Name)  && !db.contains("CHOOSE DEPARTMENT")){
 
 
                     spinKitView.setVisibility(View.VISIBLE);
@@ -128,6 +146,9 @@ else {
 
     }
 
+
+
+
     private void uploadfile(Uri pdfuri) {
         final String randomName = UUID.randomUUID().toString();
         StorageReference storageReference = storage.getReference("Pdf_CSE");
@@ -152,7 +173,7 @@ else {
                 Uri downloaduri = uriTask.getResult();
 
                 modelForPdfUpload model = new modelForPdfUpload(Name , downloaduri.toString() , writer_Name);
-
+                UserRef = FirebaseDatabase.getInstance().getReference("Pdf_db").child(db) ;
                  ts =UserRef.push().getKey() ;
                 UserRef.child(ts).setValue(model);
 
@@ -212,23 +233,25 @@ else {
 
 }
     @Override
-    protected void onActivityResult ( int requestCode, int resultCode, Intent data){
+    protected void onActivityResult ( int requestCode, int resultCode, Intent data) {
 
 
-if(requestCode == 86 && resultCode== RESULT_OK && data!= null){
+        super.onActivityResult(requestCode, resultCode, data);
 
-            pdfuri =data.getData();
+        if (requestCode == 86 && resultCode == RESULT_OK && data != null) {
+
+            pdfuri = data.getData();
 
 
-
-}
-else {
-    Toast.makeText(getApplicationContext() , "Plz Select A File" , Toast.LENGTH_SHORT).show();
-
-}
-
+        } else {
+            Toast.makeText(getApplicationContext(), "Plz Select A File", Toast.LENGTH_SHORT).show();
 
         }
+
+
+    }
+
+
 
 
 
