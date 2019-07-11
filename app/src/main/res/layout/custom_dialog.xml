@@ -1,65 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#039be5">
+
+    <EditText
+        android:id="@+id/BookName_edit"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="18dp">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="18dp"
+        android:focusableInTouchMode="true"
+        android:hint="Enter Book Name"
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/BookName_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:padding="12dp"
-            android:hint="Enter Book Name"
-            android:inputType="text"
-            android:focusableInTouchMode="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+        android:id="@+id/edt_writer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:hint="Enter the Writer Name  "
+        android:inputType="text"
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BookName_edit" />
 
-        <EditText
-            android:id="@+id/edt_writer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:hint="Enter the Writer Name  "
-            android:inputType="text"
-            android:padding="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/BookName_edit" />
+    <Button
+        android:id="@+id/buttonSubmit"
+        android:layout_width="106dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_white_normal"
+        android:text="submit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
+        app:layout_constraintHorizontal_bias="0.745"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edt_writer"
+        app:layout_constraintVertical_bias="0.075" />
 
-        <Button
-            android:id="@+id/buttonSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
-            android:text="submit"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_writer" />
-
-        <Button
-            android:id="@+id/buttonCancel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edt_writer" />
-
-
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="106dp"
+        android:layout_height="46dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_white_normal"
+        android:text="cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buttonSubmit"
+        app:layout_constraintTop_toBottomOf="@+id/edt_writer"
+        app:layout_constraintVertical_bias="0.075" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

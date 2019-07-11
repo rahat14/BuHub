@@ -14,6 +14,7 @@
         android:layout_width="300dp"
         android:textColorHint="#fff"
         android:textColor="#fff"
+        android:paddingLeft="12dp"
         android:layout_height="wrap_content"
         android:hint="Enter The Name OF PDF" />
 
@@ -22,19 +23,17 @@
         android:textColor="#fff"
         android:layout_height="wrap_content"
         android:textColorHint="#fff"
+        android:paddingLeft="12dp"
         android:id="@+id/PDF_Writer_NAME"
-        android:hint="Enter The Wrtiter Name OF PDF"/>
+        android:hint="Enter The Wrtiter Name OF PDF" />
 
-    <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.github.ybq.android.spinkit.SpinKitView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/spin_kit"
         style="@style/SpinKitView.Large.Circle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:SpinKit_Color="#e74c3c" />
-
-
 
 
     <LinearLayout
@@ -46,91 +45,87 @@
         android:orientation="horizontal">
 
 
-
         <androidx.cardview.widget.CardView
             android:clickable="true"
             android:id="@+id/uploadBtn_pdf"
-          android:layout_width="wrap_content"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:elevation="6dp"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="0dp"
             android:layout_margin="12dp"
             app:cardElevation="12dp"
-
             android:focusable="true">
 
-<LinearLayout
-    android:layout_margin="10dp"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:background="#fff"
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="#fff"
 
-    >
+                >
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="70dp"
-        android:id="@+id/dImageONPDF"
-        android:src="@drawable/addpdf" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ADD PDF"
-        android:layout_gravity="center"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        />
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:id="@+id/dImageONPDF"
+                    android:src="@drawable/addpdf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ADD PDF"
+                    android:layout_gravity="center"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
 
-
-</LinearLayout>
+            </LinearLayout>
 
 
         </androidx.cardview.widget.CardView>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/fireUPLOAD"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="6dp"
-        app:cardCornerRadius="12dp"
-        android:layout_margin="12dp"
-        app:cardElevation="12dp"
-
-        >
-
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:background="#fff"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/fireUPLOAD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="6dp"
+            app:cardCornerRadius="0dp"
+            android:layout_margin="12dp"
+            app:cardElevation="12dp"
 
             >
 
-            <ImageView
-                android:id="@+id/gggg"
-                android:layout_width="100dp"
-                android:layout_height="70dp"
-                android:src="@drawable/upload"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Upload PDF"
-                android:layout_gravity="center"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                />
+            <LinearLayout
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="#fff"
+
+                >
+
+                <ImageView
+                    android:id="@+id/gggg"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/upload" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Upload PDF"
+                    android:layout_gravity="center"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
 
 
+            </LinearLayout>
 
-        </LinearLayout>
 
-
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
 

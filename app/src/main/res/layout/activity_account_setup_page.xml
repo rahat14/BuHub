@@ -78,6 +78,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
@@ -108,14 +110,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/username_text_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
+                android:layout_gravity="center"
                 android:textColorHint="#ffff"
                 android:focusable="true"
                 android:textColor="#ffff"
@@ -134,7 +138,6 @@
                     android:id="@+id/batchnumber"
                     android:layout_width="220dp"
                     android:layout_height="50dp"
-                    android:layout_marginStart="25dp"
                     android:background="#55000000"
                     android:gravity="center"
                     android:hint=" Enter Your Admission Semster "
@@ -162,7 +165,7 @@
                 android:id="@+id/Cgpa_edit"
                 android:layout_width="220dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="80dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:background="#55000000"
                 android:gravity="center"
@@ -179,23 +182,27 @@
 
             <CheckBox
                 android:id="@+id/checkbox1"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginTop="10dp"
-                android:text="I Want To Become A Blood Donor To Save LIfe "
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="I Want To Become A Blood \n Donor To Save LIfe "
                 android:textColor="#fff"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/BGSelector"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:focusable="true"
                 android:focusableInTouchMode="true"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:hint="   Your Blood Group"
+                android:hint="Your Blood Group"
                 android:textColorHint="#ffff">
 
                 <Spinner

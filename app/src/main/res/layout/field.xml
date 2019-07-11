@@ -3,49 +3,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rowdetail"
     android:layout_width="match_parent"
-    android:layout_weight="4"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:layout_marginTop="2dp">
-    <EditText android:id="@+id/editDescricao2Credit"
-        android:layout_width="0dp"
-        android:layout_weight="2"
-        android:layout_marginStart="5dp"
-        android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_weight="4"
+    android:orientation="horizontal">
 
-        android:padding="5dp"
-        android:textSize="13sp"
-        android:hint=" Number Of Credit"
-        android:gravity="center"
+    <EditText
+        android:id="@+id/editDescricao2Credit"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="5dp"
+        android:layout_weight="2"
         android:background="@drawable/edittext_bg"
-        android:inputType="numberDecimal">
+        android:gravity="center"
+        android:hint=" Number Of Credit"
+        android:inputType="numberDecimal"
+        android:padding="5dp"
+        android:textSize="13sp">
         <requestFocus />
     </EditText>
 
     <Space
         android:layout_width="10dp"
         android:layout_height="10dp" />
- <EditText android:id="@+id/editDescricao_gpa"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-     android:background="@drawable/edittext_bg"
-        android:textSize="13sp"
-     android:padding="5dp"
-        android:hint="GPA"
-     android:inputType="textCapWords"
 
+    <EditText
+        android:id="@+id/editDescricao_gpa"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/edittext_bg"
         android:gravity="center"
-        >
+        android:hint="GPA"
+        android:inputType="textCapWords"
+        android:padding="5dp"
+
+        android:textSize="13sp">
+
         <requestFocus />
 
- </EditText>
+    </EditText>
 
 
-    <ImageButton android:id="@+id/btnRemove"
+    <ImageButton
+        android:id="@+id/btnRemove"
         android:layout_width="wrap_content"
-        android:layout_marginStart="12dp"
         android:layout_height="40dp"
+        android:layout_marginStart="12dp"
 
         android:src="@android:drawable/ic_delete" />
 </LinearLayout>
