@@ -622,15 +622,6 @@ public  static   String pimageLink  ,naaam  ;
 
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK) {
-            finish();
-            System.exit(0);
-            return true;
-        }
-        return super.onKeyDown(keyCode, event);
-    }
 
 
     public  void getTotalcountOFUsers(){
