@@ -245,8 +245,18 @@ CircleImageView image ;
 
                             // calling the method to upload image to firebase
 
+if (!dpt.contains("Choose Department")){
 
-                            uploadToFirebae();
+    uploadToFirebae();
+}
+else  {
+
+    Toast.makeText(getApplicationContext() , "Please Choose your Department" , Toast.LENGTH_SHORT)
+            .show();
+}
+
+
+
 //,..................................................................................................
 
 //....................................................................................

@@ -19,10 +19,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:orientation="horizontal"
+
             android:layout_gravity="center">
 
 
             <TextView
+
+                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Set Your\n  Profile"
@@ -33,6 +36,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="150dp"
@@ -64,6 +68,7 @@
                 android:focusable="true" />
 
             <TextView
+                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -83,9 +88,10 @@
             android:orientation="horizontal">
 
             <TextView
+                android:fontFamily="@font/mon_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginTop="4dp"
                 android:text="Select Your Department"
                 android:textColor="#ffff"
@@ -93,7 +99,6 @@
 
             <Spinner
                 android:id="@+id/dropDown"
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
@@ -131,6 +136,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ex.fall16 or spring 18 "
                     android:textColor="#ffff"
+                    android:fontFamily="@font/mon_regular"
                     android:layout_marginStart="4dp"
                     />
 
@@ -143,7 +149,7 @@
                     android:hint=" Enter Your Admission Semster "
                     android:textColorHint="#ffff"
 
-                    android:inputType="text"
+                    android:inputType="numberDecimal"
                     android:textColor="#ffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -169,6 +175,7 @@
                 android:layout_marginTop="10dp"
                 android:background="#55000000"
                 android:gravity="center"
+                android:fontFamily="@font/mon_regular"
                 android:textStyle="bold"
                 android:focusableInTouchMode="true"
                 android:hint="  Enter Your Current CGPA"
@@ -187,6 +194,7 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/mon_bold"
                 android:gravity="center"
                 android:layout_gravity="center"
                 android:text="I Want To Become A Blood \n Donor To Save LIfe "
@@ -223,6 +231,7 @@
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="35dp"
+                android:fontFamily="@font/mon_bold"
                 android:background="@drawable/gradient_1"
                 android:clickable="true"
                 android:foreground="?android:attr/selectableItemBackground"

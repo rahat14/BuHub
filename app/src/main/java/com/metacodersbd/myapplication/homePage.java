@@ -1,7 +1,10 @@
 package com.metacodersbd.myapplication;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -11,8 +14,11 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Html;
@@ -20,6 +26,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -95,6 +102,44 @@ public  static   String pimageLink  ,naaam  ;
                 .init();
 
 
+        // checing internetConnected Or Not
+
+        if (!isConnected(homePage.this)){
+
+            final Dialog dialog = new Dialog(homePage.this) ;
+            dialog.setContentView(R.layout.no_internet_dialgue) ;
+            dialog.setTitle("No Internet!!");
+
+
+            Button  ok = dialog.findViewById(R.id.ok) ;
+
+            Button exut = dialog.findViewById(R.id.exit) ;
+
+            dialog.show();
+
+
+
+            ok.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                }
+            });
+
+            exut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    homePage.this.finishAffinity();
+
+                }
+            });
+
+
+        }
+
+
+
 
         //linking the id
         logout=(CardView) findViewById(R.id.logOut);
@@ -118,6 +163,13 @@ public  static   String pimageLink  ,naaam  ;
         ChatRoom = findViewById(R.id.chatSystem);
         ebentLIST = findViewById(R.id.eventList);
 
+
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean fstart = prefs.getBoolean("firstStart", true);
+        if (fstart) {
+
+            show_Dialog_after_Install();
+        }
 
 
 
@@ -289,6 +341,21 @@ public  static   String pimageLink  ,naaam  ;
     @Override
     protected void onStart() {
         super.onStart();
+
+        FirebaseUser muser = mauth.getCurrentUser() ;
+        if (muser== null){
+
+
+
+            Intent o  = new Intent(getApplicationContext() , signIn_Controller.class);
+            startActivity(o);
+            finish();
+
+        }
+
+
+
+
     }
 
     private Bitmap getWidgetBitmap(Context context, double percentage) {
@@ -357,65 +424,6 @@ public  static   String pimageLink  ,naaam  ;
 
 // batch to meter
 
-    private Bitmap getWidgetBitmapBatch(Context context, int percentage) {
-
-        int width = 400;
-        int height = 400;
-        int stroke = 30;
-        int padding = 1;
-       int fin = 250 ;
-        float density = context.getResources().getDisplayMetrics().density;
-            if (percentage< 8 ){
-
-                fin  = 270 ;
-
-
-            }
-            else if (percentage > 8 ){
-                fin = 175 ;
-            }
-
-            else
-            {
-                fin = 240 ;
-            }
-
-
-        //Paint for arc stroke.
-        Paint paint = new Paint(Paint.FILTER_BITMAP_FLAG | Paint.DITHER_FLAG | Paint.ANTI_ALIAS_FLAG);
-        paint.setStrokeWidth(stroke);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeCap(Paint.Cap.ROUND);
-        //paint.setStrokeJoin(Paint.Join.ROUND);
-        //paint.setPathEffect(new CornerPathEffect(10) );
-
-        //Paint for text values.
-        Paint mTextPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mTextPaint.setTextSize((int) (context.getResources().getDimension(R.dimen.widget_text_large_value) / density));
-        mTextPaint.setAlpha((int) 255);
-
-        mTextPaint.setColor(Color.argb(255, 9, 198, 223));
-        mTextPaint.setTextAlign(Paint.Align.CENTER);
-
-        final RectF arc = new RectF();
-        arc.set((stroke/2) + padding, (stroke/2) + padding, width-padding-(stroke/2), height-padding-(stroke/2));
-
-        Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(bitmap);
-        //First draw full arc as background.
-        paint.setColor(Color.argb(75, 4, 78, 87));
-        canvas.drawArc(arc, 135, 275, false, paint);
-        //Then draw arc progress with actual value.
-        paint.setColor(Color.argb(255, 9, 198, 223));
-        canvas.drawArc(arc, 135, fin, false, paint);
-        //Draw text value.
-        canvas.drawText(percentage +"th", bitmap.getWidth() / 2, (bitmap.getHeight() - mTextPaint.ascent()) / 2, mTextPaint);
-        //Draw widget title.
-        mTextPaint.setTextSize((int) (context.getResources().getDimension(R.dimen.widget_text_large_title) / density));
-        canvas.drawText(context.getString(R.string.widget_text_arc_batch), bitmap.getWidth() / 2, bitmap.getHeight()-(stroke+padding), mTextPaint);
-
-        return  bitmap;
-    }
 
 
 
@@ -669,8 +677,63 @@ public  static   String pimageLink  ,naaam  ;
 
     }
 
+    // networkavailablity
+
+    public boolean isConnected(Context context) {
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
+                return true;
+            else return false;
+        } else
+            return false;
+    }
+
+    // trigger dialoge after install
+    private void show_Dialog_after_Install() {
 
 
+        new AlertDialog.Builder(this)
+                .setTitle("Hey Buians  !!")
+                .setMessage("Thanks For Installing The Beta Of The  App. Feel Free To Use It")
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this ,R.style.AlertDialogTheme);
+        builder.setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        homePage.this.finishAffinity();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
 
 
 

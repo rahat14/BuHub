@@ -80,7 +80,7 @@ FirebaseUser firebaseUser ;
         holder.messageTv.setText(msg);
         holder.timeTv.setText(time);
         holder.senderNmae.setText(senderName);
-        Picasso.with(context).load(link).placeholder(R.drawable.plaementpro).into(holder.profileView);
+        Picasso.get().load(link).placeholder(R.drawable.plaementpro).into(holder.profileView);
 
 
 
