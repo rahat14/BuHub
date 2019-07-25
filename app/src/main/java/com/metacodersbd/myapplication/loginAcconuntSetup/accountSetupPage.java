@@ -6,6 +6,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -25,6 +26,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +45,8 @@ import com.metacodersbd.myapplication.NewsFeedSection.addStory;
 import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.customDiagloueClass3;
 import com.metacodersbd.myapplication.homePage;
+import com.onesignal.OSPermissionSubscriptionState;
+import com.onesignal.OneSignal;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -94,8 +98,16 @@ CircleImageView image ;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_setup_page);
-         mauth = FirebaseAuth.getInstance() ;
-         user_id =mauth.getCurrentUser().getUid() ;
+        mauth = FirebaseAuth.getInstance() ;
+        user_id =mauth.getCurrentUser().getUid() ;
+
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .init();
+
+
+
+
 
 
         //saving the data came from other activitiy
@@ -130,6 +142,8 @@ CircleImageView image ;
                @Override
                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     dpt = parent.getItemAtPosition(position).toString() ;
+                   ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
+
                   //  Toast.makeText(getApplicationContext(), i , Toast.LENGTH_SHORT).show();
 
                }
@@ -150,6 +164,7 @@ CircleImageView image ;
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 bllod = parent.getItemAtPosition(position).toString() ;
+                ((TextView) parent.getChildAt(0)).setTextColor(Color.WHITE);
             }
 
             @Override
@@ -246,6 +261,13 @@ CircleImageView image ;
                             // calling the method to upload image to firebase
 
 if (!dpt.contains("Choose Department")){
+
+
+    OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
+    status.getPermissionStatus().getEnabled();
+
+    status.getSubscriptionStatus().getSubscribed();
+    OneSignal.sendTag("ID",dpt);
 
     uploadToFirebae();
 }

@@ -85,25 +85,28 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
+            android:layout_weight="4"
             android:orientation="horizontal">
 
             <TextView
-                android:fontFamily="@font/mon_regular"
+                android:fontFamily="@font/mon_bold"
                 android:layout_width="wrap_content"
+
                 android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
+                android:layout_marginStart="-15dp"
                 android:layout_marginTop="4dp"
-                android:text="Select Your Department"
+
+                android:text=" Your Dpt. is"
                 android:textColor="#ffff"
-                android:textSize="17dp" />
+                android:textSize="17sp" />
 
             <Spinner
                 android:id="@+id/dropDown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:textColor="#fff"
-                android:layout_marginTop="4dp">
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+               >
 
 
             </Spinner>
@@ -149,7 +152,7 @@
                     android:hint=" Enter Your Admission Semster "
                     android:textColorHint="#ffff"
 
-                    android:inputType="numberDecimal"
+
                     android:textColor="#ffff"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -175,11 +178,12 @@
                 android:layout_marginTop="10dp"
                 android:background="#55000000"
                 android:gravity="center"
+
                 android:fontFamily="@font/mon_regular"
                 android:textStyle="bold"
                 android:focusableInTouchMode="true"
                 android:hint="  Enter Your Current CGPA"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:textColor="#ffff"
                 android:textColorHint="#ffff"
                 android:textSize="14sp"
