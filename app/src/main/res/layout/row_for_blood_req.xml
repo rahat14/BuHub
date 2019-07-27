@@ -82,7 +82,7 @@
                 />
             <Button
                 android:id="@+id/request"
-                android:layout_width="150dp"
+                android:layout_width="130dp"
                 android:layout_height="30dp"
                 android:background="@drawable/gradient_rect"
                 android:text="Requested"
@@ -92,7 +92,7 @@
 
                 android:layout_marginTop="10dp"
                 android:textStyle="normal"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textColor="#FFFFFF"
                 />
 
