@@ -68,7 +68,7 @@
         android:textColor="#000"
         android:layout_marginTop="30dp"/>
     <LinearLayout
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -180,17 +180,25 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginTop="50dp"
-        android:textColor="#ffff"
-        android:fontFamily="@font/mon_bold"
-        android:background="@drawable/gradient_back"
-        android:text="Submit"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|center"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:background="@drawable/gradient_back"
+            android:fontFamily="@font/mon_bold"
+            android:text="Submit"
+            android:layout_gravity="center"
+            android:layout_marginBottom="30dp"
+            android:textColor="#ffff" />
+    </LinearLayout>
+
+
 
 </LinearLayout>

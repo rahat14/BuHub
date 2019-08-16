@@ -5,16 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#b90142"
+    android:background="@color/white"
     >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_marginTop="150dp">
+        >
 
 
 
@@ -31,16 +31,16 @@
         android:layout_width="300dp"
         android:layout_height="105dp"
         android:layout_gravity="center"
-        app:cardBackgroundColor="#ffcff3"
         app:cardElevation="4dp"
         app:cardMaxElevation="6dp"
-        app:cardCornerRadius="10dp"
-        app:contentPadding="25dp">
+        app:cardCornerRadius="50dp"
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center"
+            android:background="@drawable/gradient_ovel_pink"
            >
 
             <TextView
@@ -50,7 +50,8 @@
                 android:text="Post request"
                 android:textSize="23sp"
                 android:textStyle="bold"
-                android:textColor="#000"
+                android:textColor="#FFFFFF"
+                android:fontFamily="@font/mon_bold"
                 android:layout_gravity="center"
                 android:gravity="center"/>
 
@@ -83,12 +84,15 @@
             app:cardElevation="4dp"
             app:cardMaxElevation="6dp"
             app:cardCornerRadius="10dp"
-            app:contentPadding="25dp">
+            android:padding="25dp"
+           >
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
+                android:padding="25dp"
+                android:background="@drawable/gradient_ovel_orange"
                 >
 
                 <TextView
@@ -98,7 +102,8 @@
                     android:text="Search blood"
                     android:textSize="23sp"
                     android:textStyle="bold"
-                    android:textColor="#000"
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="@font/mon_bold"
                     android:layout_gravity="center"
                     android:gravity="center"/>
 
