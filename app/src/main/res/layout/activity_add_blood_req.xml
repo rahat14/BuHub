@@ -242,8 +242,8 @@
                 android:textColor="#D0CECE"/>
             <Button
                 android:id="@+id/bldGroupIdBpos"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@drawable/trns_back"
                 android:text="B+"
                 android:layout_marginStart="10dp"
