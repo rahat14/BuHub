@@ -109,7 +109,6 @@
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="20dp"
-
                     android:src="@drawable/lovereat3"
                     android:tag="ok"
                     android:background="@drawable/round_button"

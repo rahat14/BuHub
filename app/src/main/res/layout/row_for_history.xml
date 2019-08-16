@@ -4,6 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
     android:background="#fff"
 
     >
@@ -13,19 +14,17 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp"
-        app:contentPaddingRight="10dp"
-        app:contentPaddingLeft="10dp"
-        app:contentPadding="5dp"
-        app:cardUseCompatPadding="true"
 
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:background="#fff"
+                android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -43,8 +42,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:layout_marginStart="10dp"
-                    android:textSize="17sp"
+                    android:layout_marginStart="5dp"
+                    android:textSize="14sp"
+                    android:layout_weight="1"
                     android:textColor="#000"
                     android:layout_marginTop="12dp"
                     android:text="Andorid k "/>
@@ -53,26 +53,30 @@
                     android:id="@+id/rdateView_history"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
                     android:textSize="12sp"
+                    android:layout_weight="1"
                     android:textColor="#000"
                     android:layout_marginTop="12dp"
                     android:text="26/5/2017"/>
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="45dp"
                     android:text="Delete"
+                    android:layout_weight="1"
+                    android:textColor="#ffff"
+                    android:fontFamily="@font/mon_bold"
+                    android:background="#F44336"
                     android:id="@+id/dlteButton_history"
                     android:layout_marginTop="12dp"
-                    android:layout_marginStart="12dp"/>
+                    android:layout_marginStart="-15dp"/>
 
             </LinearLayout>
 
 
             <ImageView
-                android:layout_marginTop="2dp"
-                android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
                 android:id="@+id/image_on_newsFeed_history"
 
                 android:adjustViewBounds="true"

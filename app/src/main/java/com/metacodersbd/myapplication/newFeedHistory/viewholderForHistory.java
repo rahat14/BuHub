@@ -59,7 +59,16 @@ public class viewholderForHistory extends RecyclerView.ViewHolder{
 
       int  len = image.length();
 
-      Glide.with(ctx).load(image).placeholder(R.drawable.loadingdialoge).into(imagep);
+
+      if(image.contains("null")){
+
+            imagep.setVisibility(View.GONE);
+
+      }
+else  {
+        Glide.with(ctx).load(image).placeholder(R.drawable.loadingdialoge).into(imagep);
+      }
+
 
 
 

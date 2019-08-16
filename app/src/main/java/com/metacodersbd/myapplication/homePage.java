@@ -24,7 +24,6 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -50,7 +49,6 @@ import com.metacodersbd.myapplication.UpcomingEvent.upcomingEventList;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
 import com.metacodersbd.myapplication.loginAcconuntSetup.signIn_Controller;
 import com.metacodersbd.myapplication.CgpaCalculator.ReminderActivity;
-import com.metacodersbd.myapplication.userList.userList;
 import com.metacodersbd.myapplication.weatherManagement.Function;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
@@ -58,14 +56,21 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 import io.fabric.sdk.android.Fabric;
 
 
 public class homePage extends AppCompatActivity {
-ImageView cgpameter  ;
+    private static final int PERMISSION_REQUESTS = 1;
+    private static final String TAG = "CHOOSE";
+    ImageView cgpameter  ;
 CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom , ebentLIST  ;
 FirebaseUser user ;
 FirebaseAuth mauth ;
@@ -170,7 +175,9 @@ public  static   String pimageLink  ,naaam  ;
 
             show_Dialog_after_Install();
         }
-
+        if (!allPermissionsGranted()) {
+            getRuntimePermissions();
+        }
 
 
 //linking font
@@ -230,14 +237,24 @@ public  static   String pimageLink  ,naaam  ;
             }
         });
 
+
+
         userList_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent o = new Intent(getApplicationContext() , userList.class);
 
-                startActivity(o);
+
+
+
+
+
+
             }
         });
+
+
+
+       
 
         ROutine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -702,7 +719,7 @@ public  static   String pimageLink  ,naaam  ;
         new AlertDialog.Builder(this)
                 .setTitle("Hey Buians  !!")
                 .setMessage("Thanks For Installing The Beta Of The  App. Feel Free To Use It")
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -733,6 +750,56 @@ public  static   String pimageLink  ,naaam  ;
         AlertDialog alert = builder.create();
         alert.show();
 
+    }
+
+
+    private String[] getRequiredPermissions() {
+        try {
+            PackageInfo info =
+                    this.getPackageManager()
+                            .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
+            String[] ps = info.requestedPermissions;
+            if (ps != null && ps.length > 0) {
+                return ps;
+            } else {
+                return new String[0];
+            }
+        } catch (Exception e) {
+            return new String[0];
+        }
+    }
+
+    private boolean allPermissionsGranted() {
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void getRuntimePermissions() {
+        List<String> allNeededPermissions = new ArrayList<>();
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                allNeededPermissions.add(permission);
+            }
+        }
+
+        if (!allNeededPermissions.isEmpty()) {
+            ActivityCompat.requestPermissions(
+                    this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+        }
+    }
+
+    private static boolean isPermissionGranted(Context context, String permission) {
+        if (ContextCompat.checkSelfPermission(context, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Permission granted: " + permission);
+            return true;
+        }
+        Log.i(TAG, "Permission NOT granted: " + permission);
+        return false;
     }
 
 

@@ -7,40 +7,50 @@
     android:layout_height="match_parent"
     tools:context=".Profile"
     android:background="#303030"
-    android:orientation="vertical"
+    android:orientation="vertical">
+
+<FrameLayout
+android:layout_width="match_parent"
+android:layout_height="wrap_content">
 
 
-    >
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="350dp"
        >
+
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:orientation="vertical"
-            android:background="@drawable/profilebackgorund"
 
-            >
+            android:layout_alignParentStart="true"
+
+            android:background="@drawable/profilebackgorund"
+            android:orientation="vertical">
+
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/image_profile"
-                android:layout_gravity="center_horizontal"
                 android:layout_width="130dp"
                 android:layout_height="130dp"
-                android:src="@drawable/plaementpro"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="55dp"
                 android:foreground="?android:attr/selectableItemBackground"
-                 />
+                android:src="@drawable/plaementpro" />
+
+
             <TextView
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:text=""
-                android:textStyle="bold"
                 android:textColor="#fff"
-                android:id="@+id/profile_name"
                 android:textSize="23sp"
-                />
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -152,6 +162,21 @@
         </androidx.cardview.widget.CardView>
 
     </RelativeLayout>
+
+    <ImageButton
+        android:layout_width="67dp"
+        android:layout_height="70dp"
+        android:layout_gravity="end"
+        android:layout_marginTop="25dp"
+        android:elevation="10dp"
+        android:layout_marginEnd="40dp"
+        android:background="@drawable/edit"
+        android:foreground="?android:attr/selectableItemBackground"
+       />
+
+
+
+</FrameLayout>
 
 <LinearLayout
 
