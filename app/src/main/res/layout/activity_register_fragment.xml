@@ -95,7 +95,7 @@
                 android:inputType="textPersonName"
                 android:paddingLeft="12dp"
                 android:textColor="#ffff"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -121,7 +121,7 @@
                 android:inputType="phone"
                 android:paddingLeft="12dp"
                 android:textColor="#ffff"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -148,7 +148,7 @@
                 android:inputType="textEmailAddress"
                 android:paddingLeft="12dp"
                 android:textColor="#ffff"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -180,22 +180,22 @@
                 android:maxLines="1"
                 android:paddingLeft="12dp"
                 android:textColor="#ffff"
-                android:textSize="14sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <androidx.legacy.widget.Space
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1" />
+            />
 
         <Button
             android:id="@+id/button_reg"
             android:layout_width="292dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="80dp"
             android:background="@drawable/gradient_1"
             android:clickable="true"
             android:focusable="true"

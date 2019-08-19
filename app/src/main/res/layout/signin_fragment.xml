@@ -34,9 +34,9 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="100dp"
             android:layout_weight="1"
-            android:src="@drawable/pass_icon" />
+            android:src="@drawable/logoany" />
 
     </LinearLayout>
 
@@ -99,6 +99,7 @@
             android:background="@drawable/gradient_1"
             android:gravity="center"
             android:clickable="true"
+            android:layout_marginBottom="5dp"
             android:text="Log In To The App"
             android:textColor="#fff"
             android:textStyle="bold"

@@ -42,6 +42,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.metacodersbd.myapplication.BloodActivity.BloodPage;
 import com.metacodersbd.myapplication.ChatSystemUniversal.chatRoom;
+import com.metacodersbd.myapplication.FaceDetection.LivePreviewActivity;
 import com.metacodersbd.myapplication.NewsFeedSection.newsFeed;
 import com.metacodersbd.myapplication.PdfDownloaderSection.pdfViewerByDpartment;
 import com.metacodersbd.myapplication.RoutineActivity.RoutineActivity;
@@ -244,7 +245,10 @@ public  static   String pimageLink  ,naaam  ;
             public void onClick(View v) {
 
 
-
+                getRuntimePermissions();
+                String action;
+                Intent i = new Intent(getApplicationContext()  , LivePreviewActivity.class);
+                startActivity(i);
 
 
 
