@@ -1,10 +1,12 @@
-package com.metacodersbd.myapplication;
+package com.metacodersbd.myapplication.profilePackage;
 
 import android.content.Intent;
 import android.os.Handler;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -16,9 +18,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.metacodersbd.myapplication.R;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
 import com.roger.catloadinglibrary.CatLoadingView;
-import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -28,9 +30,9 @@ public class Profile extends AppCompatActivity {
     CircleImageView IMAGE_PLACE ;
     String url ;
     CatLoadingView mView;
-
-            FirebaseUser user ;
- FirebaseAuth mAuth;
+    ImageButton editProfileBtn ;
+    FirebaseUser user ;
+    FirebaseAuth mAuth;
    // private static final String TAG = "ViewDatabase";
 
     //changing some code in by commenting . now i will upload ?? Aso huuuuuuuu phn doa
@@ -58,6 +60,9 @@ public class Profile extends AppCompatActivity {
         mail_address  = (TextView) findViewById(R.id.mail_profile);
         Blood_Group = (TextView) findViewById(R.id.blood_profile);
         Phone = (TextView) findViewById(R.id.ph_profile);
+        editProfileBtn = findViewById(R.id.editProfile);
+
+
 
             mView.show(getSupportFragmentManager()," ");
             mView.setCanceledOnTouchOutside(false);
@@ -122,7 +127,29 @@ public class Profile extends AppCompatActivity {
             }
         }, 1800);
 
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(getApplicationContext() , editProfilePage.class);
+
+                i.putExtra("NAME" ,name.getText().toString()) ;
+                i.putExtra("PHONE", Phone.getText().toString());
+                i.putExtra("CGPA", cgpa.getText().toString());
+                i.putExtra("BGG", Blood_Group.getText().toString());
+                i.putExtra("MAIL", mail_address.getText().toString());
+                i.putExtra("BATCH", batch_name.getText().toString());
+                i.putExtra("URL",url);
 
 
+
+                startActivity(i);
+
+
+            }
+        });
     }
+
+
+
 }

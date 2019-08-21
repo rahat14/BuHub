@@ -333,7 +333,8 @@ else  {
                     String user_ph = Phn ;
                     String dpart = dpt ;
                     String blood = BloodGroup ;
-                    String batchNam = BatchNum.getText().toString() ;
+                    String batchNam = BatchNum.getText().toString().toLowerCase() ;
+                    batchNam = org.apache.commons.lang3.StringUtils.replace(batchNam, " ", "");
                     Cgpa= Cgpa_fill.getText().toString();
 
 

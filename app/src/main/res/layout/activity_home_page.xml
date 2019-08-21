@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#303030"
-    tools:context=".Profile">
+    tools:context=".profilePackage.Profile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,9 +44,10 @@
                         android:layout_marginStart="9dp"
                         android:layout_marginTop="45dp"
                         android:text="Mr."
+                        android:fontFamily="@font/mon_bold"
                         android:textAllCaps="true"
                         android:textColor="#fff"
-                        android:textSize="18sp"
+                        android:textSize="17sp"
                         android:textStyle="bold" />
 
                     <LinearLayout
@@ -77,8 +78,9 @@
                             android:layout_gravity="end"
                             android:layout_marginStart="55dp"
                             android:text="Total Users "
+                            android:fontFamily="@font/mon_regular"
                             android:textColor="#fff"
-                            android:textSize="15sp"
+                            android:textSize="13sp"
                             android:textStyle="bold" />
 
 
@@ -293,7 +295,9 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="NewsFeed"
-                        android:textSize="17sp"
+
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -336,7 +340,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="CGPA Calculator"
-                        android:textSize="17sp"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -360,7 +365,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/profile_btn"
+                android:id="@+id/chatSystem"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -387,15 +392,17 @@
                         android:layout_width="100dp"
                         android:layout_height="70dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/profileiconhome" />
+                        android:src="@drawable/chatroom" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Profile"
-                        android:textSize="17sp"
+                        android:text="Chat Room"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/mon_bold"
                         android:textStyle="bold" />
+
 
 
                 </LinearLayout>
@@ -437,7 +444,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="PDF Downloader"
-                        android:textSize="17sp"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -461,7 +469,8 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/userList"
+                android:id="@+id/eventList"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -487,14 +496,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/users" />
+                        android:src="@drawable/eventicon" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Face Detection"
-                        android:textSize="17sp"
+                        android:text="Upcoming Events"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -537,7 +547,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Routine"
-                        android:textSize="17sp"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -563,7 +574,7 @@
 
             <androidx.cardview.widget.CardView
 
-                android:id="@+id/eventList"
+                android:id="@+id/userList"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -596,8 +607,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Event List"
-                        android:textSize="17sp"
+                        android:text="Options"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/mon_bold"
                         android:textStyle="bold" />
 
 
@@ -641,7 +653,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Find Blood"
-                        android:textSize="17sp"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -666,7 +679,7 @@
             android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/chatSystem"
+                android:id="@+id/profile_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
@@ -692,14 +705,15 @@
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="70dp"
-                        android:src="@drawable/chatroom" />
+                        android:src="@drawable/profileiconhome" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="Chat Room"
-                        android:textSize="17sp"
+                        android:text="Profile"
+                        android:fontFamily="@font/mon_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
@@ -743,7 +757,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:text="Log Out"
-                        android:textSize="17sp"
+                        android:textSize="15sp"
+                        android:fontFamily="@font/mon_bold"
                         android:textStyle="bold" />
 
 

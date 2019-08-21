@@ -26,7 +26,6 @@
     </string-array>
     <string-array name="DPTarray">
         <item>Choose Department</item>
-        <item>All</item>
         <item>Bba</item>
         <item>Law</item>
         <item>Eng</item>

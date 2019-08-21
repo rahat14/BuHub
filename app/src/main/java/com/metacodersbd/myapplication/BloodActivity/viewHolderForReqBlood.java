@@ -27,26 +27,6 @@ public class viewHolderForReqBlood extends RecyclerView.ViewHolder {
         super(itemView);
         mview = itemView ;
 
-        //item click
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                mClickListener.onItemClick(v , getAdapterPosition());
-
-            }
-        });
-
-        //item long click
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                mClickListener.onItemClick(v , getAdapterPosition());
-
-                return true;
-            }
-        });
 
 
     }
@@ -86,9 +66,7 @@ public class viewHolderForReqBlood extends RecyclerView.ViewHolder {
         void onItemClick(View view, int position);
         void onItemLongClick(View view, int position);
     }
-    public static void setOnClickListener(viewHolderForReqBlood.ClickListener clickListener){
-        mClickListener = clickListener;
-    }
+
 
 
 

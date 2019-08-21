@@ -50,6 +50,7 @@ import com.metacodersbd.myapplication.UpcomingEvent.upcomingEventList;
 import com.metacodersbd.myapplication.loginAcconuntSetup.getProfile;
 import com.metacodersbd.myapplication.loginAcconuntSetup.signIn_Controller;
 import com.metacodersbd.myapplication.CgpaCalculator.ReminderActivity;
+import com.metacodersbd.myapplication.profilePackage.Profile;
 import com.metacodersbd.myapplication.weatherManagement.Function;
 import com.onesignal.OSNotificationOpenResult;
 import com.onesignal.OneSignal;
@@ -71,6 +72,7 @@ import io.fabric.sdk.android.Fabric;
 public class homePage extends AppCompatActivity {
     private static final int PERMISSION_REQUESTS = 1;
     private static final String TAG = "CHOOSE";
+public  static   String pimageLink  ,naaam  ;
     ImageView cgpameter  ;
 CardView prfoileBtn , blood_btn , logout , pdfDownloader ,newsfeed_btn ,nottification ,ROutine_btn ,userList_btn, ChatRoom , ebentLIST  ;
 FirebaseUser user ;
@@ -83,8 +85,16 @@ TextView  currentWeather , weatherIcon ,  detailsField , name , dpartmentField ,
 Typeface weatherFont ;
 CircleImageView circleImageView ;
 String cgpaFirebase , batchFirebase , url  , dpart_Firebase;
-public  static   String pimageLink  ,naaam  ;
 
+    private static boolean isPermissionGranted(Context context, String permission) {
+        if (ContextCompat.checkSelfPermission(context, permission)
+                == PackageManager.PERMISSION_GRANTED) {
+            Log.i(TAG, "Permission granted: " + permission);
+            return true;
+        }
+        Log.i(TAG, "Permission NOT granted: " + permission);
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -187,7 +197,7 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
-       loadWeather(city);
+         loadWeather(city);
         loadingToDataFromFirebase();
 
         getTotalcountOFUsers();
@@ -245,10 +255,11 @@ public  static   String pimageLink  ,naaam  ;
             public void onClick(View v) {
 
 
-                getRuntimePermissions();
-                String action;
-                Intent i = new Intent(getApplicationContext()  , LivePreviewActivity.class);
-                startActivity(i);
+
+           //     getRuntimePermissions();
+          //      String action;
+               // Intent i = new Intent(getApplicationContext()  , LivePreviewActivity.class);
+         //       startActivity(i);
 
 
 
@@ -258,7 +269,7 @@ public  static   String pimageLink  ,naaam  ;
 
 
 
-       
+
 
         ROutine_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -379,6 +390,11 @@ public  static   String pimageLink  ,naaam  ;
 
     }
 
+
+
+
+// batch to meter
+
     private Bitmap getWidgetBitmap(Context context, double percentage) {
 
         int width = 400;
@@ -440,15 +456,6 @@ public  static   String pimageLink  ,naaam  ;
         return  bitmap;
     }
 
-
-
-
-// batch to meter
-
-
-
-
-
     public void loadWeather(String query) {
         if (Function.isNetworkAvailable(getApplicationContext())) {
             DownloadWeather task = new DownloadWeather();
@@ -458,6 +465,253 @@ public  static   String pimageLink  ,naaam  ;
         }
     }
 
+    public void  loadingToDataFromFirebase(){
+
+             FirebaseDatabase database = FirebaseDatabase.getInstance() ;
+             final DatabaseReference mRef = database.getReference("Users").child(uid);
+             mRef.keepSynced(true);
+
+             mRef.addValueEventListener(new ValueEventListener() {
+                 @Override
+                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+
+
+                     getProfile model = dataSnapshot.getValue(getProfile.class);
+
+
+                     cgpaFirebase = model.getCgpa();
+                     batchFirebase = model.getUser_batch();
+
+                     dpart_Firebase = model.getUser_dpt();
+
+                     //setting the value to the views
+
+                     naaam = model.getUser_name() ;
+                     name.setText(model.getUser_name());
+                     dpartmentField.setText(dpart_Firebase);
+                     url = model.getUser_image() ;
+                     pimageLink = url ;
+                     Batch_Meter.setText(batchFirebase);
+/*
+                    Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
+                             .noFade()
+                             .into(circleImageView);
+
+*/
+                     Glide.with(homePage.this)
+                             .load(url)
+                             .skipMemoryCache(true)
+                             .diskCacheStrategy(DiskCacheStrategy.ALL)
+                             .dontAnimate()
+                             .crossFade()
+                             .into(circleImageView);
+
+
+                     //converting the string to double
+                     double cgp ;
+                     int batchNumber ;
+
+                     cgp = Double.parseDouble(cgpaFirebase);
+                  //   batchNumber =Integer.parseInt(batchFirebase) ;
+
+                     Bitmap bitmap =getWidgetBitmap(getApplicationContext(),cgp) ;
+                     cgpameter.setImageBitmap(bitmap);
+
+                 }
+
+                 @Override
+                 public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                 }
+
+             });
+
+
+
+
+
+
+
+
+
+         }
+
+
+         public  void logoutFuntion(){
+
+             FirebaseAuth.getInstance().signOut();
+             sentToLoginpage();
+
+         }
+
+         public  void sentToLoginpage(){
+
+        Intent i = new Intent(getApplicationContext() , signIn_Controller.class);
+        startActivity(i);
+            finish();
+
+         }
+
+    public  String sendData(){
+
+
+        return pimageLink ;
+    }
+
+    public  String sendName(){
+
+        return  naaam ;
+    }
+
+    public  String sendDpt(){
+
+
+        return  dpart_Firebase ;
+
+    }
+
+    public  void getTotalcountOFUsers(){
+
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+
+// i used the single or the value.. depending if you want to keep track
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                //Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
+
+                if(dataSnapshot.getKey().equals("Users")){
+
+
+                    TotalCount.setText( "Total Users " + dataSnapshot.getChildrenCount());
+
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+    }
+
+    public boolean isConnected(Context context) {
+
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netinfo = cm.getActiveNetworkInfo();
+
+        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
+            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
+                return true;
+            else return false;
+        } else
+            return false;
+    }
+
+    // networkavailablity
+
+    // trigger dialoge after install
+    private void show_Dialog_after_Install() {
+
+
+        new AlertDialog.Builder(this)
+                .setTitle("Hey Buians  !!")
+                .setMessage("Thanks For Installing The Beta Of The  App. Feel Free To Use It")
+                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create().show();
+        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("firstStart", false);
+        editor.apply();
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this ,R.style.AlertDialogTheme);
+        builder.setMessage("Are you sure you want to exit?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        homePage.this.finishAffinity();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
+    private String[] getRequiredPermissions() {
+        try {
+            PackageInfo info =
+                    this.getPackageManager()
+                            .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
+            String[] ps = info.requestedPermissions;
+            if (ps != null && ps.length > 0) {
+                return ps;
+            } else {
+                return new String[0];
+            }
+        } catch (Exception e) {
+            return new String[0];
+        }
+    }
+
+    private boolean allPermissionsGranted() {
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private void getRuntimePermissions() {
+        List<String> allNeededPermissions = new ArrayList<>();
+        for (String permission : getRequiredPermissions()) {
+            if (!isPermissionGranted(this, permission)) {
+                allNeededPermissions.add(permission);
+            }
+        }
+
+        if (!allNeededPermissions.isEmpty()) {
+            ActivityCompat.requestPermissions(
+                    this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
+        }
+    }
 
     class  DownloadWeather extends AsyncTask<String , Void , String > {
 
@@ -513,110 +767,6 @@ public  static   String pimageLink  ,naaam  ;
         }
     }
 
-
-
-
-
-
-
-
-
-    public void  loadingToDataFromFirebase(){
-
-             FirebaseDatabase database = FirebaseDatabase.getInstance() ;
-             final DatabaseReference mRef = database.getReference("Users").child(uid);
-             mRef.keepSynced(true);
-
-             mRef.addValueEventListener(new ValueEventListener() {
-                 @Override
-                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-
-
-                     getProfile model = dataSnapshot.getValue(getProfile.class);
-
-
-                     cgpaFirebase = model.getCgpa();
-                     batchFirebase = model.getUser_batch();
-
-                     dpart_Firebase = model.getUser_dpt();
-
-                     //setting the value to the views
-
-                     naaam = model.getUser_name() ;
-                     name.setText(model.getUser_name());
-                     dpartmentField.setText(dpart_Firebase);
-                     url = model.getUser_image() ;
-                     pimageLink = url ;
-                     Batch_Meter.setText(batchFirebase);
-/*
-                    Picasso.get().load(url).placeholder(R.drawable.plaementpro).error(R.drawable.plaementpro)
-                             .noFade()
-                             .into(circleImageView);
-
-*/
-                     Glide.with(homePage.this)
-                             .load(url)
-                             .skipMemoryCache(true)
-                             .diskCacheStrategy(DiskCacheStrategy.ALL)
-                             .dontAnimate()
-                             .crossFade()
-                             .into(circleImageView);
-
-
-                     //converting the string to double
-                     double cgp ;
-                     int batchNumber ;
-
-                     cgp = Double.parseDouble(cgpaFirebase);
-                  //   batchNumber =Integer.parseInt(batchFirebase) ;
-
-                     Bitmap bitmap =getWidgetBitmap(getApplicationContext(),cgp) ;
-                     cgpameter.setImageBitmap(bitmap);
-
-
-
-
-
-
-
-
-
-
-                 }
-
-                 @Override
-                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                 }
-
-             });
-
-
-
-
-
-
-
-
-
-         }
-
-
-         public  void logoutFuntion(){
-
-             FirebaseAuth.getInstance().signOut();
-             sentToLoginpage();
-
-         }
-
-         public  void sentToLoginpage(){
-
-        Intent i = new Intent(getApplicationContext() , signIn_Controller.class);
-        startActivity(i);
-            finish();
-
-         }
     public class notificationOpenHandler implements  OneSignal.NotificationOpenedHandler {
         @Override
         public void notificationOpened(OSNotificationOpenResult result) {
@@ -633,178 +783,6 @@ public  static   String pimageLink  ,naaam  ;
     }
 
 
-
-
-    public  String sendData(){
-
-
-        return pimageLink ;
-    }
-    public  String sendName(){
-
-        return  naaam ;
-    }
-    public  String sendDpt(){
-
-
-        return  dpart_Firebase ;
-
-    }
-
-
-
-    public  void getTotalcountOFUsers(){
-
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference();
-
-// i used the single or the value.. depending if you want to keep track
-        myRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                //Log.e(dataSnapshot.getKey(),dataSnapshot.getChildrenCount() + "");
-
-                if(dataSnapshot.getKey().equals("Users")){
-
-
-                    TotalCount.setText( "Total Users " + dataSnapshot.getChildrenCount());
-
-                }
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-
-
-
-
-    }
-
-    // networkavailablity
-
-    public boolean isConnected(Context context) {
-
-        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netinfo = cm.getActiveNetworkInfo();
-
-        if (netinfo != null && netinfo.isConnectedOrConnecting()) {
-            android.net.NetworkInfo wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-            android.net.NetworkInfo mobile = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-
-            if ((mobile != null && mobile.isConnectedOrConnecting()) || (wifi != null && wifi.isConnectedOrConnecting()))
-                return true;
-            else return false;
-        } else
-            return false;
-    }
-
-    // trigger dialoge after install
-    private void show_Dialog_after_Install() {
-
-
-        new AlertDialog.Builder(this)
-                .setTitle("Hey Buians  !!")
-                .setMessage("Thanks For Installing The Beta Of The  App. Feel Free To Use It")
-                .setNeutralButton("Ok", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .create().show();
-        SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("firstStart", false);
-        editor.apply();
-    }
-
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this ,R.style.AlertDialogTheme);
-        builder.setMessage("Are you sure you want to exit?")
-                .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        homePage.this.finishAffinity();
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-        AlertDialog alert = builder.create();
-        alert.show();
-
-    }
-
-
-    private String[] getRequiredPermissions() {
-        try {
-            PackageInfo info =
-                    this.getPackageManager()
-                            .getPackageInfo(this.getPackageName(), PackageManager.GET_PERMISSIONS);
-            String[] ps = info.requestedPermissions;
-            if (ps != null && ps.length > 0) {
-                return ps;
-            } else {
-                return new String[0];
-            }
-        } catch (Exception e) {
-            return new String[0];
-        }
-    }
-
-    private boolean allPermissionsGranted() {
-        for (String permission : getRequiredPermissions()) {
-            if (!isPermissionGranted(this, permission)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private void getRuntimePermissions() {
-        List<String> allNeededPermissions = new ArrayList<>();
-        for (String permission : getRequiredPermissions()) {
-            if (!isPermissionGranted(this, permission)) {
-                allNeededPermissions.add(permission);
-            }
-        }
-
-        if (!allNeededPermissions.isEmpty()) {
-            ActivityCompat.requestPermissions(
-                    this, allNeededPermissions.toArray(new String[0]), PERMISSION_REQUESTS);
-        }
-    }
-
-    private static boolean isPermissionGranted(Context context, String permission) {
-        if (ContextCompat.checkSelfPermission(context, permission)
-                == PackageManager.PERMISSION_GRANTED) {
-            Log.i(TAG, "Permission granted: " + permission);
-            return true;
-        }
-        Log.i(TAG, "Permission NOT granted: " + permission);
-        return false;
-    }
 
 
 

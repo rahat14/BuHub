@@ -10,4 +10,5 @@
     <color name="mdtp_accent_color">#070B82</color>
     <color name="mdtp_accent_color_dark">#0D105E</color>
     <color name="white">#ffff</color>
+    <color name="editTextColor">#505050</color>
 </resources>

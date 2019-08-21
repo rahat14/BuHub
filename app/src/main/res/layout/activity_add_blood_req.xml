@@ -92,6 +92,7 @@
         android:layout_height="40dp"
         android:background="@drawable/gray_back"
         android:hint="Friend"
+        android:textColorHint="@color/white"
         android:textColor="#000000"
 
         android:textSize="16sp"
@@ -189,6 +190,7 @@
         android:background="@drawable/gray_back"
         android:hint="Cumilla"
         android:textSize="16dp"
+        android:textColorHint="@color/white"
         android:layout_gravity="center"
         android:paddingLeft="10dp"
         android:textColor="#000000"
