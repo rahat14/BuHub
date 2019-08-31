@@ -307,6 +307,7 @@ public class editProfilePage extends AppCompatActivity {
                 mref.child(uid).child("user_name").setValue(profilename);
                 mref.child(uid).child("user_batch").setValue(batch);
                 mref.child(uid).child("user_bloodgroup").setValue(bg);
+                mref.child(uid).child("cgpa").setValue(cgpa);
                  mref.child(uid).child("user_phn").setValue(contactnum).addOnCompleteListener(new OnCompleteListener<Void>() {
                      @Override
                      public void onComplete(@NonNull Task<Void> task) {

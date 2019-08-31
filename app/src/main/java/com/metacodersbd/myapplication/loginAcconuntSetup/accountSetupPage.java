@@ -64,7 +64,7 @@ public class accountSetupPage extends AppCompatActivity {
     String photoLink ;
     CheckBox   checkBg;
     EditText BatchNum ;
-CircleImageView image ;
+    CircleImageView image ;
     Spinner dropdownMenu  ,Bg  ;
     String dpt ;
     String Name , batch_number ;
@@ -200,16 +200,6 @@ CircleImageView image ;
 
                 //accessing the gallery
 
-
-                /*
-                Intent intent = new Intent();
-                intent.setType("image/*");
-                intent.setAction(Intent.ACTION_GET_CONTENT);
-
-                startActivityForResult(Intent.createChooser(intent,"Select Your Profile Picture") , IMAGE_REQUEST_CODE);
-*/
-
-
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
 
                     if (ContextCompat.checkSelfPermission(accountSetupPage.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -279,12 +269,10 @@ else  {
 
 
 
-//,..................................................................................................
-
-//....................................................................................
 
                         }
                     });
+
 
                     //assaign firebase Stroage  Intace to storage object
         mStorageReference = FirebaseStorage.getInstance().getReference() ;
@@ -373,7 +361,7 @@ else  {
                 public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                     viewDialog.showDialog();
 
-                 //   mprogressDialog.setTitle(" Uploading ...........");
+             //      mprogressDialog.setTitle(" Uploading ...........");
                 }
             });
 
