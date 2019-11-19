@@ -108,8 +108,8 @@ public class newsFeed extends AppCompatActivity {
                 //set layout as LinearLayout
         mlayoutManager = new LinearLayoutManager(this);
         mrecyclerView.setLayoutManager(mlayoutManager);
-       mlayoutManager.setReverseLayout(true);
-      mlayoutManager.setStackFromEnd(true);
+        mlayoutManager.setReverseLayout(true);
+        mlayoutManager.setStackFromEnd(true);
 
 
         showData();

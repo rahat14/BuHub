@@ -17,7 +17,9 @@
         android:background="@drawable/edittext_bg"
         android:gravity="center"
         android:hint=" Number Of Credit"
+        android:fontFamily="@font/mon_regular"
         android:inputType="numberDecimal"
+
         android:padding="5dp"
         android:textSize="13sp">
         <requestFocus />
@@ -34,7 +36,8 @@
         android:layout_marginStart="10dp"
         android:background="@drawable/edittext_bg"
         android:gravity="center"
-        android:hint="GPA"
+        android:hint="GPA Ex.A+ or B"
+        android:fontFamily="@font/mon_regular"
         android:inputType="textCapWords"
         android:padding="5dp"
 

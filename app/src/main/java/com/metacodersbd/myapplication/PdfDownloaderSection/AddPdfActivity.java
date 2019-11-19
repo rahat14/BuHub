@@ -58,6 +58,8 @@ String Name , writer_Name ,db  ;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_pdf_activity);
 
+        getSupportActionBar().hide();
+
         imagev = (ImageView) findViewById(R.id.dImageONPDF);
         upload = (CardView)findViewById(R.id.uploadBtn_pdf) ;
         fireUpload = (CardView)findViewById(R.id.fireUPLOAD) ;

@@ -65,10 +65,10 @@
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+     <androidx.legacy.widget.Space
+         android:layout_width="match_parent"
+         android:layout_height="10dp"
+         />
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -87,8 +87,8 @@
             <EditText
 
                 android:id="@+id/RegName"
-                android:layout_width="292dp"
-                android:layout_height="50dp"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
                 android:background="#55000000"
                 android:ems="10"
                 android:hint="  User Name "
@@ -113,8 +113,8 @@
 
             <EditText
                 android:id="@+id/RegPhn"
-                android:layout_width="292dp"
-                android:layout_height="50dp"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="7dp"
                 android:background="#55000000"
                 android:hint="  Phone Number"
@@ -139,8 +139,8 @@
 
             <EditText
                 android:id="@+id/RegMail"
-                android:layout_width="292dp"
-                android:layout_height="50dp"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="7dp"
                 android:background="#55000000"
                 android:ems="10"
@@ -159,6 +159,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:focusable="true"
+            app:passwordToggleEnabled="true"
             android:focusableInTouchMode="true"
             android:gravity="center"
             android:hint=" Password"
@@ -167,8 +168,8 @@
 
             <EditText
                 android:id="@+id/RegPass"
-                android:layout_width="292dp"
-                android:layout_height="50dp"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
                 android:layout_marginTop="7dp"
                 android:background="#55000000"
                 android:ems="10"

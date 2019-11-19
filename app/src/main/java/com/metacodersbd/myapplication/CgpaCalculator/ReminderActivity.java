@@ -110,7 +110,22 @@ public class ReminderActivity extends AppCompatActivity {
          int     singleCredit ;
       Double singleCgpa ;
 
-            if(!TextUtils.isEmpty(scgpa)|| (!TextUtils.isEmpty(scredit)))
+      if (scgpa.length() > 2){
+
+          Toast.makeText(getApplicationContext(),"Error Cgpa You Have Inputed IS Wrong !! Ex : B+ , C , A+ " ,Toast.LENGTH_LONG).show();
+          recreate();
+
+      }
+      else if (Integer.valueOf(scredit)>3 )
+      {
+          Toast.makeText(getApplicationContext(),"Error!!Check Your Credit value!!  " ,Toast.LENGTH_LONG).show();
+          recreate();
+
+      }
+
+      else if(!TextUtils.isEmpty(scgpa)|| (!TextUtils.isEmpty(scredit)))
+
+
             {
                 singleCredit = Integer.parseInt(scredit);
                 creadit = creadit + Integer.parseInt(scredit) ;
@@ -145,7 +160,7 @@ public class ReminderActivity extends AppCompatActivity {
                         break;
                     default:
 
-                        Toast.makeText(getApplicationContext(), "Error Plzz Enter Right Format CGPA " + scgpa, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Error Plzz Enter Right Format CGPA Ex: A+  , B , C+  ", Toast.LENGTH_LONG).show();
                         break;
                 }
 
@@ -159,6 +174,7 @@ public class ReminderActivity extends AppCompatActivity {
 
 
             }
+
             else {
 
                 Toast.makeText(getApplicationContext(),"Error  Try Again " ,Toast.LENGTH_LONG).show();

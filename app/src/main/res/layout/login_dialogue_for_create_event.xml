@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:text="Pleasae Enter The Admin Pass To Create Event"
+        android:text="Please Enter The Admin Pass To Create Event"
         android:textAlignment="center"
         android:textSize="25sp"
         android:textStyle="bold" />

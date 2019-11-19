@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
@@ -29,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.awesomedialog.blennersilva.awesomedialoglibrary.AwesomeErrorDialog;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -90,6 +92,7 @@ public class accountSetupPage extends AppCompatActivity {
     String mStoragePath = "All_PP/";
     String mDatabasePath = databasearent_name ;
     String bllod;
+    String batchNam ;
     Bitmap thum_bitamp=null ;
 
     // image request code for
@@ -133,7 +136,7 @@ public class accountSetupPage extends AppCompatActivity {
       image =  findViewById(R.id.imageBtn);
       Cgpa_fill =(EditText)findViewById(R.id.Cgpa_edit) ;
 
-
+        checkBg.setChecked(true);
       // intinal spinner
         adapter = ArrayAdapter.createFromResource(this , R.array.DPT_array ,android.R.layout.simple_spinner_item );
            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -177,7 +180,8 @@ public class accountSetupPage extends AppCompatActivity {
 
 
         // setting on clilck listener
-        Bg.setVisibility(View.GONE);
+        Bg.setVisibility(View.VISIBLE);
+
         checkBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -253,13 +257,38 @@ public class accountSetupPage extends AppCompatActivity {
 if (!dpt.contains("Choose Department")){
 
 
-    OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
-    status.getPermissionStatus().getEnabled();
+     batchNam = BatchNum.getText().toString().toLowerCase() ;
+    batchNam = org.apache.commons.lang3.StringUtils.replace(batchNam, " ", "");
+    Cgpa = Cgpa_fill.getText().toString();
 
-    status.getSubscriptionStatus().getSubscribed();
-    OneSignal.sendTag("ID",dpt);
+    if (TextUtils.isEmpty(batchNam)   )
+    {
 
-    uploadToFirebae();
+
+        Toast.makeText(getApplicationContext() , "Fill Up The Batch Name Properly . Ex : Spring18 , Fall16"  , Toast.LENGTH_LONG)
+                .show();
+
+
+    }
+    else if (TextUtils.isEmpty(Cgpa) || Float.valueOf(Cgpa)>4.00){
+
+        Toast.makeText(getApplicationContext() , "Fill Up The CGPA Properly . Ex : 3.33 if you Dnt Know Your Cgpa Enter 0.00"  , Toast.LENGTH_LONG)
+                .show();
+
+    }
+else {
+
+
+        OSPermissionSubscriptionState status = OneSignal.getPermissionSubscriptionState();
+        status.getPermissionStatus().getEnabled();
+
+        status.getSubscriptionStatus().getSubscribed();
+        OneSignal.sendTag("ID", dpt);
+
+
+        uploadToFirebae();
+    }
+
 }
 else  {
 
@@ -321,9 +350,10 @@ else  {
                     String user_ph = Phn ;
                     String dpart = dpt ;
                     String blood = BloodGroup ;
-                    String batchNam = BatchNum.getText().toString().toLowerCase() ;
-                    batchNam = org.apache.commons.lang3.StringUtils.replace(batchNam, " ", "");
-                    Cgpa= Cgpa_fill.getText().toString();
+                    // batchNam = BatchNum.getText().toString().toLowerCase() ;
+                 //   batchNam = org.apache.commons.lang3.StringUtils.replace(batchNam, " ", "");
+                //    Cgpa = Cgpa_fill.getText().toString();
+
 
 
 
@@ -338,7 +368,7 @@ else  {
 
 
 
-                    String ts =mDatabaseReference.push().getKey() ;
+                  //  String ts =mDatabaseReference.push().getKey() ;
 
                             accountSetupUploadModel imageUploadInfo = new accountSetupUploadModel(user_n ,user_ph ,dpart ,batchNam,blood ,downloaduri.toString(),Cgpa  );
                             //geting image upload id

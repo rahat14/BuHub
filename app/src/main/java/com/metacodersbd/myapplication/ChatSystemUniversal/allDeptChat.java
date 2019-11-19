@@ -149,9 +149,9 @@ public class allDeptChat extends Fragment {
 
     public void sendMesg() {
 
-        MSG = msgINPUT.getText().toString();
+        MSG = msgINPUT.getText().toString().trim();
         String delegate = "hh:mm aaa";
-     String    Time = String.valueOf(DateFormat.format(delegate, Calendar.getInstance().getTime()));
+         String    Time = String.valueOf(DateFormat.format(delegate, Calendar.getInstance().getTime()));
 
         DATE = Time +" " +new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 

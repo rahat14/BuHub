@@ -57,12 +57,7 @@ FirebaseAuth mAtuh ;
                 if(!TextUtils.isEmpty(Rmail) || !TextUtils.isEmpty(Rpass) || !TextUtils.isEmpty(Rphn) || !TextUtils.isEmpty(Rname)){
                         reg_progress.setVisibility(View.VISIBLE);
                     createAccount(Rname , Rmail , Rpass , Rphn);
-
-
-
-
-
-                }
+            }
                 else {
 
 
@@ -71,24 +66,8 @@ FirebaseAuth mAtuh ;
 
                 }
 
-
-
-
-
-
-
-
             }
         });
-
-
-
-
-
-
-
-
-
     }
 
 

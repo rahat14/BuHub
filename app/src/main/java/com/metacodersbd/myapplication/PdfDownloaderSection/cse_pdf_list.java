@@ -61,7 +61,7 @@ public class cse_pdf_list extends AppCompatActivity {
 
          mLayoutManager = new GridLayoutManager(this , 2 );
 
-        mrecyclerView.setLayoutManager(mLayoutManager);
+      //  mrecyclerView.setLayoutManager(mLayoutManager);
         //send Query to FirebaseDatabase
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mRef = mFirebaseDatabase.getReference("Pdf_db").child("CSE");
@@ -234,78 +234,7 @@ public class cse_pdf_list extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        /*
-        FirebaseRecyclerAdapter <Model , viewHolder_cse> firebaseRecyclerAdapter =
-                new FirebaseRecyclerAdapter<Model, viewHolder_cse>(
 
-                        Model.class ,
-                        R.layout.row_for_cse_pdf,
-                        viewHolder_cse.class,
-                        mRef
-
-
-
-                ) {
-
-
-                    @Override
-                    protected void populateViewHolder(viewHolder_cse viewHolder, Model model, int position) {
-
-                        viewHolder.SetDeatils(getApplicationContext() , model.getTitle() , model.getWriter() , model.getLink());
-                        Handler handler  = new Handler() ;
-                        handler.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-
-                                cse_bar.setVisibility(View.GONE);
-
-                            }
-                        },3000);
-
-                    }
-
-
-
-                    @Override
-                    public viewHolder_cse onCreateViewHolder(ViewGroup parent, int viewType) {
-
-                        viewHolder_cse viewHolder_cse = super.onCreateViewHolder(parent,viewType) ;
-
-
-                        viewHolder_cse.setOnClickListener(new viewHolder_cse.ClickListener() {
-                            @Override
-                            public void onItemClick(View view, int position) {
-
-
-                                // data from views
-                                String mlink = getItem(position).getLink() ;
-
-
-
-                                // sending those data to new Activity
-
-                                Intent intent = new Intent(view.getContext() , pdfViewer.class);
-
-                                intent.putExtra("LINK", mlink); // put title
-                                startActivity(intent);
-                            }
-
-                            @Override
-                            public void onItemLongClick(View view, int position) {
-
-
-
-                            }
-                        });
-
-
-                        return viewHolder_cse ;
-                    }
-                };
-
-//set adapter to recyclerview
-        mrecyclerView.setAdapter(firebaseRecyclerAdapter);
-*/
             }
 
     @Override
